@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/mAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back"
+            app:contentInsetStartWithNavigation="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_bold_family"
+                android:text="Masuk"
+                android:textColor="@color/fontBold"
+                android:textSize="22sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="Nama Pengguna / Email"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mAppBar" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEmail"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="?attr/colorAccent"
+        app:boxStrokeWidth="1dp"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/labelEmail"
+        app:layout_constraintTop_toBottomOf="@+id/labelEmail">
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/muli_regular_family"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="@dimen/margin_16dp"
+            android:paddingBottom="11dp"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/labelPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+            android:text="Kata Sandi"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputEmail" />
+
+    <TextView
+        android:id="@+id/labelMinimChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="@string/label_minChar"
+        android:textColor="#7A7C7D"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/textInputEmail"
+        app:layout_constraintTop_toBottomOf="@id/textInputEmail" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="?attr/colorAccent"
+        app:boxStrokeWidth="1dp"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/labelPassword"
+        app:layout_constraintTop_toBottomOf="@+id/labelPassword"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="?android:attr/textColorHint">
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/muli_regular_family"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="@dimen/margin_16dp"
+            android:paddingBottom="11dp"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkIngat"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="@id/textInputPassword"
+        app:layout_constraintTop_toBottomOf="@id/textInputPassword" />
+
+    <TextView
+        android:id="@+id/tvIngatSaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="@string/label_ingat"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        app:layout_constraintStart_toEndOf="@id/checkIngat"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPassword" />
+
+    <TextView
+        android:id="@+id/txtLupaPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="@string/label_lupa_password"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/textInputPassword"
+        app:layout_constraintTop_toTopOf="@+id/tvIngatSaya" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMasuk"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:text="@string/label_masuk"
+        app:cornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="@id/txtLupaPassword"
+        app:layout_constraintStart_toStartOf="@id/checkIngat"
+        app:layout_constraintTop_toBottomOf="@id/tvIngatSaya" />
+
+    <TextView
+        android:id="@+id/txtAkun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="@string/label_belum_punya_akun"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/btnMasuk"
+        app:layout_constraintTop_toBottomOf="@id/btnMasuk" />
+
+    <TextView
+        android:id="@+id/tvDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:text="@string/label_daftar_sekarang"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/txtAkun"
+        app:layout_constraintTop_toTopOf="@+id/txtAkun" />
+
+    <include layout="@layout/item_loading"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

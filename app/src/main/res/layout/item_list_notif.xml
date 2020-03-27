@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F0F0F0"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:background="@drawable/circle_red_borderless"
+        app:srcCompat="@drawable/ic_streaming"
+        android:scaleType="center"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        tools:text="Gerard Way Menjadwalkan Live Streaming dalam Kelas The Complete App Design Course - UX, UI And Design Thinking"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:layout_constraintTop_toTopOf="@id/imgIcon"
+        app:layout_constraintStart_toEndOf="@id/imgIcon"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgTime"
+        android:layout_width="@dimen/margin_16dp"
+        android:layout_height="@dimen/margin_16dp"
+        app:srcCompat="@drawable/ic_time"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/margin_8dp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
+    
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli_semibold_family"
+        android:textColor="@color/colorFontLabel1"
+        tools:text="4 menit yang lalu"
+        android:layout_marginStart="@dimen/margin_8dp"
+        app:layout_constraintStart_toEndOf="@id/imgTime"
+        app:layout_constraintTop_toTopOf="@id/imgTime"
+        app:layout_constraintBottom_toBottomOf="@id/imgTime"/>
+    <View
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E5E5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

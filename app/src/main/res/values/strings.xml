@@ -1,0 +1,33 @@
+<resources>
+    <string name="label_masuk">Masuk</string>
+    <string name="label_daftar">Daftar</string>
+    <string name="label_minChar">Minimal 6 Karakter</string>
+    <string name="label_ingat">Ingat saya</string>
+    <string name="label_lupa_password">Lupa kata sandi?</string>
+    <string name="label_belum_punya_akun">Belum punya akun?</string>
+    <string name="label_daftar_sekarang">Daftar Sekarang</string>
+    <string name="label_sudah_punya_akun">Sudah punya akun?</string>
+    <string name="label_masuk_sekarang">Masuk Sekarang</string>
+    <string name="content_desc">desc_image</string>
+    <string name="label_skill">Skills</string>
+    <string name="label_event">Event</string>
+    <string name="label_kelas_saya">Kelas Saya</string>
+    <string name="label_skill_populer">Skills Populer</string>
+    <string name="label_semua_skill">Semua Skills</string>
+    <string name="label_event_berikutnya">Event Berikutanya</string>
+    <string name="label_nama">Nama Lengkap</string>
+    <string name="label_nama_pengguna">Nama Pengguna</string>
+    <string name="label_nomorKTP">Nomor KTP</string>
+    <string name="label_jenis_kelamin">Jenis Kelamin</string>
+    <string name="label_nomorTelepon">Nomor Telepon</string>
+    <string name="label_alamat">Alamat</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_password">Password</string>
+    <string name="label_akun">Belum punya akun?</string>
+    <string name="label_skills">Skills</string>
+    <string name="label_semua_event">Semua Event</string>
+    <string name="label_promo_skills">Promo Skills</string>
+    <string name="label_semua_promo">Semua Promo</string>
+    <string name="label_products">Products</string>
+    <string name="lihat_semua">Lihat Semua</string>
+</resources>

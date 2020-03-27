@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgMentor"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#000000" />
+
+    <TextView
+        android:id="@+id/tvNama"
+        style="@style/TextLabelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toTopOf="@id/tvPekerjaan"
+        app:layout_constraintStart_toEndOf="@id/imgMentor"
+        app:layout_constraintTop_toTopOf="@id/imgMentor"
+        tools:text="Andi Tenroaji Ahmad" />
+
+    <TextView
+        android:id="@+id/tvPekerjaan"
+        style="@style/TextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgMentor"
+        app:layout_constraintStart_toStartOf="@id/tvNama"
+        app:layout_constraintTop_toBottomOf="@id/tvNama"
+        tools:text="Hafids Al-Qur'an" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        style="@style/TextLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgMentor"
+        tools:text="Waktu masa kecil, dia dan adiknya, Mikey, selalu dilarang bermain di luar karena daerah tempat tinggalnya sangat berbahaya. Dan di sekolah Gerard juga sering jadi korban lelucon anak-anak lain." />
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:background="#F5F5F5"
+        app:layout_constraintTop_toBottomOf="@id/tvDesc" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgProfil"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="#000000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgEditProfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="@id/imgProfil"
+                app:layout_constraintEnd_toEndOf="@id/imgProfil"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <TextView
+                android:id="@+id/tvHapus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:fontFamily="@font/muli_semibold_family"
+                android:text="Hapus"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgProfil" />
+
+            <View
+                android:id="@+id/viewLine1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvHapus" />
+
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvNamaLengkap" />
+
+            <View
+                android:id="@+id/viewEditNamaLengkap"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine2"
+                app:layout_constraintTop_toBottomOf="@id/viewLine1" />
+
+            <TextView
+                android:id="@+id/tvLabelNamaLengkap"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Nama Lengkap"
+                app:layout_constraintStart_toStartOf="@id/viewEditNamaLengkap"
+                app:layout_constraintTop_toTopOf="@id/viewEditNamaLengkap" />
+
+            <TextView
+                android:id="@+id/tvNamaLengkap"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="Andi Tenroaji Ahmad"
+                app:layout_constraintStart_toStartOf="@id/tvLabelNamaLengkap"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelNamaLengkap" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvNamaLengkap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+
+            <View
+                android:id="@+id/viewLine3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvNamaPengguna" />
+
+            <View
+                android:id="@+id/viewEditNamaPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine3"
+                app:layout_constraintTop_toBottomOf="@id/viewLine2" />
+
+            <TextView
+                android:id="@+id/tvLabelNamaPengguna"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Nama Pengguna"
+                app:layout_constraintStart_toStartOf="@id/viewEditNamaPengguna"
+                app:layout_constraintTop_toTopOf="@id/viewEditNamaPengguna" />
+
+            <TextView
+                android:id="@+id/tvNamaPengguna"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="Tenroaji"
+                app:layout_constraintStart_toStartOf="@id/tvLabelNamaPengguna"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelNamaPengguna" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvNamaPengguna"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <View
+                android:id="@+id/viewLine4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+            <View
+                android:id="@+id/viewEditEmail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine4"
+                app:layout_constraintTop_toBottomOf="@id/viewLine3" />
+
+            <TextView
+                android:id="@+id/tvLabelEmail"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Email"
+                app:layout_constraintStart_toStartOf="@id/viewEditEmail"
+                app:layout_constraintTop_toTopOf="@id/viewEditEmail" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="example@gmail.com"
+                app:layout_constraintStart_toStartOf="@id/tvLabelEmail"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelEmail" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <View
+                android:id="@+id/viewLine5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvNoHp" />
+
+            <View
+                android:id="@+id/viewEditNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine5"
+                app:layout_constraintTop_toBottomOf="@id/viewLine4" />
+
+            <TextView
+                android:id="@+id/tvLabelNoHp"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="No. Hp"
+                app:layout_constraintStart_toStartOf="@id/viewEditNoHp"
+                app:layout_constraintTop_toTopOf="@id/viewEditNoHp" />
+
+            <TextView
+                android:id="@+id/tvNoHp"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="085111222333"
+                app:layout_constraintStart_toStartOf="@id/tvLabelNoHp"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelNoHp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvNoHp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <View
+                android:id="@+id/viewLine6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvPekerjaan" />
+
+            <View
+                android:id="@+id/viewEditPekerjaan"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine6"
+                app:layout_constraintTop_toBottomOf="@id/viewLine5" />
+
+            <TextView
+                android:id="@+id/tvLabelPekerjaan"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Pekerjaan"
+                app:layout_constraintStart_toStartOf="@id/viewEditPekerjaan"
+                app:layout_constraintTop_toTopOf="@id/viewEditPekerjaan" />
+
+            <TextView
+                android:id="@+id/tvPekerjaan"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="UI UX Designer at PT Magau Jaya Digital"
+                app:layout_constraintStart_toStartOf="@id/tvLabelPekerjaan"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelPekerjaan" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvPekerjaan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <View
+                android:id="@+id/viewLine7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvKota" />
+
+            <View
+                android:id="@+id/viewEditKota"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine7"
+                app:layout_constraintTop_toBottomOf="@id/viewLine6" />
+
+            <TextView
+                android:id="@+id/tvLabelKota"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Kota"
+                app:layout_constraintStart_toStartOf="@id/viewEditKota"
+                app:layout_constraintTop_toTopOf="@id/viewEditKota" />
+
+            <TextView
+                android:id="@+id/tvKota"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="Makassar"
+                app:layout_constraintStart_toStartOf="@id/tvLabelKota"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelKota" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvKota"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+
+            <View
+                android:id="@+id/viewLine8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="#F0F0F0"
+                app:layout_constraintTop_toBottomOf="@id/tvAlamat" />
+
+            <View
+                android:id="@+id/viewEditAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/viewLine8"
+                app:layout_constraintTop_toBottomOf="@id/viewLine7" />
+
+            <TextView
+                android:id="@+id/tvLabelAlamat"
+                style="@style/TextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Alamat"
+                app:layout_constraintStart_toStartOf="@id/viewEditAlamat"
+                app:layout_constraintTop_toTopOf="@id/viewEditAlamat" />
+
+            <TextView
+                android:id="@+id/tvAlamat"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                tools:text="Makassar"
+                app:layout_constraintStart_toStartOf="@id/tvLabelAlamat"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelAlamat" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvAlamat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

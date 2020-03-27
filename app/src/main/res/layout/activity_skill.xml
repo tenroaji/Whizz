@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/mAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
+
+            <TextView
+                android:id="@+id/tvTitleToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_bold_family"
+                android:text="@string/label_skills"
+                android:textColor="@color/fontBold"
+                android:textSize="22sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFilter"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:srcCompat="@drawable/ic_filter" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                app:srcCompat="@drawable/ic_cari" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tvLabelSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_bold_family"
+        android:text="@string/label_semua_skill"
+        android:textColor="@color/fontBold"
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mAppBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgDropDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelSkill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvLabelSkill"
+        app:srcCompat="@drawable/ic_dropdown" />
+
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelSkill"
+        app:layout_constraintEnd_toStartOf="@id/imgDropDown"
+        app:layout_constraintTop_toTopOf="@id/tvLabelSkill"
+        tools:text="Terbaru" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerSkill"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelSkill"
+        tools:listitem="@layout/item_list_skill_populer" />
+
+    <include layout="@layout/item_loading" />
+</androidx.constraintlayout.widget.ConstraintLayout>

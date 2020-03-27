@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tvPerhatian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_24dp"
+                android:layout_marginTop="32dp"
+                style="@style/TextLabelTitle"
+                android:text="Perhatian"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvAmbangBatas"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_24dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_16dp"-->
+<!--                android:fontFamily="@font/nunito_sans_bold_family"-->
+<!--                android:text="@string/label_mulai_soal"-->
+<!--                android:textColor="#433D49"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvPerhatian" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/noAmbang1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_24dp"-->
+<!--                android:layout_marginTop="@dimen/margin_8dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/no1"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvAmbangBatas" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/descAmbang1"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_16dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/label_desc1"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/noAmbang1"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvAmbangBatas" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/noAmbang2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_24dp"-->
+<!--                android:layout_marginTop="@dimen/margin_8dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/no2"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang1" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/descAmbang2"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_16dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/label_desc2"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/noAmbang2"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang1" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/noAmbang3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_24dp"-->
+<!--                android:layout_marginTop="@dimen/margin_8dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/no3"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang2" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/descAmbang3"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_16dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/label_desc3"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/noAmbang3"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang2" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/noAmbang4"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_24dp"-->
+<!--                android:layout_marginTop="@dimen/margin_8dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:text="@string/no4"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang3" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/descAmbang4"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_16dp"-->
+<!--                android:fontFamily="@font/nunito_sans_family"-->
+<!--                android:paddingBottom="32dp"-->
+<!--                android:text="@string/label_desc4"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/noAmbang4"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/descAmbang3" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBatal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:text="Batal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnMulai"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMulai"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:text="Mulai Latihan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBatal"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+<include layout="@layout/item_loading"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/margin_16dp"
+        app:cardCornerRadius="4dp"
+        android:layout_width="88dp"
+        android:layout_height="98dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSkill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradient_image"
+            tools:background="@color/colorPrimary"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ratingfull"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"/>
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/muli_semibold_family"
+            android:textSize="12sp"
+            tools:text = "4.4"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="32dp"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvJenisSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli_semibold_family"
+        android:textSize="12sp"
+        android:textColor="@color/colorFontLabel1"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/cardView"
+        app:layout_constraintTop_toTopOf="@id/cardView"
+        app:layout_constraintBottom_toTopOf="@id/tvTitleSkill"
+        android:layout_marginStart="8dp"
+        tools:text="HARD SKILL" />
+
+    <TextView
+        android:id="@+id/tvTitleSkill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_bold_family"
+        android:textColor="@color/fontBold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/tvJenisSkill"
+        app:layout_constraintStart_toEndOf="@id/cardView"
+        android:layout_marginTop="@dimen/margin_8dp"
+        tools:text="The Complete App Design Course - UX, UI and Design Thinking" />
+    
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#F5F5F5"
+        android:layout_marginTop="@dimen/margin_16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

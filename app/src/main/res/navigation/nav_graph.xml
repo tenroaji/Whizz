@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/menuActivity">
+    <fragment
+        android:id="@+id/menuActivity"
+        android:name="id.magau.whizz.ui.menu.MenuActivity"
+        tools:layout="@layout/activity_menu" >
+        <action android:id="@+id/goToLogin"
+            app:destination="@id/loginActivity" />
+        <action android:id="@+id/goToDaftar"
+            app:destination="@id/daftarActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="id.magau.whizz.ui.login.LoginActivity"
+        tools:layout="@layout/activity_login" >
+        <action android:id="@+id/goLoginToDaftar"
+            app:destination="@id/daftarActivity" />
+        <action android:id="@+id/goLoginToMainMenu"
+            app:destination="@id/mainMenu"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/daftarActivity"
+        android:name="id.magau.whizz.ui.daftar.DaftarActivity"
+        tools:layout="@layout/activity_daftar" >
+        <action android:id="@+id/goDaftarToLogin"
+            app:destination="@id/loginActivity" />
+        <action android:id="@+id/goDaftarToMainMenu"
+            app:destination="@id/mainMenu"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="id.magau.whizz.ui.main_menu.MainMenuActivity"
+        tools:layout="@layout/activity_main_menu" >
+        <action android:id="@+id/goMainMenuTologin"
+            app:destination="@id/loginActivity"
+            app:popUpTo="@id/loginActivity"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

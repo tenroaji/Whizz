@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgEvent"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:src="@drawable/gradient_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tvTitleSkill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/muli_bold_family"
+        android:maxLines="2"
+        android:textColor="@color/fontBold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgEvent"
+        app:layout_constraintTop_toTopOf="@id/imgEvent"
+        tools:text="Tried Gordon Ramsay's Guide to Cook the Perfect Steak" />
+
+    <TextView
+        android:id="@+id/tvHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/muli_bold_family"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgEvent"
+        app:layout_constraintStart_toStartOf="@id/tvTitleSkill"
+        tools:text="Rp 207.900" />
+
+    <TextView
+        android:id="@+id/tvLokasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvHarga"
+        app:layout_constraintBottom_toBottomOf="@id/tvHarga"
+        tools:text="Makassar" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:contentDescription="@string/content_desc"
+        app:layout_constraintTop_toTopOf="@id/tvLokasi"
+        app:layout_constraintBottom_toBottomOf="@id/tvLokasi"
+        app:layout_constraintEnd_toStartOf="@id/tvLokasi"
+        app:srcCompat="@drawable/ic_lokasi" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:background="#F0F0F0"
+        app:layout_constraintStart_toStartOf="@id/imgEvent"
+        app:layout_constraintEnd_toEndOf="@id/tvLokasi"
+        app:layout_constraintTop_toBottomOf="@id/imgEvent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

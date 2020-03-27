@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/mAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|snap"
+            app:titleEnabled="false">
+            <!--            app:contentScrim="?attr/colorPrimaryDark"-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="none">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="232dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@color/colorPrimary" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_40dp"
+                    android:background="@drawable/square_dark"
+                    android:scaleType="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_back_white" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/TextLabelTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgEvent"
+                    tools:text="The Complete App Design Course - UX, UI and Design Thinking" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgPemateri"
+                    android:layout_width="@dimen/margin_40dp"
+                    android:layout_height="@dimen/margin_40dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                    tools:background="#000000" />
+
+                <TextView
+                    android:id="@+id/tvNama"
+                    style="@style/TextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8dp"
+                    app:layout_constraintStart_toEndOf="@id/imgPemateri"
+                    app:layout_constraintTop_toTopOf="@id/imgPemateri"
+                    tools:text="Gerard Way +7 Mentor" />
+
+                <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8dp"
+                    android:fontFamily="@font/muli_semibold_family"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/imgPemateri"
+                    app:layout_constraintTop_toBottomOf="@id/tvNama"
+                    tools:text="CEO PT Impian" />
+
+                <View
+                    android:id="@+id/viewPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:background="@drawable/background_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgPemateri" />
+
+                <TextView
+                    android:id="@+id/tvLabelPrice"
+                    style="@style/TextDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:text="Harga :"
+                    app:layout_constraintBottom_toBottomOf="@id/viewPrice"
+                    app:layout_constraintStart_toStartOf="@id/viewPrice"
+                    app:layout_constraintTop_toTopOf="@id/viewPrice" />
+
+                <TextView
+                    android:id="@+id/tvDiskon"
+                    style="@style/TextDesc"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    app:layout_constraintBottom_toTopOf="@id/tvHarga"
+                    app:layout_constraintStart_toStartOf="@id/tvHarga"
+                    app:layout_constraintTop_toTopOf="@id/viewPrice"
+                    tools:text="Rp 207.900" />
+
+                <TextView
+                    android:id="@+id/tvHarga"
+                    style="@style/TextLabelTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@id/viewPrice"
+                    app:layout_constraintEnd_toEndOf="@id/viewPrice"
+                    app:layout_constraintTop_toBottomOf="@id/tvDiskon"
+                    tools:text="Rp 207.900" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24dp" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_marginBottom="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/root"
+        app:layout_anchorGravity="bottom"
+        android:layout_marginBottom="@dimen/margin_16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKontakWA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:text="Kontak WA"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnBeliKelas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:backgroundTint="#0DC143"
+            app:cornerRadius="4dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBeliKelas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnKontakWA"
+            android:text="Beli Tiket"
+            app:cornerRadius="4dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
