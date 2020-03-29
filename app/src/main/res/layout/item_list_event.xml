@@ -18,6 +18,12 @@
         android:layout_height="168dp"
         android:scaleType="fitXY"
         tools:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:scaleType="fitXY"
         android:src="@drawable/gradient_image"
         app:layout_constraintTop_toTopOf="parent"/>
 

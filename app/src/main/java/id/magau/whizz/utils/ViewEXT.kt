@@ -3,22 +3,95 @@ package id.magau.whizz.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Handler
 import android.text.TextUtils
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import id.magau.whizz.R
 import java.io.File
+import java.lang.Exception
 import java.text.NumberFormat
 import java.util.*
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
+
+infix fun View.active (status:Boolean){
+    if (status){
+        setBackgroundResource(R.drawable.background_active_soal)
+    }else{
+        setBackgroundResource(R.drawable.background_view)
+    }
+}
+
+infix fun TextView.itemChoice (status: Int) {
+    if (status == 2){
+        setTextColor(resources.getColor(R.color.colorPrimary))
+        setBackgroundResource(R.drawable.button_choice)
+    }else if (status == 1){
+        setTextColor(resources.getColor(R.color.colorWhite))
+        setBackgroundResource(R.drawable.button_choice_active)
+    }else{
+        setTextColor(resources.getColor(R.color.colorPrimary))
+        setBackgroundResource(0)
+    }
+}
+
+infix fun TextView.itemChoicePembahasan (status: Int) {
+    if (status == 2){
+        setTextColor(resources.getColor(R.color.colorFalseActive))
+        setBackgroundResource(R.drawable.button_false)
+    }else if (status == 1){
+        setTextColor(resources.getColor(R.color.colorTrueActive))
+        setBackgroundResource(R.drawable.button_true)
+    }else{
+        setTextColor(resources.getColor(R.color.colorEmpetyActive))
+        setBackgroundResource(R.drawable.button_empety)
+    }
+}
+
+infix fun TextView.itemChoicePembahasanActive(status: Int) {
+    if (status == 2) {
+        setBackgroundResource(R.drawable.background_tidak_lulus)
+    } else if (status == 1) {
+        setBackgroundResource(R.drawable.background_lulus)
+    } else {
+        setBackgroundResource(R.drawable.background_lewat)
+    }
+    setTextColor(resources.getColor(R.color.colorWhite))
+}
+
+fun ImageView?.loadImageUrl(data : String?,context: Context){
+    data?.let{
+        Log.e("Lapar utils", "$it")
+        Picasso.get().load(it).into(object :Target{
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+
+            override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
+
+            override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                val drawable = BitmapDrawable(context.resources,bitmap)
+                this@loadImageUrl?.apply {
+                    Log.e("Lapar", "onLoad")
+                    background = drawable
+                    setImageResource(R.drawable.gradient_image)
+                }
+            }
+
+        })
+    }
+}
 
 fun getInitialName(displayName: String): String? {
     if (TextUtils.isEmpty(displayName)) {

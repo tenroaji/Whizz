@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/margin_16dp">
+
+    <View
+        android:id="@+id/viewToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#F0F0F0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_kumpulkan"
+        style="@style/TextLabelTitle"
+        android:layout_margin="@dimen/margin_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewToolbar"
+        app:layout_constraintBottom_toBottomOf="@id/viewToolbar"/>
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/ic_close"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:layout_constraintTop_toTopOf="@id/viewToolbar"
+        app:layout_constraintBottom_toBottomOf="@id/viewToolbar"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvDescDialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/TextDesc"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:text="@string/label_yakin_kumpulkan"
+        app:layout_constraintTop_toBottomOf="@id/viewToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <FrameLayout
+        android:id="@+id/viewAlert"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescDialog"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_width="0dp"
+        android:background="@drawable/button_choice_active"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvAlert"
+            android:layout_margin="@dimen/margin_8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            style="@style/TextDesc"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBatal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/label_batal"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:strokeColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/btnKumpulkan"
+        app:layout_constraintEnd_toStartOf="@id/btnKumpulkan"
+        app:layout_constraintStart_toStartOf="@id/tvDescDialog"
+        app:layout_constraintTop_toTopOf="@+id/btnKumpulkan" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnKumpulkan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:text="@string/label_kumpulkan"
+        app:layout_constraintEnd_toEndOf="@id/tvDescDialog"
+        app:layout_constraintStart_toEndOf="@+id/btnBatal"
+        app:layout_constraintTop_toBottomOf="@+id/viewAlert" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

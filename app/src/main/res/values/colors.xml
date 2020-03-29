@@ -6,4 +6,14 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="fontBold">#292C2E</color>
     <color name="colorFontLabel1">#666869</color>
+    <color name="colorButtonDisable">#A6C3F0</color>
+
+    <color name="colorTrueActive">#2ECF5C</color>
+    <color name="colorFalseActive">#FF3A3A</color>
+    <color name="colorEmpetyActive">#A3A5A9</color>
+    <color name="colorTrue">#D5EFDD</color>
+    <color name="colorFalse">#F7D7D7</color>
+    <color name="colorEmpety">#E8E9E9</color>
+    <color name="colorDisabled">#FFBE85</color>
+    <color name="colorChoice">#D3DFF1</color>
 </resources>

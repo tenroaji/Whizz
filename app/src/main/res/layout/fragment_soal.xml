@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/label_soal" />
+
+
+            <ImageView
+                android:id="@+id/imgSoal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSoal" />
+
+            <View
+                android:id="@+id/choiceA"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/barrierA"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+            <View
+                android:id="@+id/viewSpaceA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgA" />
+
+            <TextView
+                android:id="@+id/btnA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_13dp"
+                style="@style/TextDesc"
+                android:text="A."
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/choiceA"
+                app:layout_constraintTop_toTopOf="@id/choiceA" />
+
+            <TextView
+                android:id="@+id/tvChoiceA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/choiceA"
+                app:layout_constraintStart_toEndOf="@id/btnA"
+                app:layout_constraintTop_toTopOf="@id/btnA"
+                tools:text="@string/label_choice" />
+
+            <ImageView
+                android:id="@+id/imgA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/barrierA"
+                app:layout_constraintStart_toStartOf="@id/tvChoiceA"
+                app:layout_constraintTop_toBottomOf="@id/tvChoiceA" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvChoiceA,imgA,viewSpaceA" />
+
+
+            <View
+                android:id="@+id/choiceB"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/barrierB"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierA" />
+
+            <View
+                android:id="@+id/viewSpaceB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgB" />
+
+            <TextView
+                android:id="@+id/btnB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_13dp"
+                style="@style/TextDesc"
+                android:text="B."
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/choiceB"
+                app:layout_constraintTop_toTopOf="@id/choiceB" />
+
+            <TextView
+                android:id="@+id/tvChoiceB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/choiceA"
+                app:layout_constraintStart_toEndOf="@id/btnB"
+
+                app:layout_constraintTop_toTopOf="@id/btnB"
+                tools:text="@string/label_choice" />
+
+            <ImageView
+                android:id="@+id/imgB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/barrierB"
+                app:layout_constraintStart_toStartOf="@id/tvChoiceB"
+                app:layout_constraintTop_toBottomOf="@id/tvChoiceB" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvChoiceB,imgB,viewSpaceB" />
+
+
+            <View
+                android:id="@+id/choiceC"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/barrierC"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierB" />
+
+            <View
+                android:id="@+id/viewSpaceC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgC" />
+
+            <TextView
+                android:id="@+id/btnC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_13dp"
+                style="@style/TextDesc"
+                android:text="C."
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/choiceC"
+                app:layout_constraintTop_toTopOf="@id/choiceC" />
+
+            <TextView
+                android:id="@+id/tvChoiceC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/choiceA"
+                app:layout_constraintStart_toEndOf="@id/btnC"
+                app:layout_constraintTop_toTopOf="@id/btnC"
+                tools:text="@string/label_choice" />
+
+            <ImageView
+                android:id="@+id/imgC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/barrierC"
+                app:layout_constraintStart_toStartOf="@id/tvChoiceC"
+                app:layout_constraintTop_toBottomOf="@id/tvChoiceC" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvChoiceC,imgC,viewSpaceC" />
+
+
+            <View
+                android:id="@+id/choiceD"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/barrierD"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierC" />
+
+            <View
+                android:id="@+id/viewSpaceD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgD" />
+
+            <TextView
+                android:id="@+id/btnD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_13dp"
+                style="@style/TextDesc"
+                android:text="D."
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/choiceD"
+                app:layout_constraintTop_toTopOf="@id/choiceD" />
+
+            <TextView
+                android:id="@+id/tvChoiceD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/choiceA"
+                app:layout_constraintStart_toEndOf="@id/btnD"
+                app:layout_constraintTop_toTopOf="@id/btnD"
+                tools:text="@string/label_choice" />
+
+            <ImageView
+                android:id="@+id/imgD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/barrierD"
+                app:layout_constraintStart_toStartOf="@id/tvChoiceD"
+                app:layout_constraintTop_toBottomOf="@id/tvChoiceD" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvChoiceD,imgD,viewSpaceD" />
+
+
+            <View
+                android:id="@+id/choiceE"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/barrierE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierD" />
+
+            <View
+                android:id="@+id/viewSpaceE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgE" />
+
+            <TextView
+                android:id="@+id/btnE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_13dp"
+                style="@style/TextDesc"
+                android:text="E."
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/choiceE"
+                app:layout_constraintTop_toTopOf="@id/choiceE" />
+
+            <TextView
+                android:id="@+id/tvChoiceE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                style="@style/TextDesc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/choiceA"
+                app:layout_constraintStart_toEndOf="@id/btnE"
+                app:layout_constraintTop_toTopOf="@id/btnE"
+                tools:text="@string/label_choice" />
+
+            <ImageView
+                android:id="@+id/imgE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/barrierE"
+                app:layout_constraintStart_toStartOf="@id/tvChoiceE"
+                app:layout_constraintTop_toBottomOf="@id/tvChoiceE" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvChoiceE,imgE,viewSpaceE" />
+
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="imgSoal,tvSoal" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="choiceD,choiceB,choiceC,choiceE,choiceA,barrier" />
+
+            <TextView
+                android:id="@+id/tvLabelJawabanAnda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:fontFamily="@font/muli_bold_family"
+                android:text="@string/label_jawaban_anda"
+                android:textColor="#2A2F37"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierChoice" />
+
+            <RelativeLayout
+                android:id="@+id/viewJawabanAnda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelJawabanAnda">
+
+                <TextView
+                    android:id="@+id/tvChoiceJawabanAnda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    style="@style/TextDesc"
+                    android:textSize="16sp"
+                    tools:text="A." />
+
+                <TextView
+                    android:id="@+id/tvJawabanAnda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    android:layout_toStartOf="@id/imgJawabanAnda"
+                    android:layout_toEndOf="@id/tvChoiceJawabanAnda"
+                    style="@style/TextDesc"
+                    android:textSize="16sp"
+                    tools:text="@string/label_jawaban_anda" />
+
+                <ImageView
+                    android:id="@+id/imgJawabanAnda"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    app:srcCompat="@drawable/ic_jawabansalah" />
+
+                <ImageView
+                    android:id="@+id/gambarJawabanAnda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    tools:src="@drawable/background_lulus"
+                    android:visibility="gone"
+                    android:layout_alignStart="@id/tvJawabanAnda"
+                    android:layout_alignEnd="@id/imgJawabanAnda"
+                    android:layout_below="@id/tvJawabanAnda"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvLabelJawabanBenar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:fontFamily="@font/muli_bold_family"
+                android:text="@string/label_jawaban_benar"
+                android:textColor="#2A2F37"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewJawabanAnda" />
+
+            <RelativeLayout
+                android:id="@+id/viewJawabanBenar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelJawabanBenar">
+
+                <TextView
+                    android:id="@+id/tvChoiceJawabanBenar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    style="@style/TextDesc"
+                    android:textSize="16sp"
+                    tools:text="A." />
+
+                <TextView
+                    android:id="@+id/tvJawabanBenar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    android:layout_toStartOf="@id/imgBenar"
+                    android:layout_toEndOf="@+id/tvChoiceJawabanBenar"
+                    style="@style/TextDesc"
+                    android:textSize="16sp"
+                    tools:text="Jawaban Yang Benar" />
+
+                <ImageView
+                    android:id="@+id/imgBenar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    app:srcCompat="@drawable/ic_jawabanbenar" />
+                <ImageView
+                    android:id="@+id/gambarJawabanBenar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    tools:src="@drawable/background_lulus"
+                    android:visibility="gone"
+                    android:layout_alignStart="@id/tvJawabanBenar"
+                    android:layout_alignEnd="@id/imgBenar"
+                    android:layout_below="@id/tvJawabanBenar"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvLabelPembahasan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:fontFamily="@font/muli_bold_family"
+                android:text="@string/label_pembahasan_materi"
+                android:textColor="#2A2F37"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewJawabanBenar" />
+
+            <LinearLayout
+                android:id="@+id/viewPembahasan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_view"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelPembahasan">
+
+
+                <TextView
+                    android:id="@+id/tvPembahasan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    style="@style/TextDesc"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/viewPembahasan"
+                    tools:text="@string/label_pembahasan_materi" />
+
+                <ImageView
+                    android:id="@+id/imgPembahasan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_13dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_13dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPembahasan" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tvChoiceA,tvChoiceD,barrierB,choiceD,imgD,imgA,choiceC,choiceB,barrierD,imgB,tvChoiceC,choiceE,tvChoiceE,btnE,choiceA,viewSpaceB,imgC,viewSpaceD,viewSpaceA,barrierC,btnA,tvChoiceB,btnB,viewSpaceC,btnC,barrierA,btnD" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupChoiceImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="imgA,imgB,imgC,imgD,imgE" />
+
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupPembahasan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="viewJawabanAnda,tvLabelJawabanAnda,tvLabelJawabanBenar,tvLabelPembahasan,viewPembahasan,viewJawabanBenar" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupJawabanBenar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="tvLabelJawabanBenar,viewJawabanBenar" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

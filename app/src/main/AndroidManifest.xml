@@ -54,6 +54,8 @@
         <activity android:name=".ui.pembayaran_detail.PembayaranDetail" />
         <activity android:name=".ui.kelas.KelasActivity" />
         <activity android:name=".ui.kelas.ujian.panel.PanelUjianActivity" />
+        <activity android:name=".ui.soal_status.ActivityStatusSoal" />
+        <activity android:name=".ui.soal.SoalActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

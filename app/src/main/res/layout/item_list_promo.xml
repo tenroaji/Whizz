@@ -16,9 +16,14 @@
         android:layout_height="192dp"
         android:scaleType="fitXY"
         tools:background="@color/colorPrimary"
-        android:src="@drawable/gradient_image"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/gradient_image"
+        app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/tvTitleSkill"
         android:layout_width="0dp"

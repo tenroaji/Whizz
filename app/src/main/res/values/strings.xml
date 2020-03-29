@@ -30,4 +30,16 @@
     <string name="label_semua_promo">Semua Promo</string>
     <string name="label_products">Products</string>
     <string name="lihat_semua">Lihat Semua</string>
+    <string name="label_akhiri_latihan">Akhiri Latihan</string>
+    <string name="label_pembahasan">Pembahasan</string>
+    <string name="label_next">Selanjutnya</string>
+    <string name="label_kumpulkan">Kumpulkan</string>
+    <string name="label_jawaban_benar">Jawaban Yang Benar</string>
+    <string name="label_jawaban_anda">Jawaban yang Anda pilih :</string>
+    <string name="label_soal">Sample Soal</string>
+    <string name="label_choice">Sample Choicer</string>
+    <string name="label_pembahasan_materi">Pembahasan Materi</string>
+    <string name="label_yakin_kumpulkan">Anda yakin ingin mengumpulkan sekarang ?</string>
+    <string name="label_batal">Batal</string>
+    <string name="label_prev">Sebelumnya</string>
 </resources>
