@@ -25,7 +25,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgEvent"
+                    android:id="@+id/imgKelas"
                     android:layout_width="match_parent"
                     android:layout_height="232dp"
                     android:scaleType="fitXY"
@@ -33,15 +33,21 @@
                     tools:background="@color/colorPrimary" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="232dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/gradient_image" />
+
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgBack"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_40dp"
-                    app:srcCompat="@drawable/ic_close2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:srcCompat="@drawable/ic_close2" />
 
                 <TextView
                     android:id="@+id/tvTitle"
@@ -53,7 +59,7 @@
                     android:layout_marginEnd="@dimen/margin_16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgEvent"
+                    app:layout_constraintTop_toBottomOf="@id/imgKelas"
                     tools:text="The Complete App Design Course - UX, UI and Design Thinking" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -74,19 +80,19 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/mViewPager"
-            android:layout_marginBottom="@dimen/margin_16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16dp" />
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_16dp" />
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16dp"
         app:layout_anchor="@id/root"
-        app:layout_anchorGravity="bottom"
-        android:layout_marginBottom="@dimen/margin_16dp">
+        app:layout_anchorGravity="bottom">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBeliKelas"
@@ -94,8 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16dp"
             android:layout_marginEnd="@dimen/margin_16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:text="Beli Kelas"
-            app:cornerRadius="4dp" />
+            app:cornerRadius="4dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

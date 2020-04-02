@@ -72,7 +72,7 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
                 Log.e("lapar",data.is_mine.toString())
                 if(data.is_mine!!){
                     context.startActivity(Intent(context, KelasActivity::class.java).apply {
-                        putExtra(KEY_ID_PRODUCT,mData[position]?.uuid_course)
+                        putExtra(KelasActivity.KEY_ID_PRODUCT,mData[position]?.uuid_course)
                         putExtra(KelasActivity.KEY_KELAS_SAYA,true)
                     })
                 }else{

@@ -55,11 +55,11 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
                     response: Response<ModelResponsePembayaranDetail>
                 ) {
                     mView.showLoading(false)
-                    if (response.code() == 200) {
-                        val data = response.body()?.response
-                        data?.let{
+                    if (response.code() in 200..299) {
+                        response.body()?.response?.let {
                             mView.showData(it)
-                        }
+                        }?:mView.showError(response.body()?.diagnostic?.code!!,response.body()?.diagnostic?.status)
+
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {

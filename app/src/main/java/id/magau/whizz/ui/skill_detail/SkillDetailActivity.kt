@@ -30,6 +30,8 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
         const val KEY_KELAS_SAYA = "KELAS_SAYA"
     }
 
+    var urlImg :String? = null
+
     private val idProduct by lazy {
         intent.getStringExtra(KEY_ID_PRODUCT)
     }
@@ -63,13 +65,16 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
 
         btnBeliKelas.setOnClickListener {
             startActivity(Intent(this@SkillDetailActivity, PembayaranActivity::class.java).apply {
-                putExtra(KEY_ID_PRODUCT,idProduct)
+                putExtra(PembayaranActivity.KEY_ID_PRODUCT,idProduct)
             })
         }
 
         btnLihatKelas.setOnClickListener {
             startActivity(Intent(this@SkillDetailActivity, KelasActivity::class.java).apply {
-                putExtra(KEY_KELAS_SAYA,kelasSaya)
+                putExtra(KelasActivity.KEY_KELAS_SAYA,kelasSaya)
+                putExtra(KelasActivity.KEY_ID_PRODUCT,idProduct)
+                putExtra(KelasActivity.KEY_URL_IMG,urlImg)
+                putExtra(KelasActivity.KEY_TITLE,tvTitle.text)
             })
             overridePendingTransition(R.anim.enter, R.anim.exit)
         }
@@ -102,7 +107,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
         val mAdapter = AdapterTab(idProduct, data?.desc,supportFragmentManager)
         mViewPager.adapter = mAdapter
         mTabLayout.setupWithViewPager(mViewPager)
-
+        urlImg = data?.image
 
 
         tvTitle.text = data?.title
