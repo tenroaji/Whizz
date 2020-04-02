@@ -14,13 +14,13 @@ import kotlinx.android.synthetic.main.activity_event_detail.*
 
 class EventDetailActivity :BaseActivity(null,R.layout.activity_event_detail){
     companion object{
-        const val KEY_PRODUCT = "PRODUCT"
+        const val KEY_MY_PRODUCT = "PRODUCT"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val product = intent.getBooleanExtra(KEY_PRODUCT,false)
+        val product = intent.getBooleanExtra(KEY_MY_PRODUCT,false)
         if (product){
             viewButton visibility false
             val layoutParams = FrameLayout.LayoutParams(

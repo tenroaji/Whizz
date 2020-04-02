@@ -38,6 +38,14 @@ data class User(
     var name : String?= "",
     @SerializedName("email")
     var email : String?= "",
+    @SerializedName("gender")
+    var gender : String?= "",
+    @SerializedName("hp")
+    var hp : String?= "",
+    @SerializedName("alamat")
+    var alamat : String?= "",
+    @SerializedName("image")
+    var image : String?= "",
     @SerializedName("role")
     var role : String?= ""
 )

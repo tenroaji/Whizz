@@ -5,14 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.ui.event_detail.EventDetailActivity
-import id.magau.whizz.ui.event_detail.EventDetailActivity.Companion.KEY_PRODUCT
-import id.magau.whizz.utils.start
 import kotlinx.android.synthetic.main.item_list_event.view.*
 
 /**
@@ -49,7 +45,7 @@ class AdapterEvent : RecyclerView.Adapter<AdapterEvent.ViewHolder>() {
             tvLokasi.text = mData[position]?.lokasi
             setOnClickListener {
                 context.startActivity(Intent(context, EventDetailActivity::class.java).apply {
-                    putExtra(KEY_PRODUCT,false)
+//                    putExtra(KEY_PRODUCT,false)
                 })
                 (context as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
             }

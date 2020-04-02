@@ -1,6 +1,7 @@
 package id.magau.whizz.ui.main_menu
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import id.magau.whizz.ui.skill_detail.SkillDetailActivity.Companion.KEY_ID_PRODU
 import id.magau.whizz.utils.promo
 import id.magau.whizz.utils.rupiah
 import id.magau.whizz.utils.visibility
+import kotlinx.android.synthetic.main.activity_menu.view.*
 import kotlinx.android.synthetic.main.item_list_skill_populer.view.*
 
 /**
@@ -67,6 +69,7 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
                 tvPromo visibility false
             }
             setOnClickListener {
+                Log.e("lapar",data.is_mine.toString())
                 if(data.is_mine!!){
                     context.startActivity(Intent(context, KelasActivity::class.java).apply {
                         putExtra(KEY_ID_PRODUCT,mData[position]?.uuid_course)
@@ -75,7 +78,6 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
                 }else{
                     context.startActivity(Intent(context, SkillDetailActivity::class.java).apply {
                         putExtra(KEY_ID_PRODUCT,mData[position]?.uuid_course)
-                        putExtra(KelasActivity.KEY_KELAS_SAYA,false)
                     })
                     (context as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
                 }
