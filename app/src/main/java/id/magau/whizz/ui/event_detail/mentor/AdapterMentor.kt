@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelMentor
-import id.magau.whizz.utils.PicassoCircleTransform
 import kotlinx.android.synthetic.main.item_list_mentor.view.*
 
 /**
@@ -36,8 +34,8 @@ class AdapterMentor : RecyclerView.Adapter<AdapterMentor.ViewHolder>(){
         val data = mData[position]
         holder.itemView.apply {
 //            mData[position]?.gambar?.let { Picasso.get().load(it).transform(PicassoCircleTransform()).into(imgMentor) }
-            tvNama.text = data?.nama
-            tvDesc.text = data?.desc
+            tvPemateri.text = data?.nama
+            tvTitle.text = data?.desc
             tvPekerjaan.text = data?.pekerjaan
         }
     }

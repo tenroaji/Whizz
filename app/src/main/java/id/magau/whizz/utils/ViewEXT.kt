@@ -7,7 +7,9 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Build
 import android.os.Handler
+import android.text.Html
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
@@ -20,12 +22,15 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import id.magau.whizz.R
+import kotlinx.android.synthetic.main.activity_event_detail.*
 import java.io.File
 import java.lang.Exception
 import java.text.NumberFormat
 import java.util.*
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
+
+
 
 infix fun View.active (status:Boolean){
     if (status){
@@ -105,7 +110,7 @@ fun getInitialName(displayName: String): String? {
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+@OptIn(ExperimentalContracts::class)
 fun String?.assertNotNull() {
     contract {
         returns() implies (this@assertNotNull != null)
@@ -138,6 +143,20 @@ fun View.ripple(): View {
 
 fun ImageView.circleRes(res : String){
     Picasso.get().load(res).transform(PicassoCircleTransform()).into(this)
+}
+
+infix fun TextView.promo(data : Int){
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        this.text = Html.fromHtml("<strike>${rupiah(data)}</strike>", Html.FROM_HTML_MODE_COMPACT);
+    } else {
+        this.text = Html.fromHtml("<strike>${rupiah(data)}</strike>");
+    }
+}
+
+infix fun ImageView.load(res : String?){
+    res?.let{
+        Picasso.get().load(res).into(this)
+    }
 }
 
 fun Activity.toast(message : String?){

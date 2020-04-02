@@ -11,7 +11,7 @@ import id.magau.whizz.utils.BaseView
 interface FaqContracts {
 
     interface Presenter : BasePresenter {
-        fun loadFAQ()
+        fun loadFAQ(idProduct: String)
     }
 
     interface View : BaseView<Presenter> {

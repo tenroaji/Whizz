@@ -92,6 +92,9 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
 
         }
 
+        mSwipeRefresh.setOnRefreshListener {
+            mPresenter.start()
+        }
 //        snapHelper.attachToRecyclerView(mRecyclerPromo)
 //        val mData1 = arrayListOf(
 //            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
@@ -140,6 +143,9 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
 
     override fun showLoading(show: Boolean) {
         mProgresBar visibility show
+        if(mSwipeRefresh.isRefreshing){
+            mSwipeRefresh.isRefreshing = !show
+        }
     }
 
     override fun showError(code: Int?, message: String?) {

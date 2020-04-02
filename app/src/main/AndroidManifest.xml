@@ -49,13 +49,20 @@
         <activity android:name=".ui.event_saya.EventSayaActivity" />
         <activity android:name=".utils.CameraUtils" />
         <activity android:name=".ui.faq.FaqActivity" />
-        <activity android:name=".ui.skill_detail.SkillDetailActivity" />
+        <activity android:name=".ui.skill_detail.SkillDetailActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
         <activity android:name=".ui.pembayaran.PembayaranActivity" />
         <activity android:name=".ui.pembayaran_detail.PembayaranDetail" />
         <activity android:name=".ui.kelas.KelasActivity" />
-        <activity android:name=".ui.kelas.ujian.panel.PanelUjianActivity" />
         <activity android:name=".ui.soal_status.ActivityStatusSoal" />
         <activity android:name=".ui.soal.SoalActivity" />
+        <activity android:name=".ui.soal_analisis.SoalAnalisisKompetensi" />
+        <activity android:name=".ui.soal_analisis.SoalAnalisisLatihan" />
+        <activity android:name=".ui.soal_panel.SoalPanel" />
+        <activity android:name=".ui.analisis_penghasilan.AnalisisPenghasilanActivity" />
+
+        <activity android:name=".ui.media_player.MediaPlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -66,6 +73,21 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="id.magau.whizz.ui.media_player.CastOptionsProvider" />
+
+        <!--TODO Set your license key-->
+        <meta-data
+            android:name="JW_LICENSE_KEY"
+            android:value="Sp1yv2Mi/dLS8hiiyE7shFVRQN59/YPQBq+Hbh7RH4hV2dig8IEd1rWNEm5HXKcw" />
+        <!--        zDIUjUBZiLjXJFs80F1cpPoaDeX8l8oY-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

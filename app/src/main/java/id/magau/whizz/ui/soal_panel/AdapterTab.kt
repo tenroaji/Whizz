@@ -1,18 +1,20 @@
-package id.magau.whizz.ui.kelas.ujian.panel
+package id.magau.whizz.ui.soal_panel
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import id.magau.whizz.ui.kelas.ujian.panel.mulai_ujian.MulaiUjianFragment
-import id.magau.whizz.ui.kelas.ujian.panel.riwayat.RiwayatFragment
+import id.magau.whizz.ui.event_detail.jadwal.JadwalFragment
+import id.magau.whizz.ui.event_detail.mentor.MentorFragment
+import id.magau.whizz.ui.soal_panel.attention.AttentionFragment
+import id.magau.whizz.ui.soal_panel.riwayat.RiwayatFragment
 
 
-class AdapterTabPanelUjian( fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class AdapterTab(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment = when (position) {
-        0 -> MulaiUjianFragment()
+        0 -> AttentionFragment()
         1 -> RiwayatFragment()
-        else -> RiwayatFragment()
+        else -> JadwalFragment.newInstance()
     }
 
     override fun getPageTitle(position: Int): CharSequence = when (position) {
@@ -22,7 +24,6 @@ class AdapterTabPanelUjian( fm: FragmentManager) : FragmentPagerAdapter(fm) {
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
         return 2
     }
 }

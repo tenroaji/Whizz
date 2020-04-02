@@ -1,11 +1,11 @@
 package id.magau.whizz.ui.skill
 
 import android.os.Bundle
-import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.data.model.ModelSkills
+import id.magau.whizz.ui.main_menu.AdapterSkills
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.clicked
 import id.magau.whizz.utils.toast

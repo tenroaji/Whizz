@@ -32,6 +32,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         resValue("string", "app_name", "Whizz")
         resValue("string","base_url",(rootProject.findProperty("BASE_URL") ?: ""))
+        multiDexEnabled true
     }
 
     compileOptions{
@@ -113,6 +114,17 @@ dependencies {
 
     //chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //jwplayer
+    implementation 'com.longtailvideo.jwplayer:jwplayer-core:3.9.0'
+    implementation 'com.longtailvideo.jwplayer:jwplayer-common:3.9.0'
+    implementation 'com.longtailvideo.jwplayer:jwplayer-chromecast:3.9.0'
+
+    // Only required if using IMA features
+    implementation 'com.longtailvideo.jwplayer:jwplayer-ima:3.9.0'
+
+    // Only required if using FreeWheel
+    implementation 'com.longtailvideo.jwplayer:jwplayer-freewheel:3.9.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

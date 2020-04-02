@@ -8,8 +8,6 @@ import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFAQ
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.item_list_faq.view.*
-import kotlinx.android.synthetic.main.item_list_mentor.view.*
-import kotlinx.android.synthetic.main.item_list_notif.view.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/18/2020.
@@ -39,8 +37,8 @@ class AdapterFAQ : RecyclerView.Adapter<AdapterFAQ.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterFAQ.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data =mData[position]
-            tvTitle.text = data?.title
-            tvDesc.text = data?.desc
+            tvFaq.text = data?.title
+            tvDesFaq.text = data?.desc
             imgDropDown.setOnClickListener {
                 if(mCollape){
                     imgDropDown.rotation = 0f

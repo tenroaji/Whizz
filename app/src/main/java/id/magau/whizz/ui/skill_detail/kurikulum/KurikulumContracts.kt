@@ -14,7 +14,7 @@ import id.magau.whizz.utils.BaseView
 interface KurikulumContracts {
 
     interface Presenter : BasePresenter {
-        fun showData()
+        fun loadData(idProduct : String)
 
     }
 

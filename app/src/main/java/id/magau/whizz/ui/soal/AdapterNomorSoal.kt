@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelHistoriJawaban
+import id.magau.whizz.utils.itemChoice
+import id.magau.whizz.utils.itemChoicePembahasan
 import id.magau.whizz.utils.itemChoicePembahasanActive
 import kotlinx.android.synthetic.main.item_list_status_soal.view.*
 
@@ -51,7 +53,7 @@ class AdapterNomorSoal :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        LayoutInflater.from(parent.context).inflate(R.layout.item_list_soal, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_list_status_soal, parent, false)
             .also {
                 return ViewHolder(it)
             }

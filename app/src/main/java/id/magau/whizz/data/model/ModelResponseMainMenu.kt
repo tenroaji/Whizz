@@ -43,7 +43,20 @@ data class ModelProducts(
     @SerializedName("rate")
     var rate : Double? = 0.0,
     @SerializedName("image")
-    var image : String? = ""
+    var image : String? = "",
+    @SerializedName("is_mine")
+    var is_mine : Boolean? = false,
+    @SerializedName("promo")
+    var promo : ModelPromoProduct? = null
+)
+
+data class ModelPromoProduct(
+    @SerializedName("is_approve")
+    var is_approve : Boolean? = false,
+    @SerializedName("is_percent")
+    var is_percent : Boolean? = false,
+    @SerializedName("value")
+    var value : Int? = 0
 )
 
 data class ModelCategory(

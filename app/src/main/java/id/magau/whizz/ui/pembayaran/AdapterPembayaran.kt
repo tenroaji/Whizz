@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelPembayaran
 import id.magau.whizz.ui.pembayaran_detail.PembayaranDetail
+import id.magau.whizz.ui.pembayaran_detail.PembayaranDetail.Companion.KEY_ID_PRODUCT
+import id.magau.whizz.ui.pembayaran_detail.PembayaranDetail.Companion.KEY_IMAGE_BANK
+import id.magau.whizz.ui.pembayaran_detail.PembayaranDetail.Companion.KEY_KODE_BANK
+import id.magau.whizz.ui.pembayaran_detail.PembayaranDetail.Companion.KEY_TITLE_BANK
 import id.magau.whizz.utils.start
 import kotlinx.android.synthetic.main.item_list_pembayaran.view.*
 
@@ -18,13 +22,16 @@ import kotlinx.android.synthetic.main.item_list_pembayaran.view.*
 class AdapterPembayaran : RecyclerView.Adapter<AdapterPembayaran.ViewHolder> (){
 
     var mData = mutableListOf<ModelPembayaran?>()
-
+    var idProduct = ""
     fun updateAdapter(data : ArrayList<ModelPembayaran?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
     }
 
+    fun updateIdProduct(idProduct : String){
+        this.idProduct=idProduct
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_pembayaran,parent,false)
         return ViewHolder(mView)
@@ -41,7 +48,10 @@ class AdapterPembayaran : RecyclerView.Adapter<AdapterPembayaran.ViewHolder> (){
             setOnClickListener {
 //                context.start(PembayaranDetail::class.java)
                 context.startActivity(Intent(context, PembayaranDetail::class.java).apply {
-
+                    putExtra(KEY_ID_PRODUCT,idProduct)
+                    putExtra(KEY_KODE_BANK,data?.kode)
+                    putExtra(KEY_TITLE_BANK,data?.nama)
+                    putExtra(KEY_IMAGE_BANK,data?.img)
                 })
             }
         }

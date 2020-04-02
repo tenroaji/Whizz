@@ -1,14 +1,14 @@
 package id.magau.whizz.ui.soal
 
 import android.content.Context
-import id.magau.etryout.R
-import id.magau.etryout.data.api.SoalApiRoute
-import id.magau.etryout.data.model.ModelResponseJawabSoal
-import id.magau.etryout.data.model.ModelResponseSoal
-import id.magau.etryout.utils.RetrofitUtils
-import id.magau.etryout.utils.Session
-import id.magau.etryout.utils.Session.Companion.PREF_KEY_TOKEN
-import id.magau.etryout.utils.TimeHandler
+import id.magau.whizz.R
+import id.magau.whizz.data.model.ModelResponseJawabSoal
+import id.magau.whizz.data.model.ModelResponseSoal
+import id.magau.whizz.data.services.SoalApiRoute
+import id.magau.whizz.utils.RetrofitUtils
+import id.magau.whizz.utils.SessionUtils
+import id.magau.whizz.utils.SessionUtils.Companion.PREF_KEY_TOKEN
+import id.magau.whizz.utils.TimeHandler
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +30,7 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
 
     init {
         view.setPresenter(this)
-        val session = Session.getInstance(context)
+        val session = SessionUtils.getInstance(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 

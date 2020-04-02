@@ -1,6 +1,5 @@
-package id.magau.whizz.ui.kelas.ujian.panel.riwayat
+package id.magau.whizz.ui.soal_panel.riwayat
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

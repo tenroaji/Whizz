@@ -55,7 +55,7 @@ class AkunActivity : BaseActivity(R.color.colorWhite, R.layout.activity_akun) {
         val mColor = ColorGenerator.APP.getColor(
             nama.length
         )
-        tvNama.text = nama
+        tvPemateri.text = nama
         tvEmail.text = session.getData(PREF_KEY_EMAIL,"")
         val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
         imgUser.setImageDrawable(icon)

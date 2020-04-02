@@ -19,3 +19,18 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+-keepclassmembers class com.longtailvideo.jwplayer.** {
+    @android.webkit.JavascriptInterface *;
+}
+
+# Block warnings about missing module classes
+-dontwarn com.longtailvideo.jwplayer.**
+-dontwarn com.google.ads.interactivemedia.**
+
+# Classes get rejected without this when running the app if the app has been run through ProGuard
+-keepattributes InnerClasses,EnclosingMethod
+
+# Keep module indicator classes
+-keep class com.longtailvideo.jwplayer.modules.** { *; }

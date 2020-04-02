@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFile
-import id.magau.whizz.data.model.ModelKurikulum
 import kotlinx.android.synthetic.main.item_list_file.view.*
-import kotlinx.android.synthetic.main.item_list_kurikulum.view.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/19/2020.
@@ -35,7 +33,8 @@ class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterFile.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvNama.text = data?.nama
+            tvPemateri.text = data?.nama
+
         }
     }
 

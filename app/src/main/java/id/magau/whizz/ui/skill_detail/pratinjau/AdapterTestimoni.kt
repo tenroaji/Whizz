@@ -5,13 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelFile
-import id.magau.whizz.data.model.ModelKurikulum
 import id.magau.whizz.data.model.ModelTestimoni
-import kotlinx.android.synthetic.main.item_list_file.view.*
-import kotlinx.android.synthetic.main.item_list_file.view.tvNama
-import kotlinx.android.synthetic.main.item_list_kurikulum.view.*
-import kotlinx.android.synthetic.main.item_list_kurikulum.view.tvDesc
+import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 import kotlinx.android.synthetic.main.item_list_testimoni.view.*
 
 /**
@@ -39,8 +34,8 @@ class AdapterTestimoni : RecyclerView.Adapter<AdapterTestimoni.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterTestimoni.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvDesc.text = data?.desc
-            tvNama.text = data?.nama
+            tvTitle.text = data?.desc
+            tvPemateri.text = data?.nama
             tvPekerjaan.text = data?.pekerjaan
         }
     }

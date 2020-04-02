@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelUjian
-import id.magau.whizz.ui.kelas.ujian.panel.PanelUjianActivity
+import id.magau.whizz.ui.soal_panel.SoalPanel
 import id.magau.whizz.utils.start
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.item_list_ujian.view.*
@@ -38,7 +38,7 @@ class AdapterUjian : RecyclerView.Adapter<AdapterUjian.ViewHolder>() {
             if (position == 0) {
                 viewLine visibility false
                 setOnClickListener {
-                    context.start(PanelUjianActivity::class.java)
+                    context.start(SoalPanel::class.java)
                 }
             }
             val data = mData[position]

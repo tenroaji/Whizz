@@ -1,9 +1,7 @@
 package id.magau.whizz.data.services
 
 
-import id.magau.whizz.data.model.ModelResponseMainMenu
-import id.magau.whizz.data.model.ModelResponseSkills
-import id.magau.whizz.data.model.ModelResponseSkillsDetail
+import id.magau.whizz.data.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -26,7 +24,17 @@ interface SkillsApiRoute {
     @GET("student/product/detail")
     fun detailSkill(
         @Header("authorization") token: String?,
-        @Query("id_product") idProduct : String?): Call<ModelResponseSkillsDetail>
+        @Query("uuid_course") idProduct : String?): Call<ModelResponseSkillsDetail>
 
+
+    @GET("student/product/faq")
+    fun dataFAQ(
+        @Header("authorization") token: String?,
+        @Query("uuid_produk") idProduct : String?): Call<ModelResponseFAQ>
+
+    @GET("student/product/section")
+    fun dataKurikulum(
+        @Header("authorization") token: String?,
+        @Query("uuidcourse") idProduct : String?): Call<ModelResponseKurikulum>
 
 }

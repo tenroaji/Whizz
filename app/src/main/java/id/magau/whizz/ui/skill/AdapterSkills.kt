@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelProducts
+import id.magau.whizz.ui.kelas.KelasActivity.Companion.KEY_KELAS_SAYA
 import id.magau.whizz.ui.skill_detail.SkillDetailActivity
 import id.magau.whizz.ui.skill_detail.SkillDetailActivity.Companion.KEY_ID_PRODUCT
 import id.magau.whizz.utils.rupiah
-import id.magau.whizz.utils.start
 import kotlinx.android.synthetic.main.item_list_skill_populer.view.*
 
 /**
@@ -49,7 +48,8 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
 //            tvRating.text = mData[position]?.rate.toString()
             setOnClickListener {
                 context.startActivity(Intent(context, SkillDetailActivity::class.java).apply {
-                    putExtra(KEY_ID_PRODUCT,mData[position]?.id.toString())
+                    putExtra(KEY_ID_PRODUCT,mData[position]?.uuid_course)
+                    putExtra(KEY_KELAS_SAYA,false)
                 })
                 (context as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
             }

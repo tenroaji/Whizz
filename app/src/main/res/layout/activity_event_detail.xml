@@ -68,7 +68,7 @@
                     tools:background="#000000" />
 
                 <TextView
-                    android:id="@+id/tvNama"
+                    android:id="@+id/tvPemateri"
                     style="@style/TextTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,14 +78,14 @@
                     tools:text="Gerard Way +7 Mentor" />
 
                 <TextView
-                    android:id="@+id/tvDesc"
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8dp"
                     android:fontFamily="@font/muli_semibold_family"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/imgPemateri"
-                    app:layout_constraintTop_toBottomOf="@id/tvNama"
+                    app:layout_constraintTop_toBottomOf="@id/tvPemateri"
                     tools:text="CEO PT Impian" />
 
                 <View
@@ -111,7 +111,7 @@
                     app:layout_constraintTop_toTopOf="@id/viewPrice" />
 
                 <TextView
-                    android:id="@+id/tvDiskon"
+                    android:id="@+id/tvPromo"
                     style="@style/TextDesc"
                     android:textSize="14sp"
                     android:visibility="gone"
@@ -133,7 +133,7 @@
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@id/viewPrice"
                     app:layout_constraintEnd_toEndOf="@id/viewPrice"
-                    app:layout_constraintTop_toBottomOf="@id/tvDiskon"
+                    app:layout_constraintTop_toBottomOf="@id/tvPromo"
                     tools:text="Rp 207.900" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

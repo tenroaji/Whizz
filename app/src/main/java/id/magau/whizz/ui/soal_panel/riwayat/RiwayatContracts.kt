@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.kelas.ujian.panel.riwayat
+package id.magau.whizz.ui.soal_panel.riwayat
 
 import id.magau.whizz.data.model.ModelRiwayat
 import id.magau.whizz.utils.BasePresenter

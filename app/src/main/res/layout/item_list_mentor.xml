@@ -16,7 +16,7 @@
         tools:background="#000000" />
 
     <TextView
-        android:id="@+id/tvNama"
+        android:id="@+id/tvPemateri"
         style="@style/TextLabelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,12 +33,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_8dp"
         app:layout_constraintBottom_toBottomOf="@id/imgMentor"
-        app:layout_constraintStart_toStartOf="@id/tvNama"
-        app:layout_constraintTop_toBottomOf="@id/tvNama"
+        app:layout_constraintStart_toStartOf="@id/tvPemateri"
+        app:layout_constraintTop_toBottomOf="@id/tvPemateri"
         tools:text="Hafids Al-Qur'an" />
 
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tvTitle"
         style="@style/TextLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,5 +58,5 @@
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:background="#F5F5F5"
-        app:layout_constraintTop_toBottomOf="@id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

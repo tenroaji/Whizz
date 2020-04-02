@@ -10,13 +10,13 @@ data class ModelResponseFAQ (
     @SerializedName("diagnostic")
     var diagnostic : ModelDiagnostic? = null,
     @SerializedName("response")
-    var response : ModelFAQ? = null
+    var response : ArrayList<ModelFAQ?>? = null
 )
 
 
 data class ModelFAQ(
-    @SerializedName("title")
+    @SerializedName("ask")
     var title : String?="",
-    @SerializedName("desc")
+    @SerializedName("answer")
     var desc : String?=""
 )

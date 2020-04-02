@@ -11,11 +11,11 @@ import id.magau.whizz.utils.BaseView
 interface PratinjauContracts {
 
     interface Presenter : BasePresenter {
-        fun loadData()
+        fun loadData(idProduct: String)
 
-        fun loadFAQ()
+        fun loadFAQ(idProduct : String)
 
-        fun loadTestimoni()
+        fun loadTestimoni(idProduct : String)
 
     }
 

@@ -85,14 +85,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
-                android:text="6624085218707333L"
+                tools:text="6624085218707333L"
                 android:layout_marginBottom="@dimen/margin_16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
             
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgCopy"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 app:srcCompat="@drawable/ic_salin"
                 android:layout_marginEnd="@dimen/margin_16dp"
                 app:layout_constraintBottom_toBottomOf="@id/tvNoAkun"
@@ -101,7 +102,7 @@
     </androidx.cardview.widget.CardView>
     
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/TextDesc"
@@ -109,7 +110,7 @@
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:text="Silahkan transfer sebesar Rp 299.000 sebelum Selasa, 07 Januari pukul 20:25 WIB ke nomor Rekening Akun Virtual diatas"/>
+        tools:text="Silahkan transfer sebesar Rp 299.000 sebelum Selasa, 07 Januari pukul 20:25 WIB ke nomor Rekening Akun Virtual diatas"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCheckPembayaran"
@@ -120,4 +121,6 @@
         android:layout_marginEnd="@dimen/margin_16dp"
         android:layout_marginBottom="@dimen/margin_16dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <include layout="@layout/item_loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

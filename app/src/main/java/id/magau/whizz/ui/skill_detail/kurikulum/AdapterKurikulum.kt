@@ -3,9 +3,11 @@ package id.magau.whizz.ui.skill_detail.kurikulum
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelKurikulum
+import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.item_list_kurikulum.view.*
 
 /**
@@ -14,7 +16,8 @@ import kotlinx.android.synthetic.main.item_list_kurikulum.view.*
 
 class AdapterKurikulum : RecyclerView.Adapter<AdapterKurikulum.ViewHolder>() {
     private var mData = mutableListOf<ModelKurikulum?>()
-
+    private var mAdapter = AdapterSubKurikulum()
+    private var isCollapse = true
     fun updateAdapter(data : ArrayList<ModelKurikulum?>){
         mData.clear()
         mData.addAll(data)
@@ -33,8 +36,29 @@ class AdapterKurikulum : RecyclerView.Adapter<AdapterKurikulum.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterKurikulum.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvNo.text = "${data?.no} ."
-            tvDesc.text = "${data?.desc} ."
+//            tvNo.text = "${position+1} ."
+            tvTitle.text = "${data?.title} ."
+            mRecyclerSubSection.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = mAdapter
+            }
+            if (!data?.subSection.isNullOrEmpty()){
+                mAdapter.updateAdapter(data?.subSection!!)
+
+                setOnClickListener {
+                    if (isCollapse){
+                        imgCollapse.rotation = 0F
+                        group visibility !isCollapse
+                    }else{
+                        imgCollapse.rotation = 180F
+                        group visibility !isCollapse
+                    }
+                    isCollapse = !isCollapse
+                }
+            }else{
+                imgCollapse visibility false
+            }
+
         }
     }
 

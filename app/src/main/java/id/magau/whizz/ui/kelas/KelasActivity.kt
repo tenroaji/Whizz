@@ -11,6 +11,13 @@ import kotlinx.android.synthetic.main.activity_kelas.*
  */
 
 class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
+    companion object {
+        const val KEY_KELAS_SAYA = "KELAS_SAYA"
+    }
+
+    val kelasSaya by lazy {
+        intent.getBooleanExtra(KEY_KELAS_SAYA,false)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,7 +26,7 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
         }
 
         val mAdapter = AdapterTabKelas(
-            supportFragmentManager,true
+            supportFragmentManager,kelasSaya
         )
         mViewPager.adapter = mAdapter
         mTabLayout.setupWithViewPager(mViewPager)

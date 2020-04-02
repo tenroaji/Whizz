@@ -1,25 +1,29 @@
 package id.magau.whizz.data.services
 
 
-import id.magau.whizz.data.model.ModelResponseLogin
-import id.magau.whizz.data.model.ModelResponsePembayaran
-import id.magau.whizz.data.model.reqBodyLogin
+import id.magau.whizz.data.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 9/26/2019.
  */
 
-interface PembayaranApiRoute{
+interface PembayaranApiRoute {
     @GET("student/bank")
     fun bank(
         @Header("authorization") authorization: String?
     ): Call<ModelResponsePembayaran>
 
+
+    @POST("student/checkout")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    fun createCheckout(
+        @Header("authorization") authorization: String?,
+        @Body body: reqBodyPembayaran?
+    ): Call<ModelResponsePembayaranDetail>
 
 }

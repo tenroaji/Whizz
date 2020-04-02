@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.kelas.ujian.panel.mulai_ujian
+package id.magau.whizz.ui.soal_panel.attention
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_mulai_ujian.view.*
 
 //
 //
-class MulaiUjianFragment : Fragment() {
+class AttentionFragment : Fragment() {
 
     companion object {
         const val KEY_TITLE = "TITLE"
@@ -18,12 +18,12 @@ class MulaiUjianFragment : Fragment() {
         const val KEY_ID_PRODUCT = "ID_PRODUCT"
 
         @JvmStatic
-        fun newInstance(idProduct:String, title:String): MulaiUjianFragment {
+        fun newInstance(idProduct:String, title:String): AttentionFragment {
             val args = Bundle()
             args.putString(KEY_TITLE, title)
             args.putSerializable(KEY_ID_PRODUCT, idProduct)
 //            args.putString(KEY_JENIS, jenis)
-            val fragment = MulaiUjianFragment()
+            val fragment = AttentionFragment()
             fragment.arguments = args
             return fragment
         }
