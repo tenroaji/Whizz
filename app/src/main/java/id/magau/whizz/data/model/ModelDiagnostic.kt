@@ -8,7 +8,12 @@ import com.google.gson.annotations.SerializedName
 
 data class ModelDiagnostic(
     @SerializedName("code")
-    var code : Int?=0,
+    var code : Int=0,
     @SerializedName("status")
-    var status : String?= ""
+    var status : String= ""
+)
+
+data class ModelResponseDiagnostic(
+    @SerializedName("diagnostic")
+    val diagnostic : ModelDiagnostic
 )

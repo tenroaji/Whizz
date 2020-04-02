@@ -3,8 +3,7 @@ package id.magau.whizz.ui.pembayaran_detail
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelResponsePembayaranDetail
-import id.magau.whizz.data.model.reqBodyPembayaran
+import id.magau.whizz.data.model.*
 import id.magau.whizz.data.services.PembayaranApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -21,7 +20,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class PembayaranDetailPresenter(val context: Context, val view: PembayaranDetailContracts.View) :
+class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetailContracts.View) :
     PembayaranDetailContracts.Presenter {
     private val mService: PembayaranApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
@@ -30,14 +29,14 @@ class PembayaranDetailPresenter(val context: Context, val view: PembayaranDetail
     )
     private var mToken = ""
     init {
-        view.setPresenter(this)
+        mView.setPresenter(this)
         val session = SessionUtils(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
 
     override fun loadData(idProduct: String, kodeBank: String) {
-        view.showLoading(true)
+        mView.showLoading(true)
 //        val requestBody : RequestBody = MultipartBody.Builder()
 //            .setType(MultipartBody.FORM)
 //            .addFormDataPart("idcourse", idProduct)
@@ -47,32 +46,32 @@ class PembayaranDetailPresenter(val context: Context, val view: PembayaranDetail
         mService.createCheckout(mToken, reqBodyPembayaran(idProduct, kodeBank)).apply {
             enqueue(object : Callback<ModelResponsePembayaranDetail> {
                 override fun onFailure(call: Call<ModelResponsePembayaranDetail>, t: Throwable) {
-                    view.showLoading(false)
-                    view.showError(0, "Internal Server Error")
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
                     call: Call<ModelResponsePembayaranDetail>,
                     response: Response<ModelResponsePembayaranDetail>
                 ) {
-                    view.showLoading(false)
+                    mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            view.showData(it)
+                            mView.showData(it)
                         }
                     } else if (response.code() == 500) {
-                        view.showError(500, "Internal Server Error")
+                        mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.run {
-                            val diagnostic = Gson().fromJson(
-                                this.toString(),
-                                ModelResponsePembayaranDetail::class.java
+                        response.errorBody()?.string().run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
                             )
-                            view.showError(
-                                diagnostic.diagnostic?.code!!,
-                                diagnostic.diagnostic?.status
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
                             )
                         }
                     }

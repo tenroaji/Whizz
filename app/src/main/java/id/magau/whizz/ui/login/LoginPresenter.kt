@@ -1,8 +1,11 @@
 package id.magau.whizz.ui.login
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import id.magau.whizz.R
+import id.magau.whizz.data.model.ModelDiagnostic
+import id.magau.whizz.data.model.ModelResponseDiagnostic
 import id.magau.whizz.data.model.ModelResponseLogin
 import id.magau.whizz.data.services.LoginApiRoute
 import id.magau.whizz.utils.RetrofitUtils
@@ -21,7 +24,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class LoginPresenter(val context: Context, val view: LoginContracts.View) :
+class LoginPresenter(val context: Context, val mView: LoginContracts.View) :
     LoginContracts.Presenter {
     private val mService: LoginApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
@@ -30,23 +33,23 @@ class LoginPresenter(val context: Context, val view: LoginContracts.View) :
     )
 
     init {
-        view.setPresenter(this)
+        mView.setPresenter(this)
     }
 
     override fun sendLogin(username: String, password: String) {
-        view.showLoading(true)
+        mView.showLoading(true)
         mService.loginUser(username, password).apply {
             enqueue(object : Callback<ModelResponseLogin> {
                 override fun onFailure(call: Call<ModelResponseLogin>, t: Throwable) {
-                    view.showLoading(false)
-                    view.showError(0, "Internal Server Error")
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
                     call: Call<ModelResponseLogin>,
                     response: Response<ModelResponseLogin>
                 ) {
-                    view.showLoading(false)
+                    mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()!!
                         val mSession = SessionUtils(context)
@@ -58,19 +61,19 @@ class LoginPresenter(val context: Context, val view: LoginContracts.View) :
                         mSession.editData(PREF_KEY_LOGIN, true)
                         data.response?.user?.name?.let { mSession.editData(PREF_KEY_NAME, it) }
                         data.response?.user?.email?.let { mSession.editData(PREF_KEY_EMAIL, it) }
-                        view.openMain()
+                        mView.openMain()
                     } else if (response.code() == 500) {
-                        view.showError(500, "Internal Server Error")
+                        mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.run {
-                            val diagnostic = Gson().fromJson(
-                                this.toString(),
-                                ModelResponseLogin::class.java
+                        response.errorBody()?.string().run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
                             )
-                            view.showError(
-                                diagnostic.diagnostic?.code!!,
-                                diagnostic.diagnostic?.status
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
                             )
                         }
                     }

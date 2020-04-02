@@ -3,9 +3,7 @@ package id.magau.whizz.ui.skill_detail.pratinjau
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelResponseMainMenu
-import id.magau.whizz.data.model.ModelResponseSkills
-import id.magau.whizz.data.model.ModelResponseFAQ
+import id.magau.whizz.data.model.*
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -19,7 +17,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class PratinjauPresenter(val context: Context, val view: PratinjauContracts.View) :
+class PratinjauPresenter(val context: Context, val mView: PratinjauContracts.View) :
     PratinjauContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
@@ -28,32 +26,32 @@ class PratinjauPresenter(val context: Context, val view: PratinjauContracts.View
     )
     private var mToken =""
     init {
-        view.setPresenter(this)
+        mView.setPresenter(this)
         val session = SessionUtils(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
     override fun loadData(idProduct: String) {
-//        view.showLoading(true)
+//        mView.showLoading(true)
 //        mService.detailSkill(mToken,idProduct).apply {
 //            enqueue(object : Callback<ModelResponseFAQ> {
 //                override fun onFailure(call: Call<ModelResponseFAQ>, t: Throwable) {
-//                    view.showLoading(false)
-//                    view.showError(0, "Internal Server Error")
+//                    mView.showLoading(false)
+//                    mView.showError(0, "Internal Server Error")
 //                }
 //
 //                override fun onResponse(
 //                    call: Call<ModelResponseFAQ>,
 //                    response: Response<ModelResponseFAQ>
 //                ) {
-//                    view.showLoading(false)
+//                    mView.showLoading(false)
 //                    if (response.code() == 200) {
 //                        val data = response.body()?.response
 //                        data?.let{
-//                            view.showSkill(it)
+//                            mView.showSkill(it)
 //                        }
 //                    } else if (response.code() == 500) {
-//                        view.showError(500, "Internal Server Error")
+//                        mView.showError(500, "Internal Server Error")
 //                    } else {
 //                        //http code selain 200
 //                        response.errorBody()?.run {
@@ -61,7 +59,7 @@ class PratinjauPresenter(val context: Context, val view: PratinjauContracts.View
 //                                this.toString(),
 //                                ModelResponseFAQ::class.java
 //                            )
-//                            view.showError(
+//                            mView.showError(
 //                                diagnostic.diagnostic?.code!!,
 //                                diagnostic.diagnostic?.status
 //                            )
@@ -74,36 +72,36 @@ class PratinjauPresenter(val context: Context, val view: PratinjauContracts.View
 
 
     override fun loadFAQ(idProduct: String) {
-        view.showLoading(true)
+        mView.showLoading(true)
         mService.dataFAQ(mToken,idProduct).apply {
             enqueue(object : Callback<ModelResponseFAQ> {
                 override fun onFailure(call: Call<ModelResponseFAQ>, t: Throwable) {
-                    view.showLoading(false)
-                    view.showError(0, "Internal Server Error")
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
                     call: Call<ModelResponseFAQ>,
                     response: Response<ModelResponseFAQ>
                 ) {
-                    view.showLoading(false)
+                    mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            view.showFAQ(it)
+                            mView.showFAQ(it)
                         }
                     } else if (response.code() == 500) {
-                        view.showError(500, "Internal Server Error")
+                        mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.run {
-                            val diagnostic = Gson().fromJson(
-                                this.toString(),
-                                ModelResponseFAQ::class.java
+                        response.errorBody()?.string().run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
                             )
-                            view.showError(
-                                diagnostic.diagnostic?.code!!,
-                                diagnostic.diagnostic?.status
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
                             )
                         }
                     }

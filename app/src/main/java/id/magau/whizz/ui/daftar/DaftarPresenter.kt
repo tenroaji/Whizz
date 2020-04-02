@@ -3,6 +3,7 @@ package id.magau.whizz.ui.daftar
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
+import id.magau.whizz.data.model.ModelDiagnostic
 import id.magau.whizz.data.model.ModelResponseRegister
 import id.magau.whizz.data.services.RegisterApiRoute
 import id.magau.whizz.utils.RetrofitUtils
@@ -76,14 +77,14 @@ class DaftarPresenter(val context: Context, val mView: DaftarContracts.View) :
                             mView.showError(500, "Internal Server Error")
                         }
                         else -> {
-                            response.errorBody()?.run {
+                            response.errorBody()?.string().run {
                                 val diagnostic = Gson().fromJson(
-                                    this.string(),
-                                    ModelResponseRegister::class.java
+                                    this,
+                                    ModelDiagnostic::class.java
                                 )
                                 mView.showError(
-                                    diagnostic.diagnostic?.code!!,
-                                    diagnostic.diagnostic?.status
+                                    diagnostic.code!!,
+                                    diagnostic.status
                                 )
                             }
                         }

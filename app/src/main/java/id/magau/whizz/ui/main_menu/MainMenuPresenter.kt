@@ -3,6 +3,7 @@ package id.magau.whizz.ui.main_menu
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
+import id.magau.whizz.data.model.ModelDiagnostic
 import id.magau.whizz.data.model.ModelResponseMainMenu
 import id.magau.whizz.data.services.LoginApiRoute
 import id.magau.whizz.data.services.MainMenuApiRoute
@@ -22,7 +23,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class MainMenuPresenter(val context: Context, val view: MainMenuContracts.View) :
+class MainMenuPresenter(val context: Context, val mView: MainMenuContracts.View) :
     MainMenuContracts.Presenter {
     private val mService: MainMenuApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
@@ -31,50 +32,52 @@ class MainMenuPresenter(val context: Context, val view: MainMenuContracts.View) 
     )
     private var mToken =""
     init {
-        view.setPresenter(this)
+        mView.setPresenter(this)
         val session = SessionUtils(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
     override fun loadData() {
-        view.showLoading(true)
+        mView.showLoading(true)
         mService.mainMenu(mToken).apply {
             enqueue(object : Callback<ModelResponseMainMenu> {
                 override fun onFailure(call: Call<ModelResponseMainMenu>, t: Throwable) {
-                    view.showLoading(false)
-                    view.showError(0, "Internal Server Error")
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
                     call: Call<ModelResponseMainMenu>,
                     response: Response<ModelResponseMainMenu>
                 ) {
-                    view.showLoading(false)
+                    mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
-                        view.showCount(data?.course_count)
+                        mView.showCount(data?.course_count)
                         data?.events?.let{
-                            view.showEvents(it)
+                            mView.showEvents(it)
                         }
                         data?.products_promo?.let{
-                            view.showPromo(it)
+                            mView.showPromo(it)
                         }
                         data?.products?.let{
-                            view.showSkillPopular(it)
+                            mView.showSkillPopular(it)
                         }
                     } else if (response.code() == 500) {
-                        view.showError(500, "Internal Server Error")
+                        mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
                         response.errorBody()?.run {
-                            val diagnostic = Gson().fromJson(
-                                this.toString(),
-                                ModelResponseMainMenu::class.java
-                            )
-                            view.showError(
-                                diagnostic.diagnostic?.code!!,
-                                diagnostic.diagnostic?.status
-                            )
+                            response.errorBody()?.string().run {
+                                val diagnostic = Gson().fromJson(
+                                    this,
+                                    ModelDiagnostic::class.java
+                                )
+                                mView.showError(
+                                    diagnostic.code!!,
+                                    diagnostic.status
+                                )
+                            }
                         }
                     }
                 }

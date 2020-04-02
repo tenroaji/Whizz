@@ -3,6 +3,8 @@ package id.magau.whizz.ui.skill_detail.kurikulum
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
+import id.magau.whizz.data.model.ModelDiagnostic
+import id.magau.whizz.data.model.ModelResponseDiagnostic
 import id.magau.whizz.data.model.ModelResponseKurikulum
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
@@ -17,7 +19,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class KurikulumPresenter(val context: Context, val view: KurikulumContracts.View) :
+class KurikulumPresenter(val context: Context, val mView: KurikulumContracts.View) :
     KurikulumContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
@@ -26,42 +28,42 @@ class KurikulumPresenter(val context: Context, val view: KurikulumContracts.View
     )
     private var mToken =""
     init {
-        view.setPresenter(this)
+        mView.setPresenter(this)
         val session = SessionUtils(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
     override fun loadData(idProduct: String) {
-        view.showLoading(true)
+        mView.showLoading(true)
         mService.dataKurikulum(mToken,idProduct).apply {
             enqueue(object : Callback<ModelResponseKurikulum> {
                 override fun onFailure(call: Call<ModelResponseKurikulum>, t: Throwable) {
-                    view.showLoading(false)
-                    view.showError(0, "Internal Server Error")
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
                     call: Call<ModelResponseKurikulum>,
                     response: Response<ModelResponseKurikulum>
                 ) {
-                    view.showLoading(false)
+                    mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            view.showData(it)
+                            mView.showData(it)
                         }
                     } else if (response.code() == 500) {
-                        view.showError(500, "Internal Server Error")
+                        mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.run {
-                            val diagnostic = Gson().fromJson(
-                                this.toString(),
-                                ModelResponseKurikulum::class.java
+                        response.errorBody()?.string().run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
                             )
-                            view.showError(
-                                diagnostic.diagnostic?.code!!,
-                                diagnostic.diagnostic?.status
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
                             )
                         }
                     }
