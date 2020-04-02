@@ -1,9 +1,6 @@
 package id.magau.whizz.ui.products
 
-import id.magau.whizz.data.model.ModelEvent
-import id.magau.whizz.data.model.ModelEventSaya
-import id.magau.whizz.data.model.ModelPromo
-import id.magau.whizz.data.model.ModelSkills
+import id.magau.whizz.data.model.*
 import id.magau.whizz.utils.BasePresenter
 import id.magau.whizz.utils.BaseView
 
@@ -22,8 +19,8 @@ interface ProductsContracts {
 
     interface View : BaseView<Presenter> {
 
-        fun showSkillSaya(data : ArrayList<ModelSkills>)
-        fun showKelasSaya(data : ArrayList<ModelSkills>)
+        fun showSkillSaya(data : ArrayList<ModelProducts?>)
+        fun showKelasSaya(data : ArrayList<ModelProducts?>)
         fun showEvent(data : ArrayList<ModelEventSaya>)
 
         fun showLoading(show : Boolean)

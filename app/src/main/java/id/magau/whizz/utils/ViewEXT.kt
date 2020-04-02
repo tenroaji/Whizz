@@ -145,6 +145,12 @@ fun ImageView.circleRes(res : String){
     Picasso.get().load(res).transform(PicassoCircleTransform()).into(this)
 }
 
+infix fun ImageView.radius(res : String?){
+    res?.let{
+        Picasso.get().load(res).transform(RoundedCornersTransformation(4,0)).into(this)
+    }
+}
+
 infix fun TextView.promo(data : Int){
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         this.text = Html.fromHtml("<strike>${rupiah(data)}</strike>", Html.FROM_HTML_MODE_COMPACT);

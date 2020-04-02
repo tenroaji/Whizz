@@ -15,18 +15,17 @@
             android:id="@+id/mToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/ic_back"
-            app:contentInsetStartWithNavigation="0dp"
             android:background="@color/colorWhite"
-            app:layout_constraintTop_toTopOf="parent">
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/muli_bold_family"
-                android:text="Masuk"
-                android:textColor="@color/fontBold"
-                android:textSize="22sp" />
+                android:text="@string/label_masuk"
+                style="@style/TextTitleToolbar"
+               />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -85,7 +84,7 @@
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/muli_regular_family"
-            android:text="Kata Sandi"
+        android:text="Kata Sandi"
         android:textColor="@color/colorFontLabel1"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,11 +152,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/muli_regular_family"
         android:text="@string/label_ingat"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintStart_toEndOf="@id/checkIngat"
         app:layout_constraintTop_toBottomOf="@+id/textInputPassword" />
 
@@ -207,5 +206,5 @@
         app:layout_constraintStart_toEndOf="@id/txtAkun"
         app:layout_constraintTop_toTopOf="@+id/txtAkun" />
 
-    <include layout="@layout/item_loading"/>
+    <include layout="@layout/item_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

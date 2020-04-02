@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.skill_saya
+package id.magau.whizz.ui.products
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.item_list_skill_populer.view.tvRating
  * Created by Andi Tenroaji Ahmad on 3/4/2020.
  */
 
-class AdapterSkillSaya : RecyclerView.Adapter<AdapterSkillSaya.ViewHolder>() {
+class AdapterProducts : RecyclerView.Adapter<AdapterProducts.ViewHolder>() {
 
     private var mData : MutableList<ModelProducts?> = mutableListOf()
 
@@ -37,7 +37,7 @@ class AdapterSkillSaya : RecyclerView.Adapter<AdapterSkillSaya.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            imgSkill radius mData[position]?.image!!
+            imgSkill radius mData[position]?.image
             tvJenisSkill.text = mData[position]?.category?.category
             tvTitleSkill.text = mData[position]?.title
             tvRating.text = mData[position]?.rate.toString()

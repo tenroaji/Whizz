@@ -1,6 +1,7 @@
 package id.magau.whizz.ui.skill_saya
 
 import id.magau.whizz.data.model.ModelEvent
+import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.data.model.ModelPromo
 import id.magau.whizz.data.model.ModelSkills
 import id.magau.whizz.utils.BasePresenter
@@ -13,13 +14,13 @@ import id.magau.whizz.utils.BaseView
 interface SkillSayaContracts {
 
     interface Presenter : BasePresenter {
-        fun loadSkill()
+        fun loadData()
 
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showSkill(data : ArrayList<ModelSkills>)
+        fun showSkill(data : ArrayList<ModelProducts?>)
 
         fun showLoading(show : Boolean)
 

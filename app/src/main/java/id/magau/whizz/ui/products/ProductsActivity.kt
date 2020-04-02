@@ -2,10 +2,12 @@ package id.magau.whizz.ui.products
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEventSaya
+import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.data.model.ModelSkills
 import id.magau.whizz.ui.event_saya.EventSayaActivity
 import id.magau.whizz.ui.event_saya.EventSayaContracts
@@ -26,10 +28,12 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     ProductsContracts.View {
     private lateinit var mPresenter : ProductsContracts.Presenter
     private val mAdapterEvent = AdapterEventSaya()
-    private val mAdapterSkills = AdapterSkillSaya()
+    private val mAdapterSkills = AdapterProducts()
     private val mAdapterKelas = AdapterSkillSaya()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ProductsPresenter(this,this)
+        mPresenter.start()
 
         mRecyclerEventSaya.layoutManager = LinearLayoutManager(this)
         mRecyclerEventSaya.adapter = mAdapterEvent
@@ -55,30 +59,31 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         tvLabelSemuaEvent.ripple().setOnClickListener {
             start(EventSayaActivity::class.java)
         }
-        val mData1 = arrayListOf(
-            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
-        showSkillSaya(mData1)
-        val mData2 = arrayListOf(
-            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
-            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
-            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"))
-        showEvent(mData2)
-        val mData3 = arrayListOf(
-            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
-        showKelasSaya(mData3)
+//        val mData1 = arrayListOf(
+//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
+//            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
+//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
+//        showSkillSaya(mData1)
+//        val mData2 = arrayListOf(
+//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
+//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
+//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"))
+//        showEvent(mData2)
+//        val mData3 = arrayListOf(
+//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
+//            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
+//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
+//        showKelasSaya(mData3)
 
 
     }
 
-    override fun showSkillSaya(data: ArrayList<ModelSkills>) {
+    override fun showSkillSaya(data: ArrayList<ModelProducts?>) {
+        Log.d("lapar",data.toString())
         mAdapterSkills.updateAdapter(data)
     }
 
-    override fun showKelasSaya(data: ArrayList<ModelSkills>) {
+    override fun showKelasSaya(data: ArrayList<ModelProducts?>) {
         mAdapterKelas.updateAdapter(data)
     }
 
