@@ -43,7 +43,7 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
 //            .addFormDataPart("bank", kodeBank)
 //            .build()
 
-        mService.createCheckout(mToken, reqBodyPembayaran(idProduct, kodeBank)).apply {
+        mService.createCheckout(mToken, idProduct, kodeBank).apply {
             enqueue(object : Callback<ModelResponsePembayaranDetail> {
                 override fun onFailure(call: Call<ModelResponsePembayaranDetail>, t: Throwable) {
                     mView.showLoading(false)
@@ -64,7 +64,7 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.string().run {
+                        response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,
                                 ModelResponseDiagnostic::class.java

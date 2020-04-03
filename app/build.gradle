@@ -15,10 +15,7 @@ android {
 
     signingConfigs {
         release {
-            keyAlias project.findProperty("KEY_STORE_ALIAS")
-            keyPassword project.findProperty("KEY_STORE_PASSWORD")
-            storeFile file(project.findProperty("KEY_STORE_PATH"))
-            storePassword project.findProperty("KEY_STORE_PASSWORD")
+//            keyAlias project.findProperty("KEY_STORE_ALIAS")
         }
     }
 

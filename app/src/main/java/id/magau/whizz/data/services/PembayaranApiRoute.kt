@@ -19,11 +19,13 @@ interface PembayaranApiRoute {
     ): Call<ModelResponsePembayaran>
 
 
+    @FormUrlEncoded
     @POST("student/checkout")
-    @Headers("Content-Type: application/x-www-form-urlencoded")
+//    @Headers("Content-Type: application/x-www-form-urlencoded")
     fun createCheckout(
         @Header("authorization") authorization: String?,
-        @Body body: reqBodyPembayaran?
+        @Field("idcourse")  idcourse : String,
+        @Field("bank")  bank : String
     ): Call<ModelResponsePembayaranDetail>
 
 }

@@ -34,11 +34,12 @@ class PembayaranActivity : BaseActivity(layout = R.layout.activity_pembayaran),P
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
         }
+        mAdapter.updateIdProduct(idProduct)
     }
 
     override fun showData(data: ArrayList<ModelPembayaran?>) {
-        mAdapter.updateIdProduct(idProduct)
         mAdapter.updateAdapter(data)
+
     }
 
     override fun showLoading(show: Boolean) {

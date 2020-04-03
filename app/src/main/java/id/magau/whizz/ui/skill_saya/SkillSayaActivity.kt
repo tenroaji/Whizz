@@ -36,30 +36,6 @@ class SkillSayaActivity : BaseActivity(R.color.colorWhite, R.layout.activity_ski
         mRecyclerSkill.layoutManager = LinearLayoutManager(this)
         mRecyclerSkill.adapter = mAdapterSkills
 
-//        val mData1 = arrayListOf(
-//            ModelSkills(
-//                "HARD SKILL",
-//                "The Complete App Design Course - UX, UI and Design Thinking",
-//                0,
-//                4.4F,
-//                "Rp 207.900"
-//            ),
-//            ModelSkills(
-//                "SOFT SKILL",
-//                "The Complete App Design Course - UX, UI and Design Thinking",
-//                0,
-//                4.4F,
-//                "Rp 207.900"
-//            ),
-//            ModelSkills(
-//                "HARD SKILL",
-//                "The Complete App Design Course - UX, UI and Design Thinking",
-//                0,
-//                4.4F,
-//                "Rp 207.900"
-//            )
-//        )
-//        showSkill(mData1)
     }
 
     override fun showSkill(data: ArrayList<ModelProducts?>) {
