@@ -38,7 +38,7 @@
         tools:text="Hafids Al-Qur'an" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvComment"
         style="@style/TextLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,5 +58,5 @@
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:background="#F5F5F5"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvComment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

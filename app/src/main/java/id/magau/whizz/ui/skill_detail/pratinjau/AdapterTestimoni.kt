@@ -34,7 +34,7 @@ class AdapterTestimoni : RecyclerView.Adapter<AdapterTestimoni.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterTestimoni.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvTitle.text = data?.desc
+            tvComment.text = data?.desc
             tvPemateri.text = data?.nama
             tvPekerjaan.text = data?.pekerjaan
         }

@@ -1,9 +1,12 @@
-package id.magau.whizz.ui.skill_detail
+package id.magau.whizz.ui.kelas.diskusi
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import id.magau.whizz.R
-import id.magau.whizz.data.model.*
+import id.magau.whizz.data.model.ModelDiagnostic
+import id.magau.whizz.data.model.ModelResponseDiagnostic
+import id.magau.whizz.data.model.ModelResponseComments
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -17,8 +20,8 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class SkillDetailPresenter(val context: Context, val mView: SkillDetailContracts.View) :
-    SkillDetailContracts.Presenter {
+class DiskusiPresenter(val context: Context, val mView: DiskusiContracts.View) :
+    DiskusiContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
         SkillsApiRoute::class.java,
@@ -33,27 +36,28 @@ class SkillDetailPresenter(val context: Context, val mView: SkillDetailContracts
 
     override fun loadData(idProduct: String) {
         mView.showLoading(true)
-        mService.detailSkill(mToken,idProduct).apply {
-            enqueue(object : Callback<ModelResponseSkillsDetail> {
-                override fun onFailure(call: Call<ModelResponseSkillsDetail>, t: Throwable) {
+        mService.dataComment(mToken,idProduct).apply {
+            enqueue(object : Callback<ModelResponseComments> {
+                override fun onFailure(call: Call<ModelResponseComments>, t: Throwable) {
                     mView.showLoading(false)
                     mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseSkillsDetail>,
-                    response: Response<ModelResponseSkillsDetail>
+                    call: Call<ModelResponseComments>,
+                    response: Response<ModelResponseComments>
                 ) {
                     mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            mView.showSkill(it)
+                            mView.showData(it)
                         }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
+                        Log.e("lapar",idProduct)
                         response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,

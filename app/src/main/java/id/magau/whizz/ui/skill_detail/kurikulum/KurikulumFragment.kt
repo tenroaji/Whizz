@@ -34,7 +34,7 @@ class KurikulumFragment : Fragment(R.layout.fragment_kurikulum),KurikulumContrac
     private lateinit var mPresenter : KurikulumContracts.Presenter
     private var mAdater = AdapterKurikulum()
     private val idProduk by lazy {
-        arguments?.getString(KEY_ID_PRODUK)!!
+        requireArguments().getString(KEY_ID_PRODUK)!!
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

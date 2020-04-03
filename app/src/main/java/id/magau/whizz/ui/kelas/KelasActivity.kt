@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import id.magau.whizz.R
 import id.magau.whizz.ui.pembayaran.PembayaranActivity
-import id.magau.whizz.ui.skill_detail.SkillDetailActivity
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.load
 import id.magau.whizz.utils.ripple
@@ -46,14 +45,14 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
         }
 
         imgKelas load urlKelas
-        tvTitle.text = title
+        tvComment.text = title
 
         imgBack.ripple().setOnClickListener {
             onBackPressed()
         }
 
         val mAdapter = AdapterTabKelas(
-            supportFragmentManager,kelasSaya
+            idProduct,supportFragmentManager,kelasSaya
         )
         mViewPager.adapter = mAdapter
         mTabLayout.setupWithViewPager(mViewPager)

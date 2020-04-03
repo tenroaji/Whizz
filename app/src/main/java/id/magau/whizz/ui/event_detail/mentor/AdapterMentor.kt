@@ -35,7 +35,7 @@ class AdapterMentor : RecyclerView.Adapter<AdapterMentor.ViewHolder>(){
         holder.itemView.apply {
 //            mData[position]?.gambar?.let { Picasso.get().load(it).transform(PicassoCircleTransform()).into(imgMentor) }
             tvPemateri.text = data?.nama
-            tvTitle.text = data?.desc
+            tvComment.text = data?.desc
             tvPekerjaan.text = data?.pekerjaan
         }
     }

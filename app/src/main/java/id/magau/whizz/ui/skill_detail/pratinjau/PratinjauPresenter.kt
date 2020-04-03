@@ -94,7 +94,7 @@ class PratinjauPresenter(val context: Context, val mView: PratinjauContracts.Vie
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.string().run {
+                        response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,
                                 ModelResponseDiagnostic::class.java

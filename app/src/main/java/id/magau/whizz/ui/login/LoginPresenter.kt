@@ -50,8 +50,9 @@ class LoginPresenter(val context: Context, val mView: LoginContracts.View) :
                     response: Response<ModelResponseLogin>
                 ) {
                     mView.showLoading(false)
-                    if (response.code() == 200) {
+                    if (response.code() in 200..299) {
                         val data = response.body()!!
+                        if(response.code() == 200){
                         val mSession = SessionUtils(context)
                         val mToken = data.response?.access_token
                         val mType = data.response?.token_type
@@ -62,6 +63,12 @@ class LoginPresenter(val context: Context, val mView: LoginContracts.View) :
                         data.response?.user?.name?.let { mSession.editData(PREF_KEY_NAME, it) }
                         data.response?.user?.email?.let { mSession.editData(PREF_KEY_EMAIL, it) }
                         mView.openMain()
+                        }else{
+                            mView.showError(
+                                data.diagnostic?.code!!,
+                                data.diagnostic?.status
+                            )
+                        }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {

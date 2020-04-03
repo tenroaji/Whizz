@@ -11,13 +11,12 @@ import id.magau.whizz.utils.BaseView
 interface DiskusiContracts {
 
     interface Presenter : BasePresenter {
-        fun showData()
-
+        fun loadData(idProduct : String)
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showData(data : ArrayList<ModelFile?>)
+        fun showData(data : ArrayList<ModelComments?>)
 
         fun showLoading(show : Boolean)
 

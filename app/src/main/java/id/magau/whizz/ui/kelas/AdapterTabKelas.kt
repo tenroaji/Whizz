@@ -12,7 +12,7 @@ import id.magau.whizz.ui.pengaturan.kata_sandi.KataSandiFragment
 import id.magau.whizz.ui.pengaturan.profil.ProfileFragment
 
 
-class AdapterTabKelas(fm: FragmentManager, private val terbeli : Boolean) : FragmentPagerAdapter(fm) {
+class AdapterTabKelas(private val idProduct: String,fm: FragmentManager, private val terbeli : Boolean) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment =
 //    {
@@ -31,7 +31,7 @@ class AdapterTabKelas(fm: FragmentManager, private val terbeli : Boolean) : Frag
 
         when (position) {
         0 -> FileFragment.newInstance()
-        1 -> DiskusiFragment.newInstance()
+        1 -> DiskusiFragment.newInstance(idProduct)
         2 -> FileFragment.newInstance()
         3 -> UjianFragment.newInstance()
         else -> KataSandiFragment()

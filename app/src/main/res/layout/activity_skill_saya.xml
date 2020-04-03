@@ -45,7 +45,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/tvComment"
                     style="@style/TextLabelTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

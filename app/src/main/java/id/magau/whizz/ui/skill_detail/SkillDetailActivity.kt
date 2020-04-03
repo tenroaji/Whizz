@@ -7,7 +7,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.ui.kelas.KelasActivity
-import id.magau.whizz.ui.kelas.KelasActivity.Companion.KEY_KELAS_SAYA
 import id.magau.whizz.ui.pembayaran.PembayaranActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_event_detail.imgBack
@@ -74,7 +73,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
                 putExtra(KelasActivity.KEY_KELAS_SAYA,kelasSaya)
                 putExtra(KelasActivity.KEY_ID_PRODUCT,idProduct)
                 putExtra(KelasActivity.KEY_URL_IMG,urlImg)
-                putExtra(KelasActivity.KEY_TITLE,tvTitle.text)
+                putExtra(KelasActivity.KEY_TITLE,tvComment.text)
             })
             overridePendingTransition(R.anim.enter, R.anim.exit)
         }
@@ -110,7 +109,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
         urlImg = data?.image
 
 
-        tvTitle.text = data?.title
+        tvComment.text = data?.title
         tvHarga.text = rupiah(data?.price!!)
         tvJenis.text = data.category?.category
         tvPemateri.text = data.teacher?.name?.capitalize()

@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/mAppBar" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvComment"
         style="@style/TextDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvComment"
         tools:listitem="@layout/item_list_ujian_soal" />
 
     <androidx.constraintlayout.widget.Group
@@ -80,7 +80,7 @@
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tvPerhatian,tvTitle,mRecyclerUjian" />
+        app:constraint_referenced_ids="tvPerhatian,tvComment,mRecyclerUjian" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/groupTabs"

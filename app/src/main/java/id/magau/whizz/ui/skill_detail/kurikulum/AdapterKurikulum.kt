@@ -37,7 +37,7 @@ class AdapterKurikulum : RecyclerView.Adapter<AdapterKurikulum.ViewHolder>() {
         holder.itemView.apply {
             val data = mData[position]
 //            tvNo.text = "${position+1} ."
-            tvTitle.text = "${data?.title} ."
+            tvComment.text = "${data?.title} ."
             mRecyclerSubSection.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter

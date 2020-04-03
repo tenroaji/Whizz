@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelNotif
-import kotlinx.android.synthetic.main.item_list_event.view.*
 import kotlinx.android.synthetic.main.item_list_notif.view.*
 
 /**
@@ -43,9 +41,9 @@ class AdapterNotif : RecyclerView.Adapter<AdapterNotif.ViewHolder>() {
 //            }
 //            tvTitle.text = "${mData[position]?.nama} ${mData[position]?.jenis} ${mData[position]?.title}"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                tvTitle.text = Html.fromHtml("<b>${mData[position]?.nama}</b> ${mData[position]?.jenis} <b>${mData[position]?.title}</b>", Html.FROM_HTML_MODE_COMPACT)
+                tvComment.text = Html.fromHtml("<b>${mData[position]?.nama}</b> ${mData[position]?.jenis} <b>${mData[position]?.title}</b>", Html.FROM_HTML_MODE_COMPACT)
             } else {
-                tvTitle.text = Html.fromHtml("<b>${mData[position]?.nama}</b> ${mData[position]?.jenis} <b>${mData[position]?.title}</b>")
+                tvComment.text = Html.fromHtml("<b>${mData[position]?.nama}</b> ${mData[position]?.jenis} <b>${mData[position]?.title}</b>")
             }
             tvTime.text = mData[position]?.time
         }

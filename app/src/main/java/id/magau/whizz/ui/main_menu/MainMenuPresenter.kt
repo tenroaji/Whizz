@@ -68,13 +68,13 @@ class MainMenuPresenter(val context: Context, val mView: MainMenuContracts.View)
                     } else {
                         //http code selain 200
                         response.errorBody()?.run {
-                            response.errorBody()?.string().run {
+                            response.errorBody()?.string()?.run {
                                 val diagnostic = Gson().fromJson(
                                     this,
                                     ModelDiagnostic::class.java
                                 )
                                 mView.showError(
-                                    diagnostic.code!!,
+                                    diagnostic.code,
                                     diagnostic.status
                                 )
                             }

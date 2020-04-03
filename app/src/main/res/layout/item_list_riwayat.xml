@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/margin_16dp">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvComment"
         style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvComment"
         tools:text="28 Nov 2019" />
 
     <ImageView
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintEnd_toStartOf="@id/imgArrow"
-        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvComment"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Lulus" />
 
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/tvKetLulus"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvComment"
         tools:text="20 : 20 WITA" />
 
     <View

@@ -50,7 +50,7 @@
                     app:srcCompat="@drawable/ic_close2" />
 
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/tvComment"
                     style="@style/TextLabelTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -103,5 +103,18 @@
             android:text="Beli Kelas"
             app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnalisis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:text="Analisis"
+            app:cornerRadius="4dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -40,4 +40,10 @@ interface SkillsApiRoute {
         @Header("authorization") token: String?,
         @Query("uuidcourse") idProduct : String?): Call<ModelResponseKurikulum>
 
+    @GET("student/comment")
+    fun dataComment(
+        @Header("authorization") token: String?,
+        @Header("id") idProduct: String?
+    ): Call<ModelResponseComments>
+
 }
