@@ -110,15 +110,15 @@ fun getInitialName(displayName: String): String? {
     }
 }
 
-@OptIn(ExperimentalContracts::class)
-fun String?.assertNotNull() {
-    contract {
-        returns() implies (this@assertNotNull != null)
-    }
-    if (this == null){
-        throw AssertionError()
-    }
-}
+//@OptIn(ExperimentalContracts::class)
+//fun String?.assertNotNull() {
+//    contract {
+//        returns() implies (this@assertNotNull != null)
+//    }
+//    if (this == null){
+//        throw AssertionError()
+//    }
+//}
 
 
 infix fun View.visibility(status: Boolean) {

@@ -63,6 +63,7 @@
 
         <activity android:name=".ui.media_player.MediaPlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.kelas.materi.raitng.RatingActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
