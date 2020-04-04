@@ -51,4 +51,20 @@ interface SkillsApiRoute {
         @Field("rating")  rating : Int
     ): Call<ModelResponseDiagnostic>
 
+    @FormUrlEncoded
+    @POST("student/rating")
+    fun sendReplys(
+        @Header("authorization") authorization: String?,
+        @Field("idcomment")  idcourse : String,
+        @Field("reply")  reply : String
+    ): Call<ModelResponseDiagnostic>
+
+    @POST("student/rating")
+    fun getReplys(
+        @Header("authorization") authorization: String?,
+        @Header("id")  idComment : String
+    ): Call<ModelResponseReplys>
+
+
+
 }

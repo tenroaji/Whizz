@@ -89,17 +89,18 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerReplys"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:listitem="@layout/item_list_balasan"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintTop_toBottomOf="@id/viewComment"
-        app:layout_constraintBottom_toTopOf="@id/editTestimoni">
+        app:layout_constraintBottom_toTopOf="@id/editBalasan">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTestimoni"
+        android:id="@+id/editBalasan"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/background_square"
@@ -125,10 +126,10 @@
         android:layout_height="28dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="@id/editTestimoni"
-        app:layout_constraintTop_toTopOf="@id/editTestimoni"
+        app:layout_constraintStart_toStartOf="@id/editBalasan"
+        app:layout_constraintTop_toTopOf="@id/editBalasan"
         tools:background="@color/colorPrimaryDark" />
 
-
+    <include layout="@layout/item_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

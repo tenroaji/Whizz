@@ -57,7 +57,7 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
 
             viewBalasan.ripple().setOnClickListener {
                 context.startActivity(Intent(context, BalasanActivity::class.java).apply {
-
+                    putExtra(BalasanActivity.KEY_ID_COMMENT,data?.uuid_comment)
                 })
             }
         }

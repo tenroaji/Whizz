@@ -13,10 +13,6 @@ data class ModelResponsePembayaranDetail (
     var response : ModelPembayaranDetail? = null
 )
 
-data class reqBodyPembayaran(
-    var idProduct:String?="",
-    var kodeBank:String?=""
-)
 
 data class ModelPembayaranDetail(
     @SerializedName("nota")
