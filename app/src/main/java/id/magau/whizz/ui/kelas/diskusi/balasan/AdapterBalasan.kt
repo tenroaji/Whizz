@@ -10,10 +10,6 @@ import id.magau.whizz.utils.ColorGenerator
 import id.magau.whizz.utils.TextDrawable
 import id.magau.whizz.utils.getInitialName
 import kotlinx.android.synthetic.main.activity_balasan.view.*
-import kotlinx.android.synthetic.main.activity_balasan.view.imgUser
-import kotlinx.android.synthetic.main.item_list_diskusi.view.*
-import kotlinx.android.synthetic.main.item_list_file.view.*
-import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/19/2020.
@@ -40,9 +36,8 @@ class AdapterBalasan : RecyclerView.Adapter<AdapterBalasan.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterBalasan.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvUser.text = data?.user?.name
-//            tvTanggal.text =
-
+            tvUser.text = data?.user?.name?.capitalize()
+            tvComment.text = data?.reply
             val nama = tvUser.text.toString()
             val initialName = getInitialName(nama.toUpperCase())
             val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)

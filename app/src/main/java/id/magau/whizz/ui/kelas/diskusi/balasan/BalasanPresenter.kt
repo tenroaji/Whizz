@@ -89,7 +89,7 @@ class BalasanPresenter(val context: Context, val mView: BalasanContracts.View) :
                     response: Response<ModelResponseDiagnostic>
                 ) {
                     mView.showLoading(false)
-                    if (response.code() == 200) {
+                    if (response.code() in 200 .. 299) {
                         mView.showToast("Berhasil Mengirimkan Balasan")
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")

@@ -52,14 +52,14 @@ interface SkillsApiRoute {
     ): Call<ModelResponseDiagnostic>
 
     @FormUrlEncoded
-    @POST("student/rating")
+    @POST("student/reply/insert")
     fun sendReplys(
         @Header("authorization") authorization: String?,
         @Field("idcomment")  idcourse : String,
         @Field("reply")  reply : String
     ): Call<ModelResponseDiagnostic>
 
-    @POST("student/rating")
+    @GET("student/reply")
     fun getReplys(
         @Header("authorization") authorization: String?,
         @Header("id")  idComment : String
