@@ -1,15 +1,16 @@
 package id.magau.whizz.ui.kelas.diskusi
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.exoplayer2.offline.DownloadService.start
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelComments
+import id.magau.whizz.ui.kelas.diskusi.balasan.BalasanActivity
 import id.magau.whizz.utils.*
-import kotlinx.android.synthetic.main.fragment_diskusi.*
 import kotlinx.android.synthetic.main.item_list_diskusi.view.*
-import kotlinx.android.synthetic.main.item_list_file.view.*
 import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 
 /**
@@ -55,7 +56,9 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
             imgUser.setImageDrawable(icon)
 
             viewBalasan.ripple().setOnClickListener {
+                context.startActivity(Intent(context, BalasanActivity::class.java).apply {
 
+                })
             }
         }
     }
