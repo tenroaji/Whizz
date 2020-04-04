@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.*
-import id.magau.whizz.ui.kelas.file.AdapterFile
-import id.magau.whizz.ui.skill_detail.kurikulum.KurikulumContracts
+import id.magau.whizz.utils.ColorGenerator
+import id.magau.whizz.utils.SessionUtils
+import id.magau.whizz.utils.TextDrawable
+import id.magau.whizz.utils.getInitialName
 import kotlinx.android.synthetic.main.fragment_diskusi.*
-import kotlinx.android.synthetic.main.fragment_kurikulum.*
+import kotlinx.android.synthetic.main.fragment_diskusi.imgUser
 
 //
 //
@@ -47,24 +49,14 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mAdater
         }
-//
-//        val data = arrayListOf<ModelFile?>()
-//        for (a in 1 until 25) {
-//            data.add(ModelFile("File Tools $a", "", ""))
-//        }
-//        showData(data)
 
-
-//        mView = view
-//        TokenPresenter(activity!!.applicationContext,this)
-//        mPresenter.start()
-//
-//        mRecyclerBank.setHasFixedSize(true)
-//        mRecyclerBank.layoutManager = LinearLayoutManager(requireContext())
-//        mRecyclerBank.adapter = mAdapter
-//        val mList = mutableListOf<ModelMenu>()
-//        mList.add(ModelMenu(R.drawable.logo_bni, "BNI Syariah"))
-
+        val session = SessionUtils(requireContext())
+        val nama = session.getData(SessionUtils.PREF_KEY_NAME, "")
+        val initialName = getInitialName(nama.toUpperCase())
+        val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)
+        val mColor = ColorGenerator.APP.getColor(nama.length)
+        val icon = TextDrawable.builder(requireContext()).buildRound(initialName, mColor, iconSize, iconSize)
+        imgUser.setImageDrawable(icon)
 
     }
 

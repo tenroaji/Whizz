@@ -61,7 +61,8 @@
 
         <activity android:name=".ui.media_player.MediaPlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity android:name=".ui.kelas.materi.raitng.RatingActivity" />
+        <activity android:name=".ui.kelas.materi.rating.RatingActivity" />
+        <activity android:name=".ui.kelas.diskusi.balasan.BalasanActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

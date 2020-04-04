@@ -5,18 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelFile
-import id.magau.whizz.data.model.ModelKurikulum
 import id.magau.whizz.ui.kelas.file.AdapterFile
-import id.magau.whizz.ui.kelas.materi.raitng.RatingActivity
-import id.magau.whizz.ui.skill_detail.kurikulum.KurikulumContracts
+import id.magau.whizz.ui.kelas.materi.rating.RatingActivity
 import id.magau.whizz.utils.ripple
-import id.magau.whizz.utils.start
 import id.magau.whizz.utils.visibility
-import kotlinx.android.synthetic.main.fragment_kurikulum.*
 import kotlinx.android.synthetic.main.fragment_materi.view.*
 
 //

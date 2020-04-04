@@ -1,6 +1,5 @@
-package id.magau.whizz.ui.kelas.materi.raitng
+package id.magau.whizz.ui.kelas.materi.rating
 
-import id.magau.whizz.data.model.ModelPembayaran
 import id.magau.whizz.utils.BasePresenter
 import id.magau.whizz.utils.BaseView
 

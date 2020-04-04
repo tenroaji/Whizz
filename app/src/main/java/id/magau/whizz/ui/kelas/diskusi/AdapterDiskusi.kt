@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelComments
-import id.magau.whizz.utils.ripple
-import id.magau.whizz.utils.visibility
+import id.magau.whizz.utils.*
+import kotlinx.android.synthetic.main.fragment_diskusi.*
 import kotlinx.android.synthetic.main.item_list_diskusi.view.*
 import kotlinx.android.synthetic.main.item_list_file.view.*
 import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
@@ -37,12 +37,23 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterDiskusi.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
+
+
+
             tvPemateri.text = data?.user?.name?.capitalize()
             tvComment.text = data?.comment
             data?.reply?.size?.let{
                 tvBalasan.text = "$it Balasan"
                 if(it == 0) groupReplys visibility false
             }?: groupReplys visibility false
+
+            val nama = tvPemateri.text.toString()
+            val initialName = getInitialName(nama.toUpperCase())
+            val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)
+            val mColor = ColorGenerator.APP.getColor(nama.length)
+            val icon = TextDrawable.builder(context).buildRound(initialName, mColor, iconSize, iconSize)
+            imgUser.setImageDrawable(icon)
+
             viewBalasan.ripple().setOnClickListener {
 
             }

@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.kelas.materi.raitng
+package id.magau.whizz.ui.kelas.materi.rating
 
 import android.content.Context
 import com.google.gson.Gson
