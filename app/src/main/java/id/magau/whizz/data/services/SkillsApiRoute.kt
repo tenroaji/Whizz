@@ -3,10 +3,7 @@ package id.magau.whizz.data.services
 
 import id.magau.whizz.data.model.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 9/26/2019.
@@ -45,5 +42,13 @@ interface SkillsApiRoute {
         @Header("authorization") token: String?,
         @Header("id") idProduct: String?
     ): Call<ModelResponseComments>
+
+    @FormUrlEncoded
+    @POST("student/rating")
+    fun sendRating(
+        @Header("authorization") authorization: String?,
+        @Field("idcourse")  idcourse : String,
+        @Field("rating")  rating : Int
+    ): Call<ModelResponseDiagnostic>
 
 }

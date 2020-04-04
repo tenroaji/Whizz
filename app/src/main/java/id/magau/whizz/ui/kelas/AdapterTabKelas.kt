@@ -7,6 +7,7 @@ import id.magau.whizz.ui.event_detail.jadwal.JadwalFragment
 import id.magau.whizz.ui.event_detail.mentor.MentorFragment
 import id.magau.whizz.ui.kelas.diskusi.DiskusiFragment
 import id.magau.whizz.ui.kelas.file.FileFragment
+import id.magau.whizz.ui.kelas.materi.MateriFragment
 import id.magau.whizz.ui.kelas.ujian.UjianFragment
 import id.magau.whizz.ui.pengaturan.kata_sandi.KataSandiFragment
 import id.magau.whizz.ui.pengaturan.profil.ProfileFragment
@@ -15,22 +16,8 @@ import id.magau.whizz.ui.pengaturan.profil.ProfileFragment
 class AdapterTabKelas(private val idProduct: String,fm: FragmentManager, private val terbeli : Boolean) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment =
-//    {
-//        if (position == 0){
-//           return FileFragment.newInstance()
-//        }else if (position == 1){
-//            DiskusiFragment.newInstance()
-//        }else if (position == 2){
-//           return FileFragment.newInstance()
-//        }else if (position == 3){
-//            UjianFragment.newInstance()
-//        }else{
-//           return FileFragment.newInstance()
-//        }
-
-
         when (position) {
-        0 -> FileFragment.newInstance()
+        0 -> MateriFragment.newInstance(idProduct)
         1 -> DiskusiFragment.newInstance(idProduct)
         2 -> FileFragment.newInstance()
         3 -> UjianFragment.newInstance()

@@ -1,5 +1,6 @@
 package id.magau.whizz.ui.kelas.materi
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,22 +11,27 @@ import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelFile
 import id.magau.whizz.data.model.ModelKurikulum
 import id.magau.whizz.ui.kelas.file.AdapterFile
+import id.magau.whizz.ui.kelas.materi.raitng.RatingActivity
 import id.magau.whizz.ui.skill_detail.kurikulum.KurikulumContracts
+import id.magau.whizz.utils.ripple
+import id.magau.whizz.utils.start
+import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.fragment_kurikulum.*
+import kotlinx.android.synthetic.main.fragment_materi.view.*
 
 //
 //
 class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View {
 
     companion object {
-        //        const val KEY_ID_PRODUK = "id"
-//        const val KEY_TITLE = "TITLE"
-//
-//        @JvmStatic
-        fun newInstance(): MateriFragment {
+        const val KEY_ID_PRODUK = "ID_PRODUK"
+        const val KEY_KELAS_SAYA = "KELAS_SAYA"
+
+        @JvmStatic
+        fun newInstance(idProduct: String,kelasSaya : Boolean): MateriFragment {
             val args = Bundle()
-//            args.putString(KEY_ID_PRODUK, id)
-//            args.putString(KEY_TITLE, title)
+            args.putString(KEY_ID_PRODUK, idProduct)
+            args.putBoolean(KEY_KELAS_SAYA, kelasSaya)
             val fragment = MateriFragment()
             fragment.arguments = args
             return fragment
@@ -35,31 +41,31 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
     private lateinit var mView: View
     private lateinit var mPresenter: MateriContracts.Presenter
     private var mAdater = AdapterFile()
+    private val idProduct by lazy{
+        arguments?.getString(KEY_ID_PRODUK)
+    }
+
+    val kelasSaya by lazy {
+        arguments?.getBoolean(KEY_KELAS_SAYA,false)!!
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        mRecyclerKurikulum.apply {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = mAdater
-//        }
-//
-//        val data = arrayListOf<ModelFile?>()
-//        for (a in 1 until 25) {
-//            data.add(ModelFile("File Tools $a", "", ""))
-//        }
-//        showData(data)
+        mView = view
 
+        mView.apply {
+            if (kelasSaya){
+                groupRating visibility true
+            }
 
-//        mView = view
-//        TokenPresenter(activity!!.applicationContext,this)
-//        mPresenter.start()
-//
-//        mRecyclerBank.setHasFixedSize(true)
-//        mRecyclerBank.layoutManager = LinearLayoutManager(requireContext())
-//        mRecyclerBank.adapter = mAdapter
-//        val mList = mutableListOf<ModelMenu>()
-//        mList.add(ModelMenu(R.drawable.logo_bni, "BNI Syariah"))
+            viewBeriRating.ripple().setOnClickListener {
+                startActivity(Intent(requireContext(),RatingActivity::class.java).apply {
+                    putExtra(RatingActivity.KEY_ID_PRODUCT,idProduct)
+                })
+            }
+        }
+
 
 
     }

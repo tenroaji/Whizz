@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="id.magau.whizz">
 
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -47,7 +46,6 @@
         <activity android:name=".ui.mentor.MentorActivity" />
         <activity android:name=".ui.skill_saya.SkillSayaActivity" />
         <activity android:name=".ui.event_saya.EventSayaActivity" />
-        <activity android:name=".utils.CameraUtils" />
         <activity android:name=".ui.faq.FaqActivity" />
         <activity android:name=".ui.skill_detail.SkillDetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
@@ -75,6 +73,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
 
         <meta-data
@@ -85,7 +84,7 @@
         <meta-data
             android:name="JW_LICENSE_KEY"
             android:value="Sp1yv2Mi/dLS8hiiyE7shFVRQN59/YPQBq+Hbh7RH4hV2dig8IEd1rWNEm5HXKcw" />
-        <!--        zDIUjUBZiLjXJFs80F1cpPoaDeX8l8oY-->
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
