@@ -17,6 +17,8 @@ interface BalasanContracts {
     }
 
     interface View : BaseView<Presenter> {
+        fun sendDone()
+
         fun showData (data : ArrayList<ModelReplys?>)
 
         fun showToast(data : String)

@@ -4,7 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelResponseDiagnostic
-import id.magau.whizz.data.model.ModelResponseSkills
+import id.magau.whizz.data.model.ModelResponseMySkills
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -35,15 +35,15 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
     override fun loadSkillSaya() {
         mView.showLoading(true)
         mService.mySkill(mToken).apply {
-            enqueue(object : Callback<ModelResponseSkills> {
-                override fun onFailure(call: Call<ModelResponseSkills>, t: Throwable) {
+            enqueue(object : Callback<ModelResponseMySkills> {
+                override fun onFailure(call: Call<ModelResponseMySkills>, t: Throwable) {
                     mView.showLoading(false)
                     mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseSkills>,
-                    response: Response<ModelResponseSkills>
+                    call: Call<ModelResponseMySkills>,
+                    response: Response<ModelResponseMySkills>
                 ) {
                     mView.showLoading(false)
                     if (response.code() == 200) {
@@ -72,11 +72,9 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
     }
 
     override fun loadKelasSaya() {
-        TODO("Not yet implemented")
     }
 
     override fun loadEventSaya() {
-        TODO("Not yet implemented")
     }
 
     override fun start() {

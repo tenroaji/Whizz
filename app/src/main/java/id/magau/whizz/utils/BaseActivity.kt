@@ -7,6 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import id.magau.whizz.R
 
 /**
@@ -39,6 +40,8 @@ open class BaseActivity(val color: Int? = R.color.colorWhite,layout : Int) : App
         findViewById<Toolbar>(R.id.mToolbar)?.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        findViewById<SwipeRefreshLayout>(R.id.mSwipeRefresh)?.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
     }
 
 

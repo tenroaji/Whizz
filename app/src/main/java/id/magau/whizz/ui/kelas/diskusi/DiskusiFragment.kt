@@ -1,5 +1,6 @@
 package id.magau.whizz.ui.kelas.diskusi
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.*
-import id.magau.whizz.utils.ColorGenerator
-import id.magau.whizz.utils.SessionUtils
-import id.magau.whizz.utils.TextDrawable
-import id.magau.whizz.utils.getInitialName
+import id.magau.whizz.ui.kelas.diskusi.buat_diskusi.BuatDiskusi
+import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.fragment_diskusi.*
 import kotlinx.android.synthetic.main.fragment_diskusi.imgUser
+import kotlinx.android.synthetic.main.fragment_diskusi.view.*
 
 //
 //
@@ -45,7 +45,7 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
         super.onViewCreated(view, savedInstanceState)
         DiskusiPresenter(requireContext(), this)
         mPresenter.loadData(idProduct)
-        mRecyclerComment.apply {
+        view.mRecyclerComment.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mAdater
         }
@@ -56,7 +56,13 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
         val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)
         val mColor = ColorGenerator.APP.getColor(nama.length)
         val icon = TextDrawable.builder(requireContext()).buildRound(initialName, mColor, iconSize, iconSize)
-        imgUser.setImageDrawable(icon)
+        view.imgUser.setImageDrawable(icon)
+
+        view.viewBuatDiskusi.ripple().setOnClickListener {
+            startActivity(Intent(requireContext(),BuatDiskusi::class.java).apply {
+                putExtra(BuatDiskusi.KEY_ID_PRODUK,idProduct)
+            })
+        }
 
     }
 

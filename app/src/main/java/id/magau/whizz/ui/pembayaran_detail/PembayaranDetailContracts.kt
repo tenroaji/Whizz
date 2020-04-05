@@ -1,5 +1,6 @@
 package id.magau.whizz.ui.pembayaran_detail
 
+import id.magau.whizz.data.model.ModelCheckOut
 import id.magau.whizz.data.model.ModelPembayaran
 import id.magau.whizz.data.model.ModelPembayaranDetail
 import id.magau.whizz.utils.BasePresenter
@@ -13,13 +14,23 @@ interface PembayaranDetailContracts {
 
     interface Presenter : BasePresenter {
         fun loadData(idProduct:String, kodeBank : String)
+
+        fun sendCheckPayment(idProduct: String)
+
+        fun getCheckOut()
     }
 
     interface View : BaseView<Presenter> {
         fun showData(data : ModelPembayaranDetail)
 
+        fun showCheckPayment(sukses : Boolean)
+
+//        fun showCheckOut(data : ModelCheckOut)
+
         fun showLoading(show : Boolean)
 
         fun showError(code : Int, message : String?)
+
+        fun showToast(data:String)
     }
 }

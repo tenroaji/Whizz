@@ -11,7 +11,7 @@ import id.magau.whizz.utils.BaseView
 interface BuatDiskusiContracts {
 
     interface Presenter : BasePresenter {
-        fun loadData(idProduct: String, rating : Int)
+        fun sendData(idProduct: String, comment : String)
     }
 
     interface View : BaseView<Presenter> {

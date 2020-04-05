@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Created by Andi Tenroaji Ahmad on 11/18/2019.
  */
 
-data class ModelResponseSkills (
+data class ModelResponseMySkills (
     @SerializedName("diagnostic")
     var diagnostic : ModelDiagnostic? = null,
     @SerializedName("response")
@@ -14,3 +14,6 @@ data class ModelResponseSkills (
 )
 
 
+data class ModelSkills(
+    var course : ArrayList<ModelProducts?>? = null
+)

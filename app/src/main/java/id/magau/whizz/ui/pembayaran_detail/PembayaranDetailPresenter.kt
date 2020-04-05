@@ -36,13 +36,12 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
 
 
     override fun loadData(idProduct: String, kodeBank: String) {
-        mView.showLoading(true)
 //        val requestBody : RequestBody = MultipartBody.Builder()
 //            .setType(MultipartBody.FORM)
 //            .addFormDataPart("idcourse", idProduct)
 //            .addFormDataPart("bank", kodeBank)
 //            .build()
-
+        mView.showLoading(true)
         mService.createCheckout(mToken, idProduct, kodeBank).apply {
             enqueue(object : Callback<ModelResponsePembayaranDetail> {
                 override fun onFailure(call: Call<ModelResponsePembayaranDetail>, t: Throwable) {
@@ -58,6 +57,82 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
                     if (response.code() in 200..299) {
                         response.body()?.response?.let {
                             mView.showData(it)
+                        }?:mView.showError(response.body()?.diagnostic?.code!!,response.body()?.diagnostic?.status)
+
+                    } else if (response.code() == 500) {
+//                        mView.showError(500, "Internal Server Error")
+                        mView.showToast("Ada Kesalahan server, Silahkan coba lagi")
+                    } else {
+                        //http code selain 200
+                        response.errorBody()?.string()?.run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
+                            )
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
+                            )
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    override fun sendCheckPayment(idProduct: String) {
+        mView.showLoading(true)
+        mService.checkPayment(mToken, idProduct).apply {
+            enqueue(object : Callback<ModelResponseDiagnostic> {
+                override fun onFailure(call: Call<ModelResponseDiagnostic>, t: Throwable) {
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
+                }
+
+                override fun onResponse(
+                    call: Call<ModelResponseDiagnostic>,
+                    response: Response<ModelResponseDiagnostic>
+                ) {
+                    mView.showLoading(false)
+                    if (response.code() == 200) {
+                            mView.showCheckPayment(true)
+                    } else if (response.code() == 500) {
+//                        mView.showError(500, "Internal Server Error")
+                        mView.showToast("Ada Kesalahan server, Silahkan coba lagi")
+                    } else {
+                        //http code selain 200
+                        response.errorBody()?.string()?.run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
+                            )
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
+                            )
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    override fun getCheckOut() {
+        mService.getCheckOut(mToken).apply {
+            enqueue(object : Callback<ModelResponseCheckOut> {
+                override fun onFailure(call: Call<ModelResponseCheckOut>, t: Throwable) {
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
+                }
+
+                override fun onResponse(
+                    call: Call<ModelResponseCheckOut>,
+                    response: Response<ModelResponseCheckOut>
+                ) {
+                    mView.showLoading(false)
+                    if (response.code() in 200..299) {
+                        response.body()?.response?.let {
+//                            mView.showData(it)
                         }?:mView.showError(response.body()?.diagnostic?.code!!,response.body()?.diagnostic?.status)
 
                     } else if (response.code() == 500) {

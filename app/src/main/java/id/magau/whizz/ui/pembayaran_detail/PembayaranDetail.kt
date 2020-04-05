@@ -3,15 +3,13 @@ package id.magau.whizz.ui.pembayaran_detail
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelPembayaran
 import id.magau.whizz.data.model.ModelPembayaranDetail
+import id.magau.whizz.ui.products.ProductsActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_detail_pembayaran.*
 import kotlinx.android.synthetic.main.item_loading.*
-import okhttp3.RequestBody
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/19/2020.
@@ -56,18 +54,36 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
                 myClipboard?.setPrimaryClip(myClip);
                 Toast.makeText(this, "No. Akun Tersalin", Toast.LENGTH_SHORT).show();
         }
+
+        mSwipeRefresh.setOnRefreshListener {
+            mPresenter.loadData(idProduct, kodeBank)
+        }
+
+        btnCheckPembayaran.setOnClickListener {
+            mPresenter.sendCheckPayment(idProduct)
+        }
+
     }
 
     override fun showData(data: ModelPembayaranDetail) {
         tvNoAkun.text = data.no_va
     }
 
+    override fun showCheckPayment(sukses: Boolean) {
+        start(ProductsActivity::class.java)
+    }
+
     override fun showLoading(show: Boolean) {
+        if (mSwipeRefresh.isRefreshing) mSwipeRefresh.isRefreshing = false
         mProgresBar visibility show
     }
 
     override fun showError(code: Int, message: String?) {
         toast("$code -> $message")
+    }
+
+    override fun showToast(data: String) {
+        toast(data)
     }
 
     override fun setPresenter(presenter: PembayaranDetailContracts.Presenter) {

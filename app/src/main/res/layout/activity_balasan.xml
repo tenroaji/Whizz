@@ -99,10 +99,11 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <id.magau.whizz.component.EditextChat
         android:id="@+id/editBalasan"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mRecyclerReplys"
         android:background="@drawable/background_square"
         android:minHeight="56dp"
         style="@style/TextDesc"

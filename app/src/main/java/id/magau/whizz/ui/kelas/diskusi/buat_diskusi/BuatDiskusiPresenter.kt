@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.kelas.diskusi.balasan
+package id.magau.whizz.ui.kelas.diskusi.buat_diskusi
 
 import android.content.Context
 import com.google.gson.Gson
@@ -18,7 +18,7 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class BalasanPresenter(val context: Context, val mView: BalasanContracts.View) :
+class BuatDiskusiPresenter(val context: Context, val mView: BalasanContracts.View) :
     BalasanContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),

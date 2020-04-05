@@ -1,7 +1,9 @@
 package id.magau.whizz.ui.kelas.diskusi.balasan
 
+import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelReplys
@@ -34,7 +36,7 @@ companion object{
         editBalasan.setOnEditorActionListener { v, actionId, event ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEND -> {
-                    mPresenter.sendReplys(idComments,editBalasan.text.toString())
+                    mPresenter.sendReplys(editBalasan.text.toString(),idComments)
                     true
                 }
                 else -> false
@@ -44,6 +46,23 @@ companion object{
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
         }
+    }
+
+
+    fun showInput(status: Boolean) {
+        val input = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (status) {
+            editBalasan.requestFocus()
+            input.showSoftInput(editBalasan, InputMethodManager.SHOW_IMPLICIT)
+        } else
+            input.hideSoftInputFromWindow(editBalasan.windowToken, 0)
+    }
+
+    override fun sendDone() {
+        editBalasan.text = null
+        showInput(false)
+        mPresenter.loadData(idComments)
+        mRecyclerReplys.smoothScrollToPosition(mAdapter.itemCount - 1)
     }
 
     override fun showData(data: ArrayList<ModelReplys?>) {

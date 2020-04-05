@@ -59,6 +59,10 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         tvLabelSemuaEvent.ripple().setOnClickListener {
             start(EventSayaActivity::class.java)
         }
+
+        mSwipeRefresh.setOnRefreshListener {
+            mPresenter.start()
+        }
 //        val mData1 = arrayListOf(
 //            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
 //            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
@@ -92,6 +96,9 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     }
 
     override fun showLoading(show: Boolean) {
+        if (mSwipeRefresh.isRefreshing){
+            mSwipeRefresh.isRefreshing = false
+        }
         mProgresBar visibility show
     }
 

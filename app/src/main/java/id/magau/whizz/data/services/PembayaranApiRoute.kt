@@ -28,4 +28,15 @@ interface PembayaranApiRoute {
         @Field("bank")  bank : String
     ): Call<ModelResponsePembayaranDetail>
 
+    @GET("student/myorder")
+    fun checkPayment(
+        @Header("authorization") authorization: String?,
+        @Query("course")  idcourse : String
+    ): Call<ModelResponseDiagnostic>
+
+    @GET("student/checkout")
+    fun getCheckOut(
+        @Header("authorization") authorization: String?
+    ): Call<ModelResponseCheckOut>
+
 }

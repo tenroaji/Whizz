@@ -16,39 +16,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTestimoni"
+
+    <TextView
+        android:id="@+id/tvLabelBuatDiskusi"
         style="@style/TextDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:background="@drawable/background_square"
-        android:gravity="top"
-        android:hint="Buat diskusi..."
-        android:minHeight="96dp"
-        android:paddingStart="55dp"
-        android:paddingTop="14dp"
-        android:paddingEnd="@dimen/margin_16dp"
-        android:paddingBottom="@dimen/margin_16dp"
-        app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi" />
+        android:text="Buat diskusi..."
+        app:layout_constraintStart_toEndOf="@id/imgUser"
+        app:layout_constraintTop_toTopOf="@id/imgUser"
+        android:layout_marginStart="@dimen/margin_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgUser"
+        android:textColor="#A3A4A5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/margin_16dp"
-        app:layout_constraintStart_toStartOf="@id/editTestimoni"
-        app:layout_constraintTop_toTopOf="@id/editTestimoni"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@id/viewBuatDiskusi"
+        app:layout_constraintTop_toTopOf="@id/viewBuatDiskusi"
         tools:background="@color/colorPrimaryDark" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:background="@drawable/background_square"
+        android:id="@+id/viewBuatDiskusi"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_height="96dp"/>
+
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/groupTestimoni"
+        android:id="@+id/groupDisksui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="editTestimoni,imgUser" />
+        app:constraint_referenced_ids="viewBuatDiskusi,tvLabelBuatDiskusi,imgUser" />
+
 
     <include layout="@layout/item_loading" />
 
@@ -59,6 +65,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTestimoni"
+        app:layout_constraintTop_toBottomOf="@id/viewBuatDiskusi"
         tools:listitem="@layout/item_list_diskusi" />
 </androidx.constraintlayout.widget.ConstraintLayout>
