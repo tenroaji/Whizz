@@ -18,7 +18,7 @@ class AdapterTabKelas(private val idProduct: String,fm: FragmentManager, private
     override fun getItem(position: Int): Fragment =
         when (position) {
         0 -> MateriFragment.newInstance(idProduct,kelasSaya)
-        1 -> DiskusiFragment.newInstance(idProduct)
+        1 -> DiskusiFragment.newInstance(idProduct,kelasSaya)
         2 -> FileFragment.newInstance()
         3 -> UjianFragment.newInstance()
         else -> KataSandiFragment()

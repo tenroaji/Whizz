@@ -13,6 +13,7 @@ import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.fragment_diskusi.*
 import kotlinx.android.synthetic.main.fragment_diskusi.imgUser
 import kotlinx.android.synthetic.main.fragment_diskusi.view.*
+import kotlinx.android.synthetic.main.item_loading.view.*
 
 //
 //
@@ -20,14 +21,15 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
 
     companion object {
         const val KEY_ID_PRODUK = "ID_PRODUK"
+        const val KEY_KELAS_SAYA = "KELAS_SAYA"
 
         //        const val KEY_TITLE = "TITLE"
 //
         @JvmStatic
-        fun newInstance(idProduct: String): DiskusiFragment {
+        fun newInstance(idProduct: String,kelasSaya : Boolean): DiskusiFragment {
             val args = Bundle()
             args.putString(KEY_ID_PRODUK, idProduct)
-//            args.putString(KEY_TITLE, title)
+            args.putBoolean(KEY_KELAS_SAYA, kelasSaya)
             val fragment = DiskusiFragment()
             fragment.arguments = args
             return fragment
@@ -41,24 +43,33 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
         requireArguments().getString(KEY_ID_PRODUK)!!
     }
 
+    private val kelasSaya by lazy {
+        requireArguments().getBoolean(KEY_KELAS_SAYA,false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mView = view
+
+        mView.groupDisksui visibility kelasSaya
+
+
         DiskusiPresenter(requireContext(), this)
         mPresenter.loadData(idProduct)
-        view.mRecyclerComment.apply {
+        mView.mRecyclerComment.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mAdater
         }
-
+        mAdater.updateKelasSaya(kelasSaya)
         val session = SessionUtils(requireContext())
         val nama = session.getData(SessionUtils.PREF_KEY_NAME, "")
         val initialName = getInitialName(nama.toUpperCase())
         val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)
         val mColor = ColorGenerator.APP.getColor(nama.length)
         val icon = TextDrawable.builder(requireContext()).buildRound(initialName, mColor, iconSize, iconSize)
-        view.imgUser.setImageDrawable(icon)
+        mView.imgUser.setImageDrawable(icon)
 
-        view.viewBuatDiskusi.ripple().setOnClickListener {
+        mView.viewBuatDiskusi.ripple().setOnClickListener {
             startActivity(Intent(requireContext(),BuatDiskusi::class.java).apply {
                 putExtra(BuatDiskusi.KEY_ID_PRODUK,idProduct)
             })
@@ -72,7 +83,7 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
     }
 
     override fun showLoading(show: Boolean) {
-
+        mView.mProgresBar visibility show
     }
 
     override fun showError(code: Int?, message: String?) {

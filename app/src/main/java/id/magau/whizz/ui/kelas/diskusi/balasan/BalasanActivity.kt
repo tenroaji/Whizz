@@ -21,11 +21,16 @@ import kotlinx.android.synthetic.main.item_loading.*
 class BalasanActivity :BaseActivity(layout = R.layout.activity_balasan),BalasanContracts.View{
 companion object{
     const val KEY_ID_COMMENT = "ID_COMMENT"
+    const val KEY_KELAS_SAYA = "KELAS_SAYA"
 }
 
     private var mAdapter = AdapterBalasan()
     private val idComments by lazy {
         intent.getStringExtra(KEY_ID_COMMENT)
+    }
+
+    private val kelasSaya by lazy {
+        intent.getBooleanExtra(KEY_ID_COMMENT,false)
     }
     private lateinit var mPresenter : BalasanContracts.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +38,9 @@ companion object{
         BalasanPresenter(this,this)
         mPresenter.loadData(idComments)
 
-        editBalasan.setOnEditorActionListener { v, actionId, event ->
+        editBalasan visibility kelasSaya
+
+        editBalasan.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEND -> {
                     mPresenter.sendReplys(editBalasan.text.toString(),idComments)

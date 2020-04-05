@@ -32,7 +32,7 @@
 
 
     <EditText
-        android:id="@+id/editTestimoni"
+        android:id="@+id/editComment"
         style="@style/TextDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,8 +55,8 @@
         android:layout_height="28dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/margin_16dp"
-        app:layout_constraintStart_toStartOf="@id/editTestimoni"
-        app:layout_constraintTop_toTopOf="@id/editTestimoni"
+        app:layout_constraintStart_toStartOf="@id/editComment"
+        app:layout_constraintTop_toTopOf="@id/editComment"
         tools:background="@color/colorPrimaryDark" />
 
 

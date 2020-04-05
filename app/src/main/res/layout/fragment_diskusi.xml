@@ -20,34 +20,34 @@
     <TextView
         android:id="@+id/tvLabelBuatDiskusi"
         style="@style/TextDesc"
-        android:text="Buat diskusi..."
-        app:layout_constraintStart_toEndOf="@id/imgUser"
-        app:layout_constraintTop_toTopOf="@id/imgUser"
-        android:layout_marginStart="@dimen/margin_8dp"
-        app:layout_constraintBottom_toBottomOf="@id/imgUser"
-        android:textColor="#A3A4A5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:text="Buat diskusi..."
+        android:textColor="#A3A4A5"
+        app:layout_constraintBottom_toBottomOf="@id/imgUser"
+        app:layout_constraintStart_toEndOf="@id/imgUser"
+        app:layout_constraintTop_toTopOf="@id/imgUser" />
 
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         app:layout_constraintStart_toStartOf="@id/viewBuatDiskusi"
         app:layout_constraintTop_toTopOf="@id/viewBuatDiskusi"
         tools:background="@color/colorPrimaryDark" />
 
     <View
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/margin_16dp"
-        android:background="@drawable/background_square"
         android:id="@+id/viewBuatDiskusi"
-        app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
         android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_height="96dp"/>
+        android:background="@drawable/background_square"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/groupDisksui"

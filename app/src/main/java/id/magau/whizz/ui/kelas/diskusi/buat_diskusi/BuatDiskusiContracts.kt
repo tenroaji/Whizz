@@ -15,9 +15,11 @@ interface BuatDiskusiContracts {
     }
 
     interface View : BaseView<Presenter> {
-        fun showData(data : ArrayList<ModelPembayaran?>)
+        fun doneComment()
 
         fun showLoading(show : Boolean)
+
+        fun showToast(data : String)
 
         fun showError(code : Int, message : String?)
     }

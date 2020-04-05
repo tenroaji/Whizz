@@ -44,6 +44,14 @@ interface SkillsApiRoute {
     ): Call<ModelResponseComments>
 
     @FormUrlEncoded
+    @POST("student/comment/insert")
+    fun sendComment(
+        @Header("authorization") token: String?,
+        @Field("idcourse") idProduct: String?,
+        @Field("comment") comment: String?
+    ): Call<ModelResponseDiagnostic>
+
+    @FormUrlEncoded
     @POST("student/rating")
     fun sendRating(
         @Header("authorization") authorization: String?,

@@ -18,8 +18,8 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class BuatDiskusiPresenter(val context: Context, val mView: BalasanContracts.View) :
-    BalasanContracts.Presenter {
+class BuatDiskusiPresenter(val context: Context, val mView: BuatDiskusiContracts.View) :
+    BuatDiskusiContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
         SkillsApiRoute::class.java,
@@ -34,50 +34,10 @@ class BuatDiskusiPresenter(val context: Context, val mView: BalasanContracts.Vie
     }
 
 
-    override fun loadData(idComment: String) {
+
+    override fun sendData(idProduct: String, comment: String) {
         mView.showLoading(true)
-        mService.getReplys(mToken, idComment).apply {
-            enqueue(object : Callback<ModelResponseReplys> {
-                override fun onFailure(call: Call<ModelResponseReplys>, t: Throwable) {
-                    mView.showLoading(false)
-                    mView.showError(0, "Internal Server Error")
-                }
-
-                override fun onResponse(
-                    call: Call<ModelResponseReplys>,
-                    response: Response<ModelResponseReplys>
-                ) {
-                    mView.showLoading(false)
-                    val mData = response.body()?.response
-                    if (response.code() == 200) {
-                        mData?.let {
-                            mView.showData(it)
-                        }
-                    } else if (response.code() == 500) {
-                        mView.showError(500, "Internal Server Error")
-                    } else {
-                        //http code selain 200
-                        response.errorBody()?.string()?.run {
-                            val model = Gson().fromJson(
-                                this,
-                                ModelResponseReplys::class.java
-                            )
-                            mView.showError(
-                                model.diagnostic?.code!!,
-                                model.diagnostic?.status
-                            )
-                        }
-                    }
-                }
-            })
-        }
-
-    }
-
-    override fun sendReplys(reply: String, idComment: String) {
-
-        mView.showLoading(true)
-        mService.sendReplys(mToken, idComment, reply).apply {
+        mService.sendComment(mToken, idProduct, comment).apply {
             enqueue(object : Callback<ModelResponseDiagnostic> {
                 override fun onFailure(call: Call<ModelResponseDiagnostic>, t: Throwable) {
                     mView.showLoading(false)
@@ -90,8 +50,8 @@ class BuatDiskusiPresenter(val context: Context, val mView: BalasanContracts.Vie
                 ) {
                     mView.showLoading(false)
                     if (response.code() in 200 .. 299) {
-                        mView.sendDone()
-                        mView.showToast("Berhasil Mengirimkan Balasan")
+                        mView.doneComment()
+                        mView.showToast("Berhasil Membuat Diskusi")
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {

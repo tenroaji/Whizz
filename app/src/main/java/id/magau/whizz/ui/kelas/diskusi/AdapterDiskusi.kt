@@ -19,13 +19,16 @@ import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 
 class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
     private var mData = mutableListOf<ModelComments?>()
-
+    private var mKelasSaya = false
     fun updateAdapter(data : ArrayList<ModelComments?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
     }
 
+    fun updateKelasSaya(status : Boolean){
+        mKelasSaya = status
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterDiskusi.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.item_list_diskusi,parent,false))
@@ -58,6 +61,7 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
             viewBalasan.ripple().setOnClickListener {
                 context.startActivity(Intent(context, BalasanActivity::class.java).apply {
                     putExtra(BalasanActivity.KEY_ID_COMMENT,data?.uuid_comment)
+                    putExtra(BalasanActivity.KEY_KELAS_SAYA,mKelasSaya)
                 })
             }
         }
