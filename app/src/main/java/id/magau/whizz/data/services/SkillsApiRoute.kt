@@ -73,6 +73,12 @@ interface SkillsApiRoute {
         @Header("id")  idComment : String
     ): Call<ModelResponseReplys>
 
+    @GET("student/section")
+    fun getMateri(
+        @Header("authorization") authorization: String?,
+        @Query("uuidcourse")  idComment : String
+    ): Call<ModelResponseMateri>
+
 
 
 }

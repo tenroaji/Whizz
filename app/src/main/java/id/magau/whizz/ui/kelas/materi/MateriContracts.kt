@@ -11,13 +11,13 @@ import id.magau.whizz.utils.BaseView
 interface MateriContracts {
 
     interface Presenter : BasePresenter {
-        fun showData()
+        fun loadData(idProduct : String)
 
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showData(data : ArrayList<ModelFile?>)
+        fun showData(data : ArrayList<ModelMateri?>)
 
         fun showLoading(show : Boolean)
 

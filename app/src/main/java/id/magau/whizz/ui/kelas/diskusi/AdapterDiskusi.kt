@@ -64,6 +64,10 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
                     putExtra(BalasanActivity.KEY_KELAS_SAYA,mKelasSaya)
                 })
             }
+
+            setOnClickListener {
+                viewBalasan.callOnClick()
+            }
         }
     }
 

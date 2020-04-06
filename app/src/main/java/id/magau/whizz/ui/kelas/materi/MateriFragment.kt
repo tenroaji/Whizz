@@ -7,11 +7,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFile
+import id.magau.whizz.data.model.ModelMateri
 import id.magau.whizz.ui.kelas.file.AdapterFile
 import id.magau.whizz.ui.kelas.materi.rating.RatingActivity
 import id.magau.whizz.utils.ripple
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.fragment_materi.view.*
+import kotlinx.android.synthetic.main.item_loading.view.*
 
 //
 //
@@ -34,9 +36,9 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
 
     private lateinit var mView: View
     private lateinit var mPresenter: MateriContracts.Presenter
-    private var mAdater = AdapterFile()
+    private var mAdater = AdapterMateri()
     private val idProduct by lazy{
-        arguments?.getString(KEY_ID_PRODUK)
+        arguments?.getString(KEY_ID_PRODUK)!!
     }
 
     val kelasSaya by lazy {
@@ -45,7 +47,8 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        MateriPresenter(requireContext(),this)
+        mPresenter.loadData(idProduct)
         mView = view
 
         mView.apply {
@@ -58,6 +61,8 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
                     putExtra(RatingActivity.KEY_ID_PRODUCT,idProduct)
                 })
             }
+
+
         }
 
 
@@ -65,12 +70,12 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
     }
 
 
-    override fun showData(data: ArrayList<ModelFile?>) {
+    override fun showData(data: ArrayList<ModelMateri?>) {
         mAdater.updateAdapter(data)
     }
 
     override fun showLoading(show: Boolean) {
-//        mView.mProgresBar visibility show
+        mView.mProgresBar visibility show
 //        if (mView.mSwipeRefresh.isRefreshing) mView.mSwipeRefresh.isRefreshing = false
     }
 
