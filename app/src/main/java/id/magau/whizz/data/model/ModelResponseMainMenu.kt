@@ -61,7 +61,7 @@ data class ModelPromoProduct(
 
 data class ModelCategory(
     @SerializedName("category")
-    var category : String? = "0.0"
+    var category : String? = ""
 )
 data class ModelEvents(
     @SerializedName("id")

@@ -20,7 +20,7 @@ interface SkillSayaContracts {
 
     interface View : BaseView<Presenter> {
 
-        fun showSkill(data : ArrayList<ModelProducts?>)
+        fun showData(data : ArrayList<ModelProducts?>)
 
         fun showLoading(show : Boolean)
 

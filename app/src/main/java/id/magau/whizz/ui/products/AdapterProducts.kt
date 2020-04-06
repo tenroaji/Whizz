@@ -1,16 +1,15 @@
 package id.magau.whizz.ui.products
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelProducts
-import id.magau.whizz.data.model.ModelSkills
-import id.magau.whizz.utils.radius
-import kotlinx.android.synthetic.main.activity_skill_detail.view.*
-import kotlinx.android.synthetic.main.item_list_skill_populer.view.*
-import kotlinx.android.synthetic.main.item_list_skill_populer.view.tvRating
+import id.magau.whizz.ui.kelas.KelasActivity
+import id.magau.whizz.utils.load
+import kotlinx.android.synthetic.main.item_list_skill_saya.view.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/4/2020.
@@ -37,10 +36,16 @@ class AdapterProducts : RecyclerView.Adapter<AdapterProducts.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            imgSkill radius mData[position]?.image
-            tvJenisSkill.text = mData[position]?.category?.category
+            imgSkill load mData[position]?.image
+            tvJenisSkill.text = mData[position]?.category?.category?.toUpperCase()
             tvTitleSkill.text = mData[position]?.title
             tvRating.text = mData[position]?.rate.toString()
+            setOnClickListener {
+                context.startActivity(Intent(context, KelasActivity::class.java).apply {
+                    putExtra(KelasActivity.KEY_ID_PRODUCT,mData[position]?.uuid_course)
+                    putExtra(KelasActivity.KEY_KELAS_SAYA,true)
+                })
+            }
         }
     }
 

@@ -38,7 +38,7 @@ class SkillSayaActivity : BaseActivity(R.color.colorWhite, R.layout.activity_ski
 
     }
 
-    override fun showSkill(data: ArrayList<ModelProducts?>) {
+    override fun showData(data: ArrayList<ModelProducts?>) {
         mAdapterSkills.updateAdapter(data)
     }
 

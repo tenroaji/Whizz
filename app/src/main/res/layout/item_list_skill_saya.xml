@@ -16,7 +16,7 @@
         android:layout_height="98dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/mPlayerView"
+            android:id="@+id/imgSkill"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -52,10 +52,8 @@
         android:id="@+id/tvJenisSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/muli_semibold_family"
-        android:textSize="12sp"
-        android:textColor="@color/colorFontLabel1"
         app:layout_constraintVertical_chainStyle="packed"
+        style="@style/TextJenis"
         app:layout_constraintStart_toEndOf="@id/cardView"
         app:layout_constraintTop_toTopOf="@id/cardView"
         app:layout_constraintBottom_toTopOf="@id/tvTitleSkill"

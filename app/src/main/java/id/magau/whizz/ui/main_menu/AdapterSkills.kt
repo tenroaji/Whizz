@@ -48,7 +48,7 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
             data?.image?.let {
                 Picasso.get().load(it).into(mPlayerView)
             }
-            tvJenisSkill.text = data?.category?.category
+            tvJenisSkill.text = data?.category?.category?.toUpperCase()
             tvTitleSkill.text = data?.title
             tvHarga.text = rupiah(data?.price!!)
             tvRating.text = data.rate.toString()

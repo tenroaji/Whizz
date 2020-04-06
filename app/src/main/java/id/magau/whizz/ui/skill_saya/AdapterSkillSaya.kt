@@ -37,7 +37,7 @@ class AdapterSkillSaya : RecyclerView.Adapter<AdapterSkillSaya.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            imgSkill radius mData[position]?.image!!
+            imgSkill radius mData[position]?.image
             tvJenisSkill.text = mData[position]?.category?.category
             tvTitleSkill.text = mData[position]?.title
             tvRating.text = mData[position]?.rate.toString()

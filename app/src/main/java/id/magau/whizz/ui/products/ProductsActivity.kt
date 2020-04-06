@@ -29,7 +29,7 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     private lateinit var mPresenter : ProductsContracts.Presenter
     private val mAdapterEvent = AdapterEventSaya()
     private val mAdapterSkills = AdapterProducts()
-    private val mAdapterKelas = AdapterSkillSaya()
+    private val mAdapterKelas = AdapterProducts()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ProductsPresenter(this,this)
@@ -63,31 +63,15 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         mSwipeRefresh.setOnRefreshListener {
             mPresenter.start()
         }
-//        val mData1 = arrayListOf(
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
-//        showSkillSaya(mData1)
-//        val mData2 = arrayListOf(
-//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
-//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"),
-//            ModelEventSaya("The Complete App Design Course - UX, UI and Design Thinking",0,"28 November 2019"))
-//        showEvent(mData2)
-//        val mData3 = arrayListOf(
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
-//        showKelasSaya(mData3)
-
 
     }
 
     override fun showSkillSaya(data: ArrayList<ModelProducts?>) {
-        Log.d("lapar",data.toString())
         mAdapterSkills.updateAdapter(data)
     }
 
     override fun showKelasSaya(data: ArrayList<ModelProducts?>) {
+        Log.d("lapar",data.toString())
         mAdapterKelas.updateAdapter(data)
     }
 

@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.products
+package id.magau.whizz.ui.skill_saya
 
 import android.content.Context
 import com.google.gson.Gson
@@ -18,8 +18,8 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class ProductsPresenter(val context: Context, val mView: ProductsContracts.View) :
-    ProductsContracts.Presenter {
+class SkilSayaPresenter(val context: Context, val mView: SkillSayaContracts.View) :
+    SkillSayaContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
         SkillsApiRoute::class.java,
@@ -32,7 +32,7 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
-    override fun loadSkillSaya() {
+    override fun loadData() {
         mView.showLoading(true)
         mService.mySkill(mToken).apply {
             enqueue(object : Callback<ModelResponseMySkills> {
@@ -49,7 +49,7 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            mView.showKelasSaya(it)
+                            mView.showData(it)
                         }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
@@ -71,14 +71,9 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
         }
     }
 
-    override fun loadKelasSaya() {
-    }
-
-    override fun loadEventSaya() {
-    }
 
     override fun start() {
-        loadSkillSaya()
+        loadData()
     }
 
 }
