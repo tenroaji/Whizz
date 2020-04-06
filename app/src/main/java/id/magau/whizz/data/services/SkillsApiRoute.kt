@@ -63,7 +63,7 @@ interface SkillsApiRoute {
     @POST("student/reply/insert")
     fun sendReplys(
         @Header("authorization") authorization: String?,
-        @Field("idcomment")  idcourse : String,
+        @Field("idcomment")  idComment : String,
         @Field("reply")  reply : String
     ): Call<ModelResponseDiagnostic>
 
@@ -73,10 +73,10 @@ interface SkillsApiRoute {
         @Header("id")  idComment : String
     ): Call<ModelResponseReplys>
 
-    @GET("student/section")
+    @GET("student/product/section")
     fun getMateri(
         @Header("authorization") authorization: String?,
-        @Query("uuidcourse")  idComment : String
+        @Query("uuidcourse")  idCourse : String
     ): Call<ModelResponseMateri>
 
 

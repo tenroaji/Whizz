@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_list_kurikulum.view.*
 class AdapterKurikulum : RecyclerView.Adapter<AdapterKurikulum.ViewHolder>() {
     private var mData = mutableListOf<ModelKurikulum?>()
     private var mAdapter = AdapterSubKurikulum()
-    private var isCollapse = true
+    private var isCollapse = false
     fun updateAdapter(data : ArrayList<ModelKurikulum?>){
         mData.clear()
         mData.addAll(data)

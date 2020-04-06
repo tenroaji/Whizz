@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFile
 import id.magau.whizz.data.model.ModelMateri
@@ -36,7 +37,7 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
 
     private lateinit var mView: View
     private lateinit var mPresenter: MateriContracts.Presenter
-    private var mAdater = AdapterMateri()
+    private var mAdapter = AdapterMateri()
     private val idProduct by lazy{
         arguments?.getString(KEY_ID_PRODUK)!!
     }
@@ -47,9 +48,9 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mView = view
         MateriPresenter(requireContext(),this)
         mPresenter.loadData(idProduct)
-        mView = view
 
         mView.apply {
             if (kelasSaya){
@@ -61,7 +62,10 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
                     putExtra(RatingActivity.KEY_ID_PRODUCT,idProduct)
                 })
             }
-
+            mRecyclerMateri.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter= mAdapter
+            }
 
         }
 
@@ -71,7 +75,7 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
 
 
     override fun showData(data: ArrayList<ModelMateri?>) {
-        mAdater.updateAdapter(data)
+        mAdapter.updateAdapter(data)
     }
 
     override fun showLoading(show: Boolean) {

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.item_list_materi.view.*
 class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
     private var mData = mutableListOf<ModelMateri?>()
     private var mAdapter = AdapterSubMateri()
-    private var isCollapse = true
+    private var isCollapse = false
 
     fun updateAdapter(data : ArrayList<ModelMateri?>){
         mData.clear()
