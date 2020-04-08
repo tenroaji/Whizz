@@ -75,6 +75,11 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
             })
         }
 
+        mView.mSwipeRefresh.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
+        mView.mSwipeRefresh.setOnRefreshListener {
+            mPresenter.loadData(idProduct)
+        }
+
     }
 
 
@@ -83,7 +88,9 @@ class DiskusiFragment : Fragment(R.layout.fragment_diskusi), DiskusiContracts.Vi
     }
 
     override fun showLoading(show: Boolean) {
+        if (mSwipeRefresh.isRefreshing) mSwipeRefresh.isRefreshing = false
         mView.mProgresBar visibility show
+
     }
 
     override fun showError(code: Int?, message: String?) {

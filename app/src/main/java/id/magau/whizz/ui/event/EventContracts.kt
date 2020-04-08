@@ -15,6 +15,9 @@ interface EventContracts {
     interface Presenter : BasePresenter {
         fun loadEvent()
 
+        fun isCanNextPage() : Boolean
+
+        fun forceUpdate()
     }
 
     interface View : BaseView<Presenter> {
@@ -23,6 +26,10 @@ interface EventContracts {
 
         fun showLoading(show : Boolean)
 
+        fun showNextLoading(show : Boolean)
+
         fun showError(code : Int?, message : String?)
+
+        fun showNoData()
     }
 }

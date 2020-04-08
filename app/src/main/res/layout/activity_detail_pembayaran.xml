@@ -136,5 +136,7 @@
         android:text="Cek Pembayaran"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <include layout="@layout/item_try_again" />
+
     <include layout="@layout/item_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,7 @@ package id.magau.whizz.ui.kelas.diskusi.buat_diskusi
 
 import android.os.Bundle
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelPembayaran
-import id.magau.whizz.utils.BaseActivity
-import id.magau.whizz.utils.toast
-import id.magau.whizz.utils.visibility
+import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_buat_disukusi.*
 import kotlinx.android.synthetic.main.item_loading.*
 
@@ -34,6 +31,15 @@ class BuatDiskusi : BaseActivity(layout = R.layout.activity_buat_disukusi),BuatD
         btnPostDiskusi.setOnClickListener {
             mPresenter.sendData(idProduct,editComment.text.toString())
         }
+
+        val session = SessionUtils(this)
+        val nama = session.getData(SessionUtils.PREF_KEY_NAME, "")
+        val initialName = getInitialName(nama.toUpperCase())
+        val iconSize = resources.getDimensionPixelSize(R.dimen.margin_28dp)
+        val mColor = ColorGenerator.APP.getColor(nama.length)
+        val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
+        imgUser.setImageDrawable(icon)
+
     }
 
     override fun doneComment() {

@@ -42,4 +42,6 @@
     <string name="label_yakin_kumpulkan">Anda yakin ingin mengumpulkan sekarang ?</string>
     <string name="label_batal">Batal</string>
     <string name="label_prev">Sebelumnya</string>
+    <string name="label_coba_lagi">Coba Lagi</string>
+    <string name="label_terjadi_kesalahan">Terjadi Kesalahan !!</string>
 </resources>

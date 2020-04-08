@@ -25,6 +25,7 @@ interface PembayaranDetailContracts {
 
         fun showCheckPayment(sukses : Boolean)
 
+        fun showCobaLagi(show : Boolean, data : String?)
 //        fun showCheckOut(data : ModelCheckOut)
 
         fun showLoading(show : Boolean)

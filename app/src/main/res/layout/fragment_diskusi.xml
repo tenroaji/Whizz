@@ -5,66 +5,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvLabelDiskusi"
-        style="@style/TextLabelTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_16dp"
-        android:text="Diskusi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tvLabelBuatDiskusi"
-        style="@style/TextDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:text="Buat diskusi..."
-        android:textColor="#A3A4A5"
-        app:layout_constraintBottom_toBottomOf="@id/imgUser"
-        app:layout_constraintStart_toEndOf="@id/imgUser"
-        app:layout_constraintTop_toTopOf="@id/imgUser" />
-
-    <ImageView
-        android:id="@+id/imgUser"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/margin_16dp"
-        app:layout_constraintStart_toStartOf="@id/viewBuatDiskusi"
-        app:layout_constraintTop_toTopOf="@id/viewBuatDiskusi"
-        tools:background="@color/colorPrimaryDark" />
-
-    <View
-        android:id="@+id/viewBuatDiskusi"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:background="@drawable/background_square"
-        app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi" />
+        android:id="@+id/mSwipeRefresh"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/groupDisksui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="viewBuatDiskusi,tvLabelBuatDiskusi,imgUser" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvLabelDiskusi"
+                style="@style/TextLabelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="Diskusi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    <include layout="@layout/item_loading" />
+            <TextView
+                android:id="@+id/tvLabelBuatDiskusi"
+                style="@style/TextDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:text="Buat diskusi..."
+                android:textColor="#A3A4A5"
+                app:layout_constraintBottom_toBottomOf="@id/imgUser"
+                app:layout_constraintStart_toEndOf="@id/imgUser"
+                app:layout_constraintTop_toTopOf="@id/imgUser" />
+
+            <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                app:layout_constraintStart_toStartOf="@id/viewBuatDiskusi"
+                app:layout_constraintTop_toTopOf="@id/viewBuatDiskusi"
+                tools:background="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/viewBuatDiskusi"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@drawable/background_square"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelDiskusi" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupDisksui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="viewBuatDiskusi,tvLabelBuatDiskusi,imgUser" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mRecyclerComment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewBuatDiskusi"
-        tools:listitem="@layout/item_list_diskusi" />
+            <include layout="@layout/item_loading" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mRecyclerComment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewBuatDiskusi"
+                tools:listitem="@layout/item_list_diskusi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

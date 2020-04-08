@@ -38,7 +38,7 @@ class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterMateri.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvTitle.text = data?.title_section
+            tvTitle.text = "${position+1}. ${data?.title_section}"
             mRecyclerMateri.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter

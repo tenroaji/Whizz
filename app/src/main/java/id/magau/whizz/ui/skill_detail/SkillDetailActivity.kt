@@ -111,7 +111,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
 
         tvComment.text = data?.title
         tvHarga.text = rupiah(data?.price!!)
-        tvJenis.text = data.category?.category
+        tvJenis.text = data.category?.category?.toUpperCase()
         tvPemateri.text = data.teacher?.name?.capitalize()
         imgSkill load data.image
         tvRating.text = data.rate.toString()

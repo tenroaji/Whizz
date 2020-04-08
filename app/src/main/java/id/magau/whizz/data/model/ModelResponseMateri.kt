@@ -45,6 +45,8 @@ data class ModelSubMateri(
     var desc : String?= "",
     @SerializedName("pdf")
     var pdf : String?= "",
+    @SerializedName("html")
+    var html : String?= "",
     @SerializedName("description")
     var description : String?= ""
 )

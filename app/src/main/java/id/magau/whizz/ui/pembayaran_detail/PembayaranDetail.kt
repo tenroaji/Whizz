@@ -10,6 +10,7 @@ import id.magau.whizz.ui.products.ProductsActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_detail_pembayaran.*
 import kotlinx.android.synthetic.main.item_loading.*
+import kotlinx.android.synthetic.main.item_try_again.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/19/2020.
@@ -63,6 +64,10 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
             mPresenter.sendCheckPayment(idProduct)
         }
 
+        viewCobaLagi.setOnClickListener {
+            mPresenter.loadData(idProduct, kodeBank)
+            showCobaLagi(false,null)
+        }
     }
 
     override fun showData(data: ModelPembayaranDetail) {
@@ -71,6 +76,13 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
 
     override fun showCheckPayment(sukses: Boolean) {
         start(ProductsActivity::class.java)
+    }
+
+    override fun showCobaLagi(show: Boolean,data : String?) {
+        viewCobaLagi visibility show
+        data?.let{
+            tvCobaLagi.text = data
+        }
     }
 
     override fun showLoading(show: Boolean) {

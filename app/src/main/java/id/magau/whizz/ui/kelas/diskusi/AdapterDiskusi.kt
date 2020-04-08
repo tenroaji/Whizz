@@ -1,6 +1,7 @@
 package id.magau.whizz.ui.kelas.diskusi
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import id.magau.whizz.ui.kelas.diskusi.balasan.BalasanActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.item_list_diskusi.view.*
 import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
+import kotlin.properties.Delegates
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/19/2020.
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 
 class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
     private var mData = mutableListOf<ModelComments?>()
-    private var mKelasSaya = false
+    private var mKelasSaya by Delegates.notNull<Boolean>()
     fun updateAdapter(data : ArrayList<ModelComments?>){
         mData.clear()
         mData.addAll(data)
@@ -27,6 +29,7 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
     }
 
     fun updateKelasSaya(status : Boolean){
+        Log.e("lapar", status.toString())
         mKelasSaya = status
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterDiskusi.ViewHolder {
@@ -42,8 +45,7 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
         holder.itemView.apply {
             val data = mData[position]
 
-
-
+            tvTanggal visibility false
             tvPemateri.text = data?.user?.name?.capitalize()
             tvComment.text = data?.comment
             data?.reply?.size?.let{
@@ -62,6 +64,8 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
                 context.startActivity(Intent(context, BalasanActivity::class.java).apply {
                     putExtra(BalasanActivity.KEY_ID_COMMENT,data?.uuid_comment)
                     putExtra(BalasanActivity.KEY_KELAS_SAYA,mKelasSaya)
+                    putExtra(BalasanActivity.KEY_NAMA,tvPemateri.text.toString())
+                    putExtra(BalasanActivity.KEY_COMMENT,tvComment.text.toString())
                 })
             }
 

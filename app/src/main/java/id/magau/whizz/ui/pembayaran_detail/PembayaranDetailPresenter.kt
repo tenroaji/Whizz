@@ -61,7 +61,7 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
 
                     } else if (response.code() == 500) {
 //                        mView.showError(500, "Internal Server Error")
-                        mView.showToast("Ada Kesalahan server, Silahkan coba lagi")
+                        mView.showCobaLagi(true,"Ada Kesalahan server, Silahkan coba lagi")
                     } else {
                         //http code selain 200
                         response.errorBody()?.string()?.run {
