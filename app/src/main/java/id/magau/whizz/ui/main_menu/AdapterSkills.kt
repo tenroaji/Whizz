@@ -45,6 +45,9 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = mData[position]
         holder.itemView.apply {
+            if (data?.is_mine!!){
+                groupPrice visibility false
+            }
             data?.image?.let {
                 Picasso.get().load(it).into(mPlayerView)
             }

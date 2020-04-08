@@ -52,12 +52,14 @@
         android:id="@+id/tvJenisSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/muli_semibold_family"
-        android:textSize="12sp"
         android:textColor="@color/colorFontLabel1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tvTitleSkill"
         app:layout_constraintStart_toEndOf="@id/cardView"
         app:layout_constraintTop_toTopOf="@id/cardView"
-        android:layout_marginStart="8dp"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="HARD SKILL" />
 
     <TextView
@@ -70,24 +72,31 @@
         android:textColor="@color/fontBold"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@id/tvJenisSkill"
+        app:layout_constraintBottom_toTopOf="@id/tvHarga"
         app:layout_constraintStart_toEndOf="@id/cardView"
         android:layout_marginTop="@dimen/margin_8dp"
         tools:text="The Complete App Design Course - UX, UI and Design Thinking" />
-    
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:id="@+id/groupPrice"
+        android:visibility="visible"
+        app:constraint_referenced_ids="tvHarga,tvPromo"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tvHarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/cardView"
         android:fontFamily="@font/muli_bold_family"
-        android:textSize="16sp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="@id/tvTitleSkill"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="@id/tvTitleSkill"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:text="Rp 207.900"/>
+        app:layout_constraintStart_toStartOf="@id/tvTitleSkill"
+        tools:text="Rp 207.900" />
 
     <TextView
         android:id="@+id/tvPromo"

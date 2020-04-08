@@ -48,6 +48,7 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                     setOnClickListener {
                         context.startActivity(Intent(context, VideoActivity::class.java).apply {
                             putExtra(VideoActivity.KEY_VIDEO, data.materi?.video)
+                            putExtra(VideoActivity.KEY_TITLE, data.materi?.title)
                         })
                     }
                 }

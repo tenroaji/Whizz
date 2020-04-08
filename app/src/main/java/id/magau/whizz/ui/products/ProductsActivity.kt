@@ -28,8 +28,8 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     ProductsContracts.View {
     private lateinit var mPresenter : ProductsContracts.Presenter
     private val mAdapterEvent = AdapterEventSaya()
-    private val mAdapterSkills = AdapterProducts()
-    private val mAdapterKelas = AdapterProducts()
+    private val mAdapterSkills = AdapterSkills()
+    private val mAdapterKelas = AdapterSkills()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ProductsPresenter(this,this)
