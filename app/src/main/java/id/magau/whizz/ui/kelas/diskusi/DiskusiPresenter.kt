@@ -57,7 +57,6 @@ class DiskusiPresenter(val context: Context, val mView: DiskusiContracts.View) :
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        Log.e("lapar",idProduct)
                         response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,

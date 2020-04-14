@@ -72,7 +72,6 @@ class KurikulumFragment : Fragment(R.layout.fragment_kurikulum),KurikulumContrac
 
 
     override fun showData(data: ArrayList<ModelKurikulum?>) {
-        Log.e("Lapar", "$data")
         mAdater.updateAdapter(data)
     }
 

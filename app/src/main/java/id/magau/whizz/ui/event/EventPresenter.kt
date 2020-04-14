@@ -5,7 +5,8 @@ import com.google.gson.Gson
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.data.model.ModelResponseDiagnostic
-import id.magau.whizz.data.model.ModelResponseSkills
+import id.magau.whizz.data.model.ModelResponseEvent
+import id.magau.whizz.data.services.EventApiRoute
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -21,15 +22,15 @@ import retrofit2.Response
 
 class EventPresenter(val context: Context, val mView: EventContracts.View) :
     EventContracts.Presenter {
-    private val mService: SkillsApiRoute = RetrofitUtils.createService(
+    private val mService: EventApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
-        SkillsApiRoute::class.java,
+        EventApiRoute::class.java,
         30000L, HttpLoggingInterceptor.Level.HEADERS
     )
-    private var mToken =""
+    private var mToken = ""
     private var nextPage = 1
     private var isLoading = false
-    private var mData: MutableList<ModelEvents?>? = mutableListOf()
+    private var mData: ArrayList<ModelEvents?> = arrayListOf()
 
     init {
         mView.setPresenter(this)
@@ -47,12 +48,12 @@ class EventPresenter(val context: Context, val mView: EventContracts.View) :
             mView.showNextLoading(true)
         }
 
-        mService.allSkill(mToken).apply {
-            enqueue(object : Callback<ModelResponseSkills> {
-                override fun onFailure(call: Call<ModelResponseSkills>, t: Throwable) {
-                    if (nextPage == 1 ){
+        mService.getEvents(mToken, nextPage.toString()).apply {
+            enqueue(object : Callback<ModelResponseEvent> {
+                override fun onFailure(call: Call<ModelResponseEvent>, t: Throwable) {
+                    if (nextPage == 1) {
                         mView.showLoading(false)
-                    }else {
+                    } else {
                         mView.showNextLoading(false)
                     }
 
@@ -60,15 +61,33 @@ class EventPresenter(val context: Context, val mView: EventContracts.View) :
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseSkills>,
-                    response: Response<ModelResponseSkills>
+                    call: Call<ModelResponseEvent>,
+                    response: Response<ModelResponseEvent>
                 ) {
-                    mView.showLoading(false)
+                    val pagination = response.body()?.pagination
+                    if (nextPage == 1) {
+                        mView.showLoading(false)
+                    } else {
+                        mView.showNextLoading(false)
+                    }
+                    isLoading = false
                     if (response.code() == 200) {
                         val data = response.body()?.response
-                        data?.let{
-//                            mView.showEvent(it)
+                        if (pagination != null) {
+                            nextPage = if (pagination.current_page!! < pagination.last_page!!)
+                                pagination.current_page!! + 1 else -1
+                            mData?.addAll(data as ArrayList<ModelEvents?>)
+                            if (pagination.current_page == 1) {
+                                data?.let {
+                                    mView.showEvent(it)
+                                }
+                            } else {
+                                if (!mData.isNullOrEmpty()) mView.showEvent(mData)
+                                else mView.showNoData()
+                            }
                         }
+
+
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {
@@ -96,9 +115,8 @@ class EventPresenter(val context: Context, val mView: EventContracts.View) :
     override fun forceUpdate() {
         nextPage = 1
         isLoading = false
-        mData?.clear()
+        mData.clear()
     }
-
 
 
     override fun start() {

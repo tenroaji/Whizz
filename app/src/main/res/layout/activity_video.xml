@@ -28,7 +28,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <com.longtailvideo.jwplayer.JWPlayerView xmlns:jwp="http://schemas.android.com/apk/lib/com.longtailvideo.jwplayer"
+    <com.google.android.exoplayer2.ui.PlayerControlView
         android:id="@+id/mPlayerView"
         app:layout_constraintDimensionRatio="H,16:9"
         app:layout_constraintEnd_toEndOf="parent"

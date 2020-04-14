@@ -9,8 +9,10 @@ import com.google.gson.annotations.SerializedName
 data class ModelResponseEvent (
     @SerializedName("diagnostic")
     var diagnostic : ModelDiagnostic? = null,
+    @SerializedName("pagination")
+    var pagination : ModelPagination? = null,
     @SerializedName("response")
-    var response : ModelEvent? = null
+    var response : ArrayList<ModelEvents?>? = null
 )
 
 

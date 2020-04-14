@@ -13,7 +13,7 @@ class AdapterTab(private val idProduct : String,private val descSkill : String?,
     override fun getItem(position: Int): Fragment = when (position) {
         0 -> PratinjauFragment.newInstance(idProduct,descSkill)
         1 -> KurikulumFragment.newInstance(idProduct)
-        else -> JadwalFragment.newInstance()
+        else -> JadwalFragment()
     }
 
     override fun getPageTitle(position: Int): CharSequence = when (position) {

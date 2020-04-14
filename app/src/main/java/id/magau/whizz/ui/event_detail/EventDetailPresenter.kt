@@ -1,12 +1,12 @@
-package id.magau.whizz.ui.kelas.materi
+package id.magau.whizz.ui.event_detail
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelDiagnostic
+import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.data.model.ModelResponseDiagnostic
-import id.magau.whizz.data.model.ModelResponseMateri
+import id.magau.whizz.data.model.ModelResponseEventDetail
+import id.magau.whizz.data.services.EventApiRoute
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -20,44 +20,48 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class MateriPresenter(val context: Context, val mView: MateriContracts.View) :
-    MateriContracts.Presenter {
-    private val mService: SkillsApiRoute = RetrofitUtils.createService(
+class EventDetailPresenter(val context: Context, val mView: EventDetailContracts.View) :
+    EventDetailContracts.Presenter {
+    private val mService: EventApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
-        SkillsApiRoute::class.java,
+        EventApiRoute::class.java,
         30000L, HttpLoggingInterceptor.Level.HEADERS
     )
-    private var mToken =""
+    private var mToken = ""
+
     init {
         mView.setPresenter(this)
         val session = SessionUtils(context)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
-    override fun loadData(idProduct: String) {
+
+    override fun loadEvent(idEvent: String) {
         mView.showLoading(true)
-        mService.getMateri(mToken,idProduct).apply {
-            enqueue(object : Callback<ModelResponseMateri> {
-                override fun onFailure(call: Call<ModelResponseMateri>, t: Throwable) {
+
+        mService.getEventDetail(mToken, idEvent).apply {
+            enqueue(object : Callback<ModelResponseEventDetail> {
+                override fun onFailure(call: Call<ModelResponseEventDetail>, t: Throwable) {
                     mView.showLoading(false)
-                    mView.showError(0, "Internal Server Error $t")
+                    mView.showError(0, "Internal Server Error")
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseMateri>,
-                    response: Response<ModelResponseMateri>
+                    call: Call<ModelResponseEventDetail>,
+                    response: Response<ModelResponseEventDetail>
                 ) {
                     mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
-                        data?.let{
-                            mView.showData(it)
+                        data?.let {
+                            mView.showEvent(it)
                         }
+
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.string()?.run {
+                        response.errorBody()?.string().run {
                             val model = Gson().fromJson(
                                 this,
                                 ModelResponseDiagnostic::class.java
@@ -72,6 +76,8 @@ class MateriPresenter(val context: Context, val mView: MateriContracts.View) :
             })
         }
     }
+
+
 
     override fun start() {
     }

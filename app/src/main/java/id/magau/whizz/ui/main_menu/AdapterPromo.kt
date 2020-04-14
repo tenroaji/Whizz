@@ -10,8 +10,13 @@ import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.data.model.ModelPromo
+import id.magau.whizz.utils.load
 import id.magau.whizz.utils.rupiah
 import kotlinx.android.synthetic.main.item_list_event.view.*
+import kotlinx.android.synthetic.main.item_list_event.view.tvHarga
+import kotlinx.android.synthetic.main.item_list_event.view.tvJenisSkill
+import kotlinx.android.synthetic.main.item_list_event.view.tvTitleSkill
+import kotlinx.android.synthetic.main.item_list_promo.view.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/4/2020.
@@ -52,6 +57,8 @@ class AdapterPromo : RecyclerView.Adapter<AdapterPromo.ViewHolder>() {
 //            mData[position]?.image?.let {
 //                Picasso.get().load(it).into(imgEvent)
 //            }
+            imgPromo load mData[position]?.image
+            tvRating.text = mData[position]?.rate.toString()
             tvJenisSkill.text = mData[position]?.category?.category
             tvTitleSkill.text = mData[position]?.title
             tvHarga.text = rupiah(mData[position]?.price!!)

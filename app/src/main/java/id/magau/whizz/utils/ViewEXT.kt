@@ -79,7 +79,6 @@ infix fun TextView.itemChoicePembahasanActive(status: Int) {
 
 fun ImageView?.loadImageUrl(data : String?,context: Context){
     data?.let{
-        Log.e("Lapar utils", "$it")
         Picasso.get().load(it).into(object :Target{
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
 
@@ -88,7 +87,6 @@ fun ImageView?.loadImageUrl(data : String?,context: Context){
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 val drawable = BitmapDrawable(context.resources,bitmap)
                 this@loadImageUrl?.apply {
-                    Log.e("Lapar", "onLoad")
                     background = drawable
                     setImageResource(R.drawable.gradient_image)
                 }
@@ -219,7 +217,7 @@ infix fun (() -> Any).after(delay: Long) {
  fun rupiah(number: Int): String{
     val localeID =  Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-    return numberFormat.format(number.toDouble()).toString()
+    return numberFormat.format(number.toDouble()).toString().replace("Rp","Rp ")
 }
 
 infix fun (() -> Any).every(delay: Long) {

@@ -45,7 +45,7 @@
                     app:srcCompat="@drawable/ic_back_white" />
 
                 <TextView
-                    android:id="@+id/tvComment"
+                    android:id="@+id/tvTitle"
                     style="@style/TextLabelTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvComment"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
                     tools:background="#000000" />
 
                 <TextView
@@ -73,12 +73,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8dp"
+                    app:layout_constraintVertical_chainStyle="packed"
                     app:layout_constraintStart_toEndOf="@id/imgPemateri"
                     app:layout_constraintTop_toTopOf="@id/imgPemateri"
+                    app:layout_constraintBottom_toTopOf="@id/tvPekerjaan"
                     tools:text="Gerard Way +7 Mentor" />
 
                 <TextView
-                    android:id="@+id/tvComment"
+                    android:id="@+id/tvPekerjaan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8dp"
@@ -86,6 +88,7 @@
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/imgPemateri"
                     app:layout_constraintTop_toBottomOf="@id/tvPemateri"
+                    app:layout_constraintBottom_toBottomOf="@id/imgPemateri"
                     tools:text="CEO PT Impian" />
 
                 <View
@@ -192,4 +195,6 @@
             android:text="Beli Tiket"
             app:cornerRadius="4dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/item_loading" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

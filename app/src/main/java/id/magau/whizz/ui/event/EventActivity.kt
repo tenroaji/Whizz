@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
+import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.toast
 import id.magau.whizz.utils.visibility
@@ -24,7 +25,8 @@ class EventActivity : BaseActivity(R.color.colorWhite, R.layout.activity_events)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        EventPresenter(this,this)
+        mPresenter.start()
         mToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -41,41 +43,16 @@ class EventActivity : BaseActivity(R.color.colorWhite, R.layout.activity_events)
 //                    "item = ${mLayoutManager.itemCount} visible = ${visibleItemPosition} total =${mLayoutManager.itemCount - visibleItemPosition}, next = ${mPresenter.isCanNextPage()}"
 //                )
                 if ((mLayoutManager.itemCount - visibleItemPosition) <= 1 && mPresenter.isCanNextPage()) {
-//                        mPresenter.getRank(idProduct)
+                        mPresenter.loadEvent()
                 }
             }
         })
 
-
-        val mData2 = arrayListOf(
-            ModelEvent(
-                "HARD SKILL",
-                "The Complete App Design Course - UX, UI and Design Thinking",
-                0,
-                "MAKASSAR",
-                "Rp 207.900"
-            ),
-            ModelEvent(
-                "SOFT SKILL",
-                "The Complete App Design Course - UX, UI and Design Thinking",
-                0,
-                "MAKASSAR",
-                "Rp 207.900"
-            ),
-            ModelEvent(
-                "HARD SKILL",
-                "The Complete App Design Course - UX, UI and Design Thinking",
-                0,
-                "MAKASSAR",
-                "Rp 207.900"
-            )
-        )
-        showEvent(mData2)
     }
 
 
-    override fun showEvent(data: ArrayList<ModelEvent>) {
-//        mAdapter.updateAdapter(data)
+    override fun showEvent(data: ArrayList<ModelEvents?>) {
+        mAdapter.updateAdapter(data)
     }
 
     override fun showLoading(show: Boolean) {

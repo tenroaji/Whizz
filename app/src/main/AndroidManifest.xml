@@ -58,15 +58,12 @@
         <activity android:name=".ui.soal_analisis.SoalAnalisisLatihan" />
         <activity android:name=".ui.soal_panel.SoalPanel" />
         <activity android:name=".ui.analisis_penghasilan.AnalisisPenghasilanActivity" />
-
-        <activity android:name=".ui.media_player.MediaPlayerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
         <activity android:name=".ui.kelas.materi.rating.RatingActivity" />
         <activity android:name=".ui.kelas.diskusi.balasan.BalasanActivity" />
         <activity android:name=".ui.kelas.diskusi.buat_diskusi.BuatDiskusi" />
         <activity android:name=".ui.kelas.materi.pdf.PdfActivity" />
         <activity android:name=".ui.kelas.materi.video.VideoActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -78,21 +75,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
-        <meta-data
-            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="id.magau.whizz.ui.media_player.CastOptionsProvider" />
-
-        <!--TODO Set your license key-->
-        <meta-data
-            android:name="JW_LICENSE_KEY"
-            android:value="Sp1yv2Mi/dLS8hiiyE7shFVRQN59/YPQBq+Hbh7RH4hV2dig8IEd1rWNEm5HXKcw" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

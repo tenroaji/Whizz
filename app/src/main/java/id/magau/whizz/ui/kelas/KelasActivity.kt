@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import id.magau.whizz.R
 import id.magau.whizz.ui.pembayaran.PembayaranActivity
-import id.magau.whizz.utils.BaseActivity
-import id.magau.whizz.utils.load
-import id.magau.whizz.utils.ripple
-import id.magau.whizz.utils.visibility
+import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_kelas.*
 
 /**
@@ -20,10 +17,15 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
         const val KEY_KELAS_SAYA = "KELAS_SAYA"
         const val KEY_URL_IMG = "URL_IMG"
         const val KEY_TITLE = "TITLE"
+        const val KEY_PEMATERI = "PEMATERI"
     }
 
     val kelasSaya by lazy {
         intent.getBooleanExtra(KEY_KELAS_SAYA,false)
+    }
+
+    val mPemateri by lazy {
+        intent.getStringExtra(KEY_PEMATERI)
     }
 
     val idProduct by lazy {
@@ -42,10 +44,22 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
 
         if (kelasSaya){
             btnBeliKelas visibility false
+        }else{
+            groupUser visibility false
         }
 
+        groupJabatan visibility false
+        
+        tvPemateri.text = mPemateri
+        tvJabatan visibility false
+        val initialName = getInitialName(mPemateri.toUpperCase())
+        val iconSize = resources.getDimensionPixelSize(R.dimen.margin_40dp)
+        val mColor = ColorGenerator.APP.getColor(mPemateri.length)
+        val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
+        imgPemateri.setImageDrawable(icon)
+
         imgKelas load urlKelas
-        tvComment.text = title
+        tvTitle.text = title
 
         imgBack.ripple().setOnClickListener {
             onBackPressed()

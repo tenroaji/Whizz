@@ -18,13 +18,13 @@ import kotlinx.android.synthetic.main.item_loading.*
  * Created by siapaSAYA on 4/3/2020
  */
 
-class BalasanActivity :BaseActivity(layout = R.layout.activity_balasan),BalasanContracts.View{
-companion object{
-    const val KEY_ID_COMMENT = "ID_COMMENT"
-    const val KEY_KELAS_SAYA = "KELAS_SAYA"
-    const val KEY_NAMA = "KEY_NAMA"
-    const val KEY_COMMENT = "COMMENT"
-}
+class BalasanActivity : BaseActivity(layout = R.layout.activity_balasan), BalasanContracts.View {
+    companion object {
+        const val KEY_ID_COMMENT = "ID_COMMENT"
+        const val KEY_KELAS_SAYA = "KELAS_SAYA"
+        const val KEY_NAMA = "KEY_NAMA"
+        const val KEY_COMMENT = "COMMENT"
+    }
 
     private var mAdapter = AdapterBalasan()
     private val idComments by lazy {
@@ -42,12 +42,12 @@ companion object{
 
 
     private val kelasSaya by lazy {
-        intent.getBooleanExtra(KEY_KELAS_SAYA,false)
+        intent.getBooleanExtra(KEY_KELAS_SAYA, false)
     }
-    private lateinit var mPresenter : BalasanContracts.Presenter
+    private lateinit var mPresenter: BalasanContracts.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        BalasanPresenter(this,this)
+        BalasanPresenter(this, this)
         mPresenter.loadData(idComments)
         tvTanggal visibility false
         tvComment.text = mComment
@@ -58,7 +58,6 @@ companion object{
         val mColor = ColorGenerator.APP.getColor(mNama.length)
         val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
         imgComment.setImageDrawable(icon)
-        Log.d("lapar",kelasSaya.toString())
         editBalasan visibility kelasSaya
 
         val session = SessionUtils(this)
@@ -66,13 +65,14 @@ companion object{
         val initialName2 = getInitialName(nama2.toUpperCase())
         val iconSize2 = resources.getDimensionPixelSize(R.dimen.margin_28dp)
         val mColor2 = ColorGenerator.APP.getColor(nama2.length)
-        val icon2 = TextDrawable.builder(this).buildRound(initialName2, mColor2, iconSize2, iconSize2)
+        val icon2 =
+            TextDrawable.builder(this).buildRound(initialName2, mColor2, iconSize2, iconSize2)
         imgUser.setImageDrawable(icon2)
 
         editBalasan.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEND -> {
-                    mPresenter.sendReplys(editBalasan.text.toString(),idComments)
+                    mPresenter.sendReplys(editBalasan.text.toString(), idComments)
                     true
                 }
                 else -> false
@@ -98,7 +98,9 @@ companion object{
         editBalasan.text = null
         showInput(false)
         mPresenter.loadData(idComments)
-        mRecyclerReplys.smoothScrollToPosition(mAdapter.itemCount - 1)
+        if (mAdapter.itemCount != 0) {
+            mRecyclerReplys.smoothScrollToPosition(mAdapter.itemCount - 1)
+        }
     }
 
     override fun showData(data: ArrayList<ModelReplys?>) {

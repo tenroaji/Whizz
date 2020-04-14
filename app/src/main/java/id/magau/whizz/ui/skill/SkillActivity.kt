@@ -11,6 +11,9 @@ import id.magau.whizz.utils.clicked
 import id.magau.whizz.utils.toast
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.activity_skill.*
+import kotlinx.android.synthetic.main.activity_skill.tvLabelSkill
+import kotlinx.android.synthetic.main.activity_skill.tvTitleToolbar
+import kotlinx.android.synthetic.main.activty_product.*
 import kotlinx.android.synthetic.main.item_loading.*
 
 /**
@@ -18,12 +21,27 @@ import kotlinx.android.synthetic.main.item_loading.*
  */
 
 class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),SkillContracts.View {
+    companion object {
+        const val KEY_SKILL_SAYA = "SKILL_SAYA"
+    }
+
+    private val mySkill by lazy {
+        intent.getBooleanExtra(KEY_SKILL_SAYA,false)
+    }
     private lateinit var mPresenter : SkillContracts.Presenter
     private val mAdapterSkills = AdapterSkills()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SkillPresenter(this,this)
-        mPresenter.start()
+        imgFilter visibility false
+        imgSearch visibility false
+        if (mySkill){
+            mPresenter.loadMySkill()
+            tvTitleToolbar.text = "Skills Saya"
+            tvLabelSkill.text = "Semua Skill Saya"
+        }else{
+            mPresenter.start()
+        }
         mRecyclerSkill.layoutManager = LinearLayoutManager(this)
         mRecyclerSkill.adapter = mAdapterSkills
 

@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.event
+package id.magau.whizz.ui.event_detail
 
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEvents
@@ -11,23 +11,18 @@ import id.magau.whizz.utils.BaseView
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-interface EventContracts {
+interface EventDetailContracts {
 
     interface Presenter : BasePresenter {
-        fun loadEvent()
+        fun loadEvent(idEvent : String)
 
-        fun isCanNextPage() : Boolean
-
-        fun forceUpdate()
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showEvent(data : ArrayList<ModelEvents?>)
+        fun showEvent(data : ModelEvents?)
 
         fun showLoading(show : Boolean)
-
-        fun showNextLoading(show : Boolean)
 
         fun showError(code : Int?, message : String?)
 

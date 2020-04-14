@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.exoplayer2.offline.DownloadService.start
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelComments
 import id.magau.whizz.ui.kelas.diskusi.balasan.BalasanActivity
@@ -29,7 +28,6 @@ class AdapterDiskusi : RecyclerView.Adapter<AdapterDiskusi.ViewHolder>() {
     }
 
     fun updateKelasSaya(status : Boolean){
-        Log.e("lapar", status.toString())
         mKelasSaya = status
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterDiskusi.ViewHolder {

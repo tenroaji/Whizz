@@ -72,6 +72,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
             startActivity(Intent(this@SkillDetailActivity, KelasActivity::class.java).apply {
                 putExtra(KelasActivity.KEY_KELAS_SAYA,kelasSaya)
                 putExtra(KelasActivity.KEY_ID_PRODUCT,idProduct)
+                putExtra(KelasActivity.KEY_PEMATERI,tvPemateri.text.toString())
                 putExtra(KelasActivity.KEY_URL_IMG,urlImg)
                 putExtra(KelasActivity.KEY_TITLE,tvComment.text)
             })
@@ -145,11 +146,9 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
             tvPromo visibility false
         }
 
-        val session = SessionUtils(this)
-        val nama = session.getData(SessionUtils.PREF_KEY_NAME, "")
         val initialName = getInitialName(tvPemateri.text.toString().toUpperCase())
         val iconSize = resources.getDimensionPixelSize(R.dimen.margin_40dp)
-        val mColor = ColorGenerator.APP.getColor(nama.length)
+        val mColor = ColorGenerator.APP.getColor(tvPemateri.text.length)
         val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
         imgPemateri.setImageDrawable(icon)
     }

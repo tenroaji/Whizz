@@ -49,7 +49,7 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            mView.showKelasSaya(it)
+                            mView.showSkillSaya(it)
                         }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")

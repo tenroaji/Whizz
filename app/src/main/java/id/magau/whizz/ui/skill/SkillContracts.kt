@@ -16,6 +16,8 @@ interface SkillContracts {
     interface Presenter : BasePresenter {
         fun loadData()
 
+        fun loadMySkill()
+
     }
 
     interface View : BaseView<Presenter> {

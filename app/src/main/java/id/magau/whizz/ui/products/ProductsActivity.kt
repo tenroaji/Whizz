@@ -13,6 +13,8 @@ import id.magau.whizz.ui.event_saya.EventSayaActivity
 import id.magau.whizz.ui.event_saya.EventSayaContracts
 import id.magau.whizz.ui.main_menu.AdapterEvent
 import id.magau.whizz.ui.main_menu.AdapterSkills
+import id.magau.whizz.ui.skill.SkillActivity
+import id.magau.whizz.ui.skill.SkillActivity.Companion.KEY_SKILL_SAYA
 import id.magau.whizz.ui.skill_saya.AdapterSkillSaya
 import id.magau.whizz.ui.skill_saya.SkillSayaActivity
 import id.magau.whizz.ui.skill_saya.SkillSayaActivity.Companion.KEY_SKILL
@@ -35,6 +37,9 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         ProductsPresenter(this,this)
         mPresenter.start()
 
+        groupEvent visibility false
+        groupKelas visibility false
+//        groupSkill visibility false
         mRecyclerEventSaya.layoutManager = LinearLayoutManager(this)
         mRecyclerEventSaya.adapter = mAdapterEvent
 
@@ -45,14 +50,14 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         mRecyclerSkillSaya.adapter = mAdapterSkills
 
         tvLabelSemuaSkill.ripple().setOnClickListener {
-            startActivity(Intent(this@ProductsActivity, SkillSayaActivity::class.java).apply {
-                putExtra(KEY_SKILL,true)
+            startActivity(Intent(this@ProductsActivity, SkillActivity::class.java).apply {
+                putExtra(SkillActivity.KEY_SKILL_SAYA,true)
             })
             overridePendingTransition(R.anim.enter, R.anim.exit)
         }
         tvLabelSemuaKelas.ripple().setOnClickListener {
-            startActivity(Intent(this@ProductsActivity, SkillSayaActivity::class.java).apply {
-                putExtra(KEY_SKILL,false)
+            startActivity(Intent(this@ProductsActivity, SkillActivity::class.java).apply {
+                putExtra(SkillActivity.KEY_SKILL_SAYA,false)
             })
             overridePendingTransition(R.anim.enter, R.anim.exit)
         }
@@ -71,7 +76,6 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     }
 
     override fun showKelasSaya(data: ArrayList<ModelProducts?>) {
-        Log.d("lapar",data.toString())
         mAdapterKelas.updateAdapter(data)
     }
 

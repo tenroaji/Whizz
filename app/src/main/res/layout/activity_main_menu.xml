@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_end="10dp" />
+                    app:layout_constraintGuide_percent="0.25" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgNotif"
@@ -58,7 +58,7 @@
                     android:id="@+id/notifCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:constraint_referenced_ids="tvNotif,viewCircle" />
 
                 <View
@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/muli_semibold_family"
-                    android:text="2"
+                    android:text="3"
                     android:textColor="@color/colorWhite"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="@id/viewCircle"

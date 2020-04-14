@@ -47,7 +47,7 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                     tvDesc.text = data.materi?.desc
                     setOnClickListener {
                         context.startActivity(Intent(context, VideoActivity::class.java).apply {
-                            putExtra(VideoActivity.KEY_VIDEO, data.materi?.video)
+                            putExtra(VideoActivity.KEY_VIDEO, data.materi?.video?.get(0)?.link)
                             putExtra(VideoActivity.KEY_TITLE, data.materi?.title)
                         })
                     }

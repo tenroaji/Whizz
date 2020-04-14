@@ -38,7 +38,7 @@ data class ModelSubMateri(
     @SerializedName("id")
     var id : Int?=0,
     @SerializedName("video")
-    var video : String?= "",
+    var video : ArrayList<ModelVideo?>?= null,
     @SerializedName("title")
     var title : String?= "",
     @SerializedName("desc")
@@ -49,4 +49,11 @@ data class ModelSubMateri(
     var html : String?= "",
     @SerializedName("description")
     var description : String?= ""
+)
+
+data class ModelVideo(
+    @SerializedName("ukuran")
+    var ukuran : String?= "",
+    @SerializedName("link")
+    var link : String?= ""
 )

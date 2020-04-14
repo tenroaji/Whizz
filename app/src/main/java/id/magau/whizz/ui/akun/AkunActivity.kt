@@ -215,7 +215,6 @@ class AkunActivity : BaseActivity(R.color.colorWhite, R.layout.activity_akun) {
         super.onActivityResult(requestCode, resultCode, data)
         toast("activity result")
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Log.e("Lapar", "${currentPhotoPath}")
             Picasso.get().load(File(currentPhotoPath)).transform(PicassoCircleTransform())
                 .into(imgUser)
 //            val imageBitmap = data?.extras?.get("data") as Bitmap
@@ -261,7 +260,6 @@ class AkunActivity : BaseActivity(R.color.colorWhite, R.layout.activity_akun) {
                         "com.example.android.fileprovider",
                         it
                     )
-                    Log.e("Lapar", "${currentPhotoPath}")
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }

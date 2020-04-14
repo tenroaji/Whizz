@@ -17,6 +17,7 @@ import id.magau.whizz.utils.promo
 import id.magau.whizz.utils.rupiah
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.activity_menu.view.*
+import kotlinx.android.synthetic.main.activity_skill_detail.*
 import kotlinx.android.synthetic.main.item_list_skill_populer.view.*
 
 /**
@@ -48,12 +49,12 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
             if (data?.is_mine!!){
                 groupPrice visibility false
             }
-            data?.image?.let {
+            data.image?.let {
                 Picasso.get().load(it).into(mPlayerView)
             }
-            tvJenisSkill.text = data?.category?.category?.toUpperCase()
-            tvTitleSkill.text = data?.title
-            tvHarga.text = rupiah(data?.price!!)
+            tvJenisSkill.text = data.category?.category?.toUpperCase()
+            tvTitleSkill.text = data.title
+            tvHarga.text = rupiah(data.price!!)
             tvRating.text = data.rate.toString()
             if (data.promo?.is_approve == true){
                 var hasil = 0
@@ -72,11 +73,11 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
                 tvPromo visibility false
             }
             setOnClickListener {
-                Log.e("lapar",data.is_mine.toString())
                 if(data.is_mine!!){
                     context.startActivity(Intent(context, KelasActivity::class.java).apply {
                         putExtra(KelasActivity.KEY_ID_PRODUCT,mData[position]?.uuid_course)
                         putExtra(KelasActivity.KEY_KELAS_SAYA,true)
+                        putExtra(KelasActivity.KEY_PEMATERI,data.teacher?.name)
                     })
                 }else{
                     context.startActivity(Intent(context, SkillDetailActivity::class.java).apply {

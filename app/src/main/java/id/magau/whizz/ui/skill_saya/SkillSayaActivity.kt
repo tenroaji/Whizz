@@ -29,6 +29,7 @@ class SkillSayaActivity : BaseActivity(R.color.colorWhite, R.layout.activity_ski
         if (skill) {
             tvTitleToolbar.text = "Skills Saya"
             tvLabelSkill.text = "Skills Saya"
+
         }else {
             tvTitleToolbar.text = "Kelas Saya"
             tvLabelSkill.text = "Kelas Saya"

@@ -66,12 +66,14 @@ data class ModelCategory(
 data class ModelEvents(
     @SerializedName("id")
     var id : Int? = 0,
-    @SerializedName("uuid_course")
-    var uuid_course : String? = "",
+    @SerializedName("uuid_events")
+    var uuid_events : String? = "",
     @SerializedName("owner")
     var owner : ModelTeacher? = null,
     @SerializedName("event")
     var event : String? = "",
+    @SerializedName("harga")
+    var harga : Int? = 0,
     @SerializedName("kota")
     var kota : String? = "",
     @SerializedName("alamat")
@@ -80,6 +82,10 @@ data class ModelEvents(
     var no_hp : String? = "",
     @SerializedName("tanggal")
     var tanggal : String? = "",
+    @SerializedName("tanggalWeb")
+    var tanggalWeb : String? = "",
+    @SerializedName("waktuWeb")
+    var waktuWeb : String? = "",
     @SerializedName("rate")
     var rate : Double? = 0.0,
     @SerializedName("image")

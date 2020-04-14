@@ -61,9 +61,11 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
 
         imgNotif.setOnClickListener {
             start(NotifActivity::class.java)
-            notifCount visibility true
-            tvNotif.text = "3"
+            notifCount visibility false
         }
+
+        imgNotif visibility false
+        notifCount visibility false
 
         viewSkill.setOnClickListener {
             start(SkillActivity::class.java)
@@ -88,7 +90,7 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
         }
 
         tvLabelSemuaPromo.setOnClickListener {
-
+            start(SkillActivity::class.java)
         }
 
         mSwipeRefresh.setOnRefreshListener {

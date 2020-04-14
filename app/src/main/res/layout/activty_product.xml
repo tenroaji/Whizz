@@ -52,14 +52,21 @@
                     android:id="@+id/groupSkill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:constraint_referenced_ids="tvLabelSkill,tvLabelSemuaSkill,mRecyclerSkillSaya" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupKelas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="tvLabelKelasSaya,mRecyclerKelasSaya,tvLabelSemuaKelas" />
 
                 <androidx.constraintlayout.widget.Group
                     android:id="@+id/groupEvent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:constraint_referenced_ids="tvEventSaya,tvLabelSemuaEvent,mRecyclerEventSaya" />
                 <TextView
                     android:id="@+id/tvLabelSkill"

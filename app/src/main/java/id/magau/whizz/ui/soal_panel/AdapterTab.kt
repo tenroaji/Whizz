@@ -14,7 +14,7 @@ class AdapterTab(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment = when (position) {
         0 -> AttentionFragment()
         1 -> RiwayatFragment()
-        else -> JadwalFragment.newInstance()
+        else -> JadwalFragment()
     }
 
     override fun getPageTitle(position: Int): CharSequence = when (position) {

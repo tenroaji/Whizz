@@ -1,6 +1,8 @@
 package id.magau.whizz.data.services
 
 
+import id.magau.whizz.data.model.ModelResponseEvent
+import id.magau.whizz.data.model.ModelResponseEventDetail
 import id.magau.whizz.data.model.ModelResponseRiwayat
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,11 +14,16 @@ import retrofit2.http.Query
  */
 
 interface EventApiRoute{
-    @GET("getHistory")
+    @GET("student/event")
     fun getEvents(
         @Header("authorization") token: String?,
-        @Header("idproduct") id: String?,
         @Query("page") page: String?
-    ): Call<ModelResponseRiwayat>
+    ): Call<ModelResponseEvent>
 
+
+    @GET("student/detail-event")
+    fun getEventDetail(
+        @Header("authorization") token: String?,
+        @Query("uuid_event") id: String?
+    ): Call<ModelResponseEventDetail>
 }
