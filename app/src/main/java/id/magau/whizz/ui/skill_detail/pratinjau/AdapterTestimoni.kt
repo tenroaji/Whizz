@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelTestimoni
-import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 import kotlinx.android.synthetic.main.item_list_testimoni.view.*
 
 /**

@@ -11,7 +11,7 @@ import id.magau.whizz.utils.BaseView
 interface FileContracts {
 
     interface Presenter : BasePresenter {
-        fun showData()
+        fun loadData(idProduct:String)
 
     }
 

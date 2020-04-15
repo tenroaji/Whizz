@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFile
 import id.magau.whizz.data.model.ModelMateri
+import id.magau.whizz.data.model.SectionModel
 import id.magau.whizz.ui.kelas.file.AdapterFile
 import id.magau.whizz.ui.kelas.materi.rating.RatingActivity
 import id.magau.whizz.utils.ripple
@@ -74,7 +75,7 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
     }
 
 
-    override fun showData(data: ArrayList<ModelMateri?>) {
+    override fun showData(data: List<SectionModel?>) {
         mAdapter.updateAdapter(data)
     }
 

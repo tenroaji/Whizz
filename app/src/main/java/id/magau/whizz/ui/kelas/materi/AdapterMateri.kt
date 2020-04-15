@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelMateri
+import id.magau.whizz.data.model.SectionModel
 import id.magau.whizz.utils.visibility
-import kotlinx.android.synthetic.main.item_list_file.view.*
 import kotlinx.android.synthetic.main.item_list_materi.view.*
 
 /**
@@ -16,11 +16,11 @@ import kotlinx.android.synthetic.main.item_list_materi.view.*
  */
 
 class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
-    private var mData = mutableListOf<ModelMateri?>()
+    private var mData = mutableListOf<SectionModel?>()
     private var mAdapter = AdapterSubMateri()
     private var isCollapse = false
 
-    fun updateAdapter(data : ArrayList<ModelMateri?>){
+    fun updateAdapter(data : List<SectionModel?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
@@ -38,13 +38,13 @@ class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterMateri.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvTitle.text = "${position+1}. ${data?.title_section}"
+            tvTitle.text = "${position+1}. ${data?.sectionTitle}"
             mRecyclerMateri.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
             }
-            if (!data?.sub_section.isNullOrEmpty()){
-                mAdapter.updateAdapter(data?.sub_section!!)
+            if (!data?.subSections.isNullOrEmpty()){
+                mAdapter.updateAdapter(data?.subSections!!)
 
                 setOnClickListener {
                     if (isCollapse){

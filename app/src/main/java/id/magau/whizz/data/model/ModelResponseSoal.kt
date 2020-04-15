@@ -38,23 +38,23 @@ data class ModelHistoriJawaban (
     var gambar_soal: String?= "",
     @SerializedName("soal")
     var soal: String?= "",
-    @SerializedName("a")
+    @SerializedName("A")
     var a: String?= "",
     @SerializedName("gambar_a")
     var gambar_a: String?= "",
-    @SerializedName("b")
+    @SerializedName("B")
     var b: String?= "",
     @SerializedName("gambar_b")
     var gambar_b: String?= "",
-    @SerializedName("c")
+    @SerializedName("C")
     var c: String?= "",
     @SerializedName("gambar_c")
     var gambar_c: String?= "",
-    @SerializedName("d")
+    @SerializedName("D")
     var d: String?= "",
     @SerializedName("gambar_d")
     var gambar_d: String?= "",
-    @SerializedName("e")
+    @SerializedName("E")
     var e: String?= "",
     @SerializedName("gambar_e")
     var gambar_e: String?= "",

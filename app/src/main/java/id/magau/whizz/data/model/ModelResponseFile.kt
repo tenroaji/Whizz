@@ -10,16 +10,14 @@ data class ModelResponseFile (
     @SerializedName("diagnostic")
     var diagnostic : ModelDiagnostic? = null,
     @SerializedName("response")
-    var response : ModelFile? = null
+    var response : ArrayList<ModelFile?>? = null
 )
 
 
 data class ModelFile(
-    @SerializedName("nama")
-    var nama : String?="",
-    @SerializedName("lihat")
-    var lihat : String?="",
-    @SerializedName("download")
-    var download : String?=""
+    @SerializedName("title")
+    var title : String?="",
+    @SerializedName("path")
+    var path : String?=""
 
 )

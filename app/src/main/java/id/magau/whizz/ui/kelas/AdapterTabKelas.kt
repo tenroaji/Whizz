@@ -19,7 +19,7 @@ class AdapterTabKelas(private val idProduct: String,fm: FragmentManager, private
         when (position) {
         0 -> MateriFragment.newInstance(idProduct,kelasSaya)
         1 -> DiskusiFragment.newInstance(idProduct,kelasSaya)
-        2 -> FileFragment.newInstance()
+        2 -> FileFragment.newInstance(idProduct,kelasSaya)
         3 -> UjianFragment.newInstance()
         else -> KataSandiFragment()
     }

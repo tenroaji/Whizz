@@ -77,7 +77,13 @@ interface SkillsApiRoute {
     fun getMateri(
         @Header("authorization") authorization: String?,
         @Query("uuidcourse")  idCourse : String
-    ): Call<ModelResponseMateri>
+    ): Call<ResponseModel>
+
+    @GET("student/product/detail-additional-file")
+    fun getFile(
+        @Header("authorization") authorization: String?,
+        @Query("uuid_course")  idCourse : String
+    ): Call<ModelResponseFile>
 
 
 

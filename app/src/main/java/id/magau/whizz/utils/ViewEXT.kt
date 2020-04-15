@@ -24,7 +24,9 @@ import com.squareup.picasso.Target
 import id.magau.whizz.R
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import java.io.File
+import java.io.FileOutputStream
 import java.lang.Exception
+import java.net.URL
 import java.text.NumberFormat
 import java.util.*
 import kotlin.contracts.ExperimentalContracts
@@ -238,4 +240,12 @@ infix fun View.clicked(func: () -> Unit){
 }
 
 infix fun Double.format(digits: Int) = "%.${digits}f".format(this)
+
+infix fun String.saveTo(path: String) {
+    URL(this).openStream().use { input ->
+        FileOutputStream(File(path)).use { output ->
+            input.copyTo(output)
+        }
+    }
+}
 

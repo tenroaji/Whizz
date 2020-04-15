@@ -17,7 +17,7 @@ interface MateriContracts {
 
     interface View : BaseView<Presenter> {
 
-        fun showData(data : ArrayList<ModelMateri?>)
+        fun showData(data : List<SectionModel?>)
 
         fun showLoading(show : Boolean)
 

@@ -1,16 +1,16 @@
 package id.magau.whizz.ui.kelas.materi
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelSubSectionMateri
+import id.magau.whizz.data.model.*
 import id.magau.whizz.ui.kelas.materi.pdf.PdfActivity
 import id.magau.whizz.ui.kelas.materi.video.VideoActivity
 import id.magau.whizz.utils.visibility
-import kotlinx.android.synthetic.main.item_list_materi.view.tvTitle
 import kotlinx.android.synthetic.main.item_list_sub_materi.view.*
 
 /**
@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.item_list_sub_materi.view.*
  */
 
 class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
-    private var mData = mutableListOf<ModelSubSectionMateri?>()
-    fun updateAdapter(data: ArrayList<ModelSubSectionMateri?>) {
+    private var mData = mutableListOf<CourseTypeModel?>()
+    fun updateAdapter(data: List<CourseTypeModel?>) {
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
@@ -40,37 +40,52 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterSubMateri.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvTitle.text = data?.title
-            when (data?.type) {
-                "video" -> {
+            when (data) {
+                is CourseVideoModel -> {
+                    val materi = data.course
                     imgFile.setBackgroundResource(R.drawable.ic_streaming2)
-                    tvDesc.text = data.materi?.desc
+                    tvDesc.text = materi.description
                     setOnClickListener {
                         context.startActivity(Intent(context, VideoActivity::class.java).apply {
-                            putExtra(VideoActivity.KEY_VIDEO, data.materi?.video?.get(0)?.link)
-                            putExtra(VideoActivity.KEY_TITLE, data.materi?.title)
+                            putExtra(VideoActivity.KEY_VIDEO, materi.videos[0].link)
+                            putExtra(VideoActivity.KEY_TITLE, materi.title)
                         })
                     }
+                    tvTitle.text = materi.title
                 }
-                "pdf" -> {
+                is CoursePdfModel  -> {
+                    val materi = data.course
                     imgFile.setBackgroundResource(R.drawable.ic_file_pdf)
-                    tvDesc.text = data.materi?.description
+                    tvDesc.text = materi.description
                     setOnClickListener {
                         context.startActivity(Intent(context, PdfActivity::class.java).apply {
-                            putExtra(PdfActivity.KEY_URL_PDF, data.materi?.pdf)
+                            putExtra(PdfActivity.KEY_URL_PDF, materi.fileUrl)
                             putExtra(PdfActivity.KEY_TYPE_PDF, true)
-                            putExtra(PdfActivity.KEY_TITLE, data.materi?.title)
+                            putExtra(PdfActivity.KEY_TITLE, materi.title)
                         })
                     }
+                    tvTitle.text = materi.title
                 }
-                "html" -> {
+                is CourseHtmlModel -> {
+                    val materi = data.course
                     imgFile.setBackgroundResource(R.drawable.ic_file_html)
                     tvDesc visibility false
                     setOnClickListener {
                         context.startActivity(Intent(context, PdfActivity::class.java).apply {
-                            putExtra(PdfActivity.KEY_URL_PDF, data.materi?.html)
+                            putExtra(PdfActivity.KEY_URL_PDF, materi.rawHtml)
                             putExtra(PdfActivity.KEY_TYPE_PDF, false)
-                            putExtra(PdfActivity.KEY_TITLE, data.materi?.title)
+                            putExtra(PdfActivity.KEY_TITLE, materi.title)
+                        })
+                    }
+                    tvTitle.text = materi.title
+                }
+                is CourseExamModel -> {
+                    val materi = data.course
+                    setOnClickListener {
+                        context.startActivity(Intent(context, PdfActivity::class.java).apply {
+//                            putExtra(PdfActivity.KEY_URL_PDF, data.materi?.html)
+//                            putExtra(PdfActivity.KEY_TYPE_PDF, false)
+//                            putExtra(PdfActivity.KEY_TITLE, data.materi?.title)
                         })
                     }
                 }

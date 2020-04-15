@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.soal.detail_soal
+package id.magau.whizz.ui.kelas.materi.soal.detail_soal
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelHistoriJawaban
-import id.magau.whizz.ui.kelas.materi.soal.detail_soal.DetailSoalFragment
 import id.magau.whizz.ui.kelas.materi.soal.AdapterNomorSoal
 import id.magau.whizz.ui.kelas.materi.soal.SoalActivity.Companion.KEY_JENIS
+import id.magau.whizz.ui.soal.detail_soal.DetailSoalFragment
 import id.magau.whizz.utils.active
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.fragment_soal.*

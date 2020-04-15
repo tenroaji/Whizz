@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.soal
+package id.magau.whizz.ui.kelas.materi.soal
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelHistoriJawaban
-import id.magau.whizz.ui.soal.detail_soal.DetailSoalFragment
+import id.magau.whizz.data.model.ModelSubMateri
+import id.magau.whizz.data.model.ModelSubSectionMateri
+import id.magau.whizz.ui.kelas.materi.soal.detail_soal.DetailSoalFragment
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.enable
 import id.magau.whizz.utils.visibility
@@ -38,9 +40,9 @@ companion object {
     var mCurrentPosition = 0
     var usedTime = 0L
     private var mUuid = ""
-//    private var mDataSoal by lazy {
-////        intent.getSerializableExtra(KEY_DATA_SOAL)
-//    }
+    private val mDataSoal by lazy {
+        intent.getSerializableExtra(KEY_DATA_SOAL) as ModelSubMateri
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SoalPresenter(this,this)
@@ -178,13 +180,13 @@ companion object {
                     type: String,
                     soal: Boolean
                 ) {
-                    if (type.contains("twk")){
-                        mPresenter.sendTWK(idSoal,choice,idHistory)
-                    }else if (type.contains("tiu")){
-                        mPresenter.sendTIU(idSoal,choice,idHistory)
-                    }else if (type.contains("tkp")){
-                        mPresenter.sendTKP(idSoal,choice,idHistory)
-                    }
+//                    if (type.contains("twk")){
+//                        mPresenter.sendTWK(idSoal,choice,idHistory)
+//                    }else if (type.contains("tiu")){
+//                        mPresenter.sendTIU(idSoal,choice,idHistory)
+//                    }else if (type.contains("tkp")){
+//                        mPresenter.sendTKP(idSoal,choice,idHistory)
+//                    }
                     mAdapterSoal.answerPosition(position)
                     val dataUpdate = dataSoal!![position].copy(pilihan = choice)
                     dataSoal?.set(position, dataUpdate)

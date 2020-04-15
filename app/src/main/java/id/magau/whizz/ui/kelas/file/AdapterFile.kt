@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelFile
+import id.magau.whizz.utils.saveTo
 import kotlinx.android.synthetic.main.item_list_file.view.*
 
 /**
@@ -33,7 +34,10 @@ class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
     override fun onBindViewHolder(holder: AdapterFile.ViewHolder, position: Int) {
         holder.itemView.apply {
             val data = mData[position]
-            tvPemateri.text = data?.nama
+            tvTitle.text = data?.title
+            tvDownload.setOnClickListener {
+                data?.path?.saveTo("")
+            }
 
         }
     }

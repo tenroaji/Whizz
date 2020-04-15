@@ -53,7 +53,7 @@
         <activity android:name=".ui.pembayaran_detail.PembayaranDetail" />
         <activity android:name=".ui.kelas.KelasActivity" />
         <activity android:name=".ui.soal_status.ActivityStatusSoal" />
-        <activity android:name=".ui.soal.SoalActivity" />
+        <activity android:name=".ui.kelas.materi.soal.SoalActivity" />
         <activity android:name=".ui.soal_analisis.SoalAnalisisKompetensi" />
         <activity android:name=".ui.soal_analisis.SoalAnalisisLatihan" />
         <activity android:name=".ui.soal_panel.SoalPanel" />

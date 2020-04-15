@@ -11,7 +11,6 @@ import id.magau.whizz.data.model.ModelComments
 import id.magau.whizz.ui.kelas.diskusi.balasan.BalasanActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.item_list_diskusi.view.*
-import kotlinx.android.synthetic.main.item_list_file.view.tvPemateri
 import kotlin.properties.Delegates
 
 /**
