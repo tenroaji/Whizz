@@ -28,7 +28,7 @@
                 style="@style/TextTitleToolbar"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    
+
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="72dp"
@@ -87,6 +87,7 @@
         app:layout_constraintBottom_toBottomOf="@id/viewMentor"
         app:layout_constraintStart_toStartOf="@id/viewMentor"/>
     <TextView
+        android:id="@+id/tvLabelMentor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jadi Mentor"
@@ -116,6 +117,7 @@
         app:layout_constraintBottom_toBottomOf="@id/viewPengaturan"
         app:layout_constraintStart_toStartOf="@id/viewPengaturan"/>
     <TextView
+        android:id="@+id/tvLabelPengaturan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pengaturan"
@@ -161,4 +163,15 @@
         android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/viewPengaturan"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/groupMentor"
+        app:constraint_referenced_ids="viewMentor,icMentor,tvLabelMentor"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:id="@+id/groupPengaturan"
+        app:constraint_referenced_ids="viewPengaturan,icPengaturan,tvLabelPengaturan"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

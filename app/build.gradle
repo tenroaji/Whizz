@@ -113,7 +113,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //exoplayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.4'
 
     //aes
     implementation 'com.github.mervick:aes-everywhere-java:1.2.7'

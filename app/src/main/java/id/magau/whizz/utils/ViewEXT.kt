@@ -216,10 +216,10 @@ infix fun (() -> Any).after(delay: Long) {
     }, delay)
 }
 
- fun rupiah(number: Int): String{
+ fun rupiah(number: Int?): String{
     val localeID =  Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-    return numberFormat.format(number.toDouble()).toString().replace("Rp","Rp ")
+    return numberFormat.format(number?.toDouble()).toString().replace("Rp","Rp ")
 }
 
 infix fun (() -> Any).every(delay: Long) {

@@ -37,7 +37,7 @@ data class CourseVideoModel(
 data class CourseExamModel(
     val id: String,
     val title: String,
-    @SerializedName("materi") val course: CourseExamItemModel
+    @SerializedName("materi") val course: ArrayList<ModelHistoriJawaban?>?
 ) : CourseTypeModel()
 
 data class CourseHtmlItemModel(

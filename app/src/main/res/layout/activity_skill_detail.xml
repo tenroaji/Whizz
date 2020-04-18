@@ -41,17 +41,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/gradient_image" />
 
-<!--                <com.longtailvideo.jwplayer.JWPlayerView-->
-<!--                    xmlns:jwp="http://schemas.android.com/apk/lib/com.longtailvideo.jwplayer"-->
-<!--                    android:id="@+id/imgSkill"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintDimensionRatio="H,16:9"/>-->
-
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgBack"
                     android:layout_width="32dp"
@@ -145,6 +134,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8dp"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintBottom_toTopOf="@id/tvJabatan"
                     app:layout_constraintStart_toEndOf="@id/imgPemateri"
                     app:layout_constraintTop_toTopOf="@id/imgPemateri"
                     tools:text="Gerard Way +7 Mentor" />
@@ -158,6 +149,7 @@
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/imgPemateri"
                     app:layout_constraintTop_toBottomOf="@id/tvPemateri"
+                    app:layout_constraintBottom_toBottomOf="@id/imgPemateri"
                     tools:text="CEO PT Impian" />
 
                 <View

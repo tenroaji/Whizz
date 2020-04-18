@@ -41,6 +41,9 @@ class AkunActivity : BaseActivity(R.color.colorWhite, R.layout.activity_akun) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        groupMentor visibility false
+        groupPengaturan visibility false
+
         viewMentor.ripple().setOnClickListener {
             start(MentorActivity::class.java)
         }
@@ -59,34 +62,34 @@ class AkunActivity : BaseActivity(R.color.colorWhite, R.layout.activity_akun) {
         tvEmail.text = session.getData(PREF_KEY_EMAIL,"")
         val icon = TextDrawable.builder(this).buildRound(initialName, mColor, iconSize, iconSize)
         imgUser.setImageDrawable(icon)
-        imgUser.ripple().setOnClickListener {
-            val options = arrayOf("Take Photo", "Choose from Gallery", "Cancel")
-            val builder = AlertDialog.Builder(this)
-            builder.setItems(
-                options
-            ) { dialog, item ->
-                when (options[item]) {
-                    "Take Photo" -> {
-                        openCamera()
-                    }
-                    "Choose from Gallery" -> {
-                        openGalery()
-                    }
-                    "Cancel" -> {
-//                        val PERMISSIONS = arrayOf(
-//                            Manifest.permission.READ_EXTERNAL_STORAGE,
-//                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                            Manifest.permission.CAMERA
-//                        )
-//                        if (!hasPermissions(this, *PERMISSIONS)) {
-//                            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
-//                        }
-                        dialog.dismiss()
-                    }
-                }
-            }
-            builder.show()
-        }
+//        imgUser.ripple().setOnClickListener {
+//            val options = arrayOf("Take Photo", "Choose from Gallery", "Cancel")
+//            val builder = AlertDialog.Builder(this)
+//            builder.setItems(
+//                options
+//            ) { dialog, item ->
+//                when (options[item]) {
+//                    "Take Photo" -> {
+//                        openCamera()
+//                    }
+//                    "Choose from Gallery" -> {
+//                        openGalery()
+//                    }
+//                    "Cancel" -> {
+////                        val PERMISSIONS = arrayOf(
+////                            Manifest.permission.READ_EXTERNAL_STORAGE,
+////                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+////                            Manifest.permission.CAMERA
+////                        )
+////                        if (!hasPermissions(this, *PERMISSIONS)) {
+////                            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
+////                        }
+//                        dialog.dismiss()
+//                    }
+//                }
+//            }
+//            builder.show()
+//        }
         viewKeluar.ripple().setOnClickListener {
             val session = SessionUtils(this)
             session.editData(SessionUtils.PREF_KEY_LOGIN, false)

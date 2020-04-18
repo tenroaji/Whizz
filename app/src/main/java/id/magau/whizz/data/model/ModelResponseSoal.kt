@@ -24,7 +24,7 @@ data class ModelSoal(
     @SerializedName("now_date")
     var now_date: String?= "",
     @SerializedName("historiJawaban")
-    var historiJawaban: MutableList<ModelHistoriJawaban>?= null
+    var historiJawaban: MutableList<ModelHistoriJawaban?>?= null
 )
 
 data class ModelHistoriJawaban (
@@ -65,7 +65,8 @@ data class ModelHistoriJawaban (
     var jawabanDiPilih: ModelJawaban?= null,
 
     @SerializedName("jawaban")
-    var jawaban: ModelJawaban?= null,
+    var jawaban: String?= "",
+//    var jawaban: ModelJawaban?= null,
 
     @SerializedName("pembahasan")
     var pembahasan: String?= "",

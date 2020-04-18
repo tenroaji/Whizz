@@ -48,10 +48,12 @@
         <activity android:name=".ui.event_saya.EventSayaActivity" />
         <activity android:name=".ui.faq.FaqActivity" />
         <activity android:name=".ui.skill_detail.SkillDetailActivity"
+            android:theme="@style/AppTheme.Translucent"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
         <activity android:name=".ui.pembayaran.PembayaranActivity" />
         <activity android:name=".ui.pembayaran_detail.PembayaranDetail" />
-        <activity android:name=".ui.kelas.KelasActivity" />
+        <activity android:name=".ui.kelas.KelasActivity"
+            android:theme="@style/AppTheme.Translucent"/>
         <activity android:name=".ui.soal_status.ActivityStatusSoal" />
         <activity android:name=".ui.kelas.materi.soal.SoalActivity" />
         <activity android:name=".ui.soal_analisis.SoalAnalisisKompetensi" />
@@ -63,7 +65,9 @@
         <activity android:name=".ui.kelas.diskusi.buat_diskusi.BuatDiskusi" />
         <activity android:name=".ui.kelas.materi.pdf.PdfActivity" />
         <activity android:name=".ui.kelas.materi.video.VideoActivity"
+            android:theme="@style/AppTheme.SplashTheme"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"/>
+        <activity android:name=".ui.soal.SoalActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

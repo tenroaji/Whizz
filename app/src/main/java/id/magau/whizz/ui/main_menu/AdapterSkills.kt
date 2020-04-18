@@ -57,16 +57,16 @@ class AdapterSkills : RecyclerView.Adapter<AdapterSkills.ViewHolder>() {
             tvHarga.text = rupiah(data.price!!)
             tvRating.text = data.rate.toString()
             if (data.promo?.is_approve == true){
-                var hasil = 0
-                if(data.promo?.is_percent == true){
-                    val percent = data.promo?.value!! / 100
-                    val harga = data.price!!
-                    hasil = harga * percent
-                    tvHarga.text = rupiah(hasil)
-                }else{
-                    hasil = data.price!! - data.promo?.value!!
-                }
-                tvHarga.text = rupiah(hasil)
+//                var hasil = 0
+//                if(data.promo?.is_percent == true){
+//                    val percent = data.promo?.value!! / 100
+//                    val harga = data.price!!
+//                    hasil = harga * percent
+//                    tvHarga.text = rupiah(hasil)
+//                }else{
+//                    hasil = data.price!! - data.promo?.value!!
+//                }
+                tvHarga.text = rupiah(data.promo?.value!!)
                 tvPromo promo data.price!!
             }else {
                 tvHarga.text = rupiah(data.price!!)

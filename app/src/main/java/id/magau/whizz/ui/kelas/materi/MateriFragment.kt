@@ -67,6 +67,7 @@ class MateriFragment : Fragment(R.layout.fragment_materi), MateriContracts.View 
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter= mAdapter
             }
+            mAdapter.updateClass(kelasSaya)
 
         }
 

@@ -10,6 +10,8 @@ import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.ui.event_detail.EventDetailActivity
+import id.magau.whizz.utils.load
+import id.magau.whizz.utils.rupiah
 import id.magau.whizz.utils.start
 import kotlinx.android.synthetic.main.item_list_event.view.*
 
@@ -43,15 +45,19 @@ class AdapterEvent : RecyclerView.Adapter<AdapterEvent.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
+            val data = mData[position]
 //            mData[position]?.gambar?.let {
 //                Picasso.get().load(it).into(imgEvent)
 //            }
+            imgEvent load data?.image
 //            tvJenisSkill.text = mData[position]?.jenis
             tvTitleSkill.text = mData[position]?.event
-//            tvHarga.text = mData[position]?.harga
+            tvHarga.text = rupiah(mData[position]?.harga)
             tvLokasi.text = mData[position]?.kota?.toUpperCase()
             setOnClickListener {
-                context.start(EventDetailActivity::class.java)
+                context.startActivity(Intent(context,EventDetailActivity::class.java).apply {
+                    putExtra(EventDetailActivity.KEY_ID_EVENT, data?.uuid_events)
+                })
             }
         }
     }

@@ -110,12 +110,12 @@ class DetailSoalFragment : Fragment() {
                         Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanAnda)
                     }
                 }
-                tvChoiceJawabanBenar.text = "${data.jawaban?.urutan?.toUpperCase()}."
-                tvJawabanBenar.text = data.jawaban?.jawaban
-                if (!data.jawaban?.gambar.isNullOrEmpty()) {
-                    gambarJawabanBenar visibility true
-                    Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanBenar)
-                }
+//                tvChoiceJawabanBenar.text = "${data.jawaban?.urutan?.toUpperCase()}."
+//                tvJawabanBenar.text = data.jawaban?.jawaban
+//                if (!data.jawaban?.gambar.isNullOrEmpty()) {
+//                    gambarJawabanBenar visibility true
+//                    Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanBenar)
+//                }
             }
             tvPembahasan.text = data.pembahasan
             if (!data.gambarPembahasan.isNullOrEmpty()) {

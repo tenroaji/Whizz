@@ -50,9 +50,10 @@ class FileFragment : Fragment(R.layout.fragment_kurikulum), FileContracts.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mView = view
         FilePresenter(requireContext(),this)
         mPresenter.loadData(idProduct)
-        mView = view
+
         mView.apply {
             tvTitle visibility false
             mRecyclerKurikulum.apply {
@@ -60,16 +61,6 @@ class FileFragment : Fragment(R.layout.fragment_kurikulum), FileContracts.View {
                 adapter = mAdater
             }
         }
-//
-//        val data = arrayListOf<ModelFile?>()
-//        for (a in 1 until 25) {
-//            data.add(ModelFile("File Tools $a", "", ""))
-//        }
-//        showData(data)
-
-
-
-
 
 }
 

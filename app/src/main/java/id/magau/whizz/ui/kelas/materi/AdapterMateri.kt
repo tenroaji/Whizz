@@ -19,11 +19,16 @@ class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
     private var mData = mutableListOf<SectionModel?>()
     private var mAdapter = AdapterSubMateri()
     private var isCollapse = false
+    private var myClass = false
 
     fun updateAdapter(data : List<SectionModel?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun updateClass(myClass : Boolean){
+        this.myClass = myClass
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterMateri.ViewHolder {
@@ -43,20 +48,20 @@ class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
             }
-            if (!data?.subSections.isNullOrEmpty()){
+            if (!data?.subSections.isNullOrEmpty()) {
+                mAdapter.updateClass(myClass)
                 mAdapter.updateAdapter(data?.subSections!!)
-
                 setOnClickListener {
-                    if (isCollapse){
+                    if (isCollapse) {
                         imgCollapse.rotation = 0F
                         mRecyclerMateri visibility !isCollapse
-                    }else{
+                    } else {
                         imgCollapse.rotation = 180F
                         mRecyclerMateri visibility !isCollapse
                     }
                     isCollapse = !isCollapse
                 }
-            }else{
+            } else {
                 imgCollapse visibility false
             }
 

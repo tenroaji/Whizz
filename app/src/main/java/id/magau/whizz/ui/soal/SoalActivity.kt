@@ -32,7 +32,7 @@ companion object {
 
     private lateinit var mPresenter: SoalContracts.Presenter
     private var mAdapterSoal = AdapterNomorSoal()
-    private var dataSoal: MutableList<ModelHistoriJawaban>? = mutableListOf()
+    private var dataSoal: MutableList<ModelHistoriJawaban?> = mutableListOf()
     private var mSoal = true
     var mCachePosition = -1
     var mCurrentPosition = 0
@@ -112,7 +112,7 @@ companion object {
                 replace(
                     R.id.mFragmentContainer, DetailSoalFragment.newInstance(
                         pos.toString(),
-                        dataSoal!![pos],
+                        dataSoal[pos]!!,
                         mSoal
                     )
                 )
@@ -186,8 +186,8 @@ companion object {
                         mPresenter.sendTKP(idSoal,choice,idHistory)
                     }
                     mAdapterSoal.answerPosition(position)
-                    val dataUpdate = dataSoal!![position].copy(pilihan = choice)
-                    dataSoal?.set(position, dataUpdate)
+                    val dataUpdate = dataSoal[position]?.copy(pilihan = choice)
+                    dataSoal[position] = dataUpdate
                 }
             })
         }
@@ -232,9 +232,9 @@ companion object {
         var alert = ""
         var answer = 0
         var no = 0
-        for (data in dataSoal!!) {
+        for (data in dataSoal) {
             no++
-            if (data.pilihan.isNullOrEmpty()) {
+            if (data?.pilihan.isNullOrEmpty()) {
                 empetyChoice.add(no)
             }
             answer++
@@ -280,7 +280,7 @@ companion object {
         mLoading visibility show
     }
 
-    override fun showSoal(data: MutableList<ModelHistoriJawaban>?) {
+    override fun showSoal(data: MutableList<ModelHistoriJawaban?>) {
         dataSoal = data
         mAdapterSoal.updateAdapter(data)
         if(mSoal){

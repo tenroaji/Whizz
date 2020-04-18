@@ -34,7 +34,7 @@ interface SoalContracts {
 
         fun showLoading(show : Boolean)
 
-        fun showSoal(data : MutableList<ModelHistoriJawaban>?)
+        fun showSoal(data : MutableList<ModelHistoriJawaban?>)
 
         fun showDuration(duration : Long)
 

@@ -25,7 +25,7 @@ class DetailSoalFragment : Fragment() {
         const val KEY_DATA = "data"
 
         @JvmStatic
-        fun newInstance(id: String, data: ModelHistoriJawaban, soal: Boolean): DetailSoalFragment {
+        fun newInstance(id: String, data: ModelHistoriJawaban?, soal: Boolean): DetailSoalFragment {
             val args = Bundle()
             args.putString(KEY_ID, id)
             args.putSerializable(KEY_DATA, data)
@@ -110,12 +110,12 @@ class DetailSoalFragment : Fragment() {
                         Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanAnda)
                     }
                 }
-                tvChoiceJawabanBenar.text = "${data.jawaban?.urutan?.toUpperCase()}."
-                tvJawabanBenar.text = data.jawaban?.jawaban
-                if (!data.jawaban?.gambar.isNullOrEmpty()) {
-                    gambarJawabanBenar visibility true
-                    Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanBenar)
-                }
+//                tvChoiceJawabanBenar.text = "${data.jawaban?.urutan?.toUpperCase()}."
+//                tvJawabanBenar.text = data.jawaban?.jawaban
+//                if (!data.jawaban?.gambar.isNullOrEmpty()) {
+//                    gambarJawabanBenar visibility true
+//                    Picasso.get().load(data.jawabanDiPilih?.gambar).into(gambarJawabanBenar)
+//                }
             }
             tvPembahasan.text = data.pembahasan
             if (!data.gambarPembahasan.isNullOrEmpty()) {

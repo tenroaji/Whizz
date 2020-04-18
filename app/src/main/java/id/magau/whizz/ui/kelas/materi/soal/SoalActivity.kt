@@ -2,6 +2,7 @@ package id.magau.whizz.ui.kelas.materi.soal
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -25,29 +26,31 @@ import kotlinx.android.synthetic.main.item_custom_dialog_done.view.*
  * Created by Andi Tenroaji Ahmad on 12/23/2019.
  */
 
-class SoalActivity : BaseActivity(layout=R.layout.activity_soal), SoalContracts.View {
-companion object {
-    const val KEY_JENIS = "JENIS"
-    const val KEY_UUID = "UUID"
-    const val KEY_DATA_SOAL = "DATA_SOAL"
-}
+class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContracts.View {
+    companion object {
+        const val KEY_JENIS = "JENIS"
+        const val KEY_UUID = "UUID"
+        const val KEY_DATA_SOAL = "DATA_SOAL"
+    }
 
     private lateinit var mPresenter: SoalContracts.Presenter
     private var mAdapterSoal = AdapterNomorSoal()
-    private var dataSoal: MutableList<ModelHistoriJawaban>? = mutableListOf()
+    private var dataSoal: MutableList<ModelHistoriJawaban?> = mutableListOf()
     private var mSoal = true
     var mCachePosition = -1
     var mCurrentPosition = 0
     var usedTime = 0L
     private var mUuid = ""
     private val mDataSoal by lazy {
-        intent.getSerializableExtra(KEY_DATA_SOAL) as ModelSubMateri
+        intent.getSerializableExtra(KEY_DATA_SOAL) as ArrayList<ModelHistoriJawaban?>
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SoalPresenter(this,this)
-        mUuid = intent.getStringExtra(KEY_UUID)?:""
-        mSoal = intent.getBooleanExtra(KEY_JENIS,true)
+        SoalPresenter(this, this)
+
+        mUuid = intent.getStringExtra(KEY_UUID) ?: ""
+        mSoal = intent.getBooleanExtra(KEY_JENIS, true)
 //
 //        if(mSoal){
 //            mPresenter.start()
@@ -55,9 +58,13 @@ companion object {
 //            mPresenter.getPembahasan(mUuid)
 //            tvTitleToolbar.text = resources.getString(R.string.label_pembahasan)
 //        }
+//        dataSoal.clear()
+//        dataSoal.addAll(mDataSoal)
+        showSoal(mDataSoal)
 
 
-        mRecyclerButtonSoal.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        mRecyclerButtonSoal.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         mRecyclerButtonSoal.adapter = mAdapterSoal
 
         mAdapterSoal.setOnChangeSoalListener(object : AdapterNomorSoal.OnChangeSoalListener {
@@ -114,14 +121,14 @@ companion object {
                 replace(
                     R.id.mFragmentContainer, DetailSoalFragment.newInstance(
                         pos.toString(),
-                        dataSoal!![pos],
+                        dataSoal[pos],
                         mSoal
                     )
                 )
                 commit()
             }
 
-            mAdapterSoal.setActivePosition(mCurrentPosition,mSoal)
+            mAdapterSoal.setActivePosition(mCurrentPosition, mSoal)
             mRecyclerButtonSoal.smoothScrollToPosition(pos)
         }
         mCachePosition = mCurrentPosition
@@ -188,8 +195,8 @@ companion object {
 //                        mPresenter.sendTKP(idSoal,choice,idHistory)
 //                    }
                     mAdapterSoal.answerPosition(position)
-                    val dataUpdate = dataSoal!![position].copy(pilihan = choice)
-                    dataSoal?.set(position, dataUpdate)
+                    val dataUpdate = dataSoal[position]?.copy(pilihan = choice)
+                    dataSoal[position] = dataUpdate
                 }
             })
         }
@@ -234,9 +241,9 @@ companion object {
         var alert = ""
         var answer = 0
         var no = 0
-        for (data in dataSoal!!) {
+        for (data in dataSoal) {
             no++
-            if (data.pilihan.isNullOrEmpty()) {
+            if (data?.pilihan.isNullOrEmpty()) {
                 empetyChoice.add(no)
             }
             answer++
@@ -282,13 +289,14 @@ companion object {
         mLoading visibility show
     }
 
-    override fun showSoal(data: MutableList<ModelHistoriJawaban>?) {
-        dataSoal = data
+    override fun showSoal(data: MutableList<ModelHistoriJawaban?>) {
+        dataSoal.addAll(data)
+        Log.d("lapar", "$dataSoal")
         mAdapterSoal.updateAdapter(data)
-        if(mSoal){
+        if (mSoal) {
             tvAkhiriLatihan visibility true
         }
-        replaceFragment(0,true)
+        replaceFragment(0, true)
     }
 
     override fun showDuration(duration: Long) {

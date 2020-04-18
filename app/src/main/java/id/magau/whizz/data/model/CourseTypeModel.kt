@@ -50,6 +50,10 @@ class CourseTypeModelDeserializer : JsonDeserializer<ResponseModel> {
                                 sub,
                                 CoursePdfModel::class.java
                             )
+                            CourseTypeModel.CourseValueType.html -> gson.fromJson(
+                                sub,
+                                CourseHtmlModel::class.java
+                            )
                             CourseTypeModel.CourseValueType.video -> gson.fromJson(
                                 sub,
                                 CourseVideoModel::class.java

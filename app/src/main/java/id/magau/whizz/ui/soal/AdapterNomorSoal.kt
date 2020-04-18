@@ -17,15 +17,15 @@ import kotlinx.android.synthetic.main.item_list_status_soal.view.*
  */
 class AdapterNomorSoal :
     RecyclerView.Adapter<AdapterNomorSoal.ViewHolder>() {
-    private var data: MutableList<ModelHistoriJawaban>? = mutableListOf()
+    private var data: MutableList<ModelHistoriJawaban?> = mutableListOf()
     private var onChoice: MutableList<Int> = mutableListOf()
     private var mChangeSoalListener: OnChangeSoalListener? = null
     private var mActivePosition = 0
     private var no = MutableList(101) { i -> i + 1 }
     private var mSoal = true
 
-    fun updateAdapter(datax: MutableList<ModelHistoriJawaban>?) {
-        data?.clear()
+    fun updateAdapter(datax: MutableList<ModelHistoriJawaban?>) {
+        data.clear()
         data = datax
         notifyDataSetChanged()
     }
@@ -81,7 +81,7 @@ class AdapterNomorSoal :
             val isActive = data?.get(position)?.active ?: false
             val bobot = data?.get(position)?.bobot
             val pilihan = data?.get(position)?.pilihan
-            val jawaban = data?.get(position)?.jawaban?.urutan
+//            val jawaban = data?.get(position)?.jawaban?.urutan
             if (mSoal) {
                 if (mActivePosition == position) {
                     tvNomorSoal itemChoice 1

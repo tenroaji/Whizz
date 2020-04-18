@@ -44,7 +44,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
         super.onCreate(savedInstanceState)
         SkillDetailPresenter(this,this)
         mPresenter.loadData(idProduct)
-
+        tvJabatan visibility false
         val product = intent.getBooleanExtra(KEY_PROMO,false)
         if (product){
             viewButton visibility false

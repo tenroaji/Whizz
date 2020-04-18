@@ -54,32 +54,40 @@ class PratinjauFragment : Fragment(R.layout.fragment_pratinjau), PratinjauContra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mView = view
-        mView.tvDesc.text = mDesc
         PratinjauPresenter(requireContext(), this)
         mPresenter.loadFAQ(idProduk)
+        mView.apply {
+            tvPemateri visibility false
+            tvPekerjaan visibility false
+            tvBiografi visibility false
+            viewLine2 visibility false
 
-        mRecyclerFAQ.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = mAdapterFAQ
-        }
-        mRecyclerTestimoni.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = mAdapterTestimoni
-        }
+            mView.tvDesc.text = mDesc
 
-        groupTestimoni visibility false
 
-        tvLabelSemuaFAQ.ripple().setOnClickListener {
-            startActivity(Intent(requireContext(), FaqActivity::class.java).apply {
-                putExtra(KEY_ID_PRODUK,idProduk)
-            })
-            (requireActivity() as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
-        }
+            mRecyclerFAQ.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = mAdapterFAQ
+            }
+            mRecyclerTestimoni.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = mAdapterTestimoni
+            }
+
+            groupTestimoni visibility false
+
+            tvLabelSemuaFAQ.ripple().setOnClickListener {
+                startActivity(Intent(requireContext(), FaqActivity::class.java).apply {
+                    putExtra(KEY_ID_PRODUK,idProduk)
+                })
+                (requireActivity() as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
+            }
 //        val data2 = arrayListOf<ModelFAQ?>()
 //        for (a in 1 until 25) {
 //            data2.add(ModelFAQ("FAQ $a", "Description $a"))
 //        }
 //        showFAQ(data2)
+        }
 
     }
 
