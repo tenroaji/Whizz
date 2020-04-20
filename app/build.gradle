@@ -31,6 +31,9 @@ android {
         resValue("string","base_url",(rootProject.findProperty("BASE_URL") ?: ""))
         multiDexEnabled true
     }
+    androidExtensions {
+        experimental = true
+    }
 
     compileOptions{
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -90,8 +93,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 
     // Kotlin
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'

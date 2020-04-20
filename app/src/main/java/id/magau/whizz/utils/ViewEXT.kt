@@ -1,6 +1,7 @@
 package id.magau.whizz.utils
 
 import android.app.Activity
+import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,7 +9,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
+import android.os.Environment
 import android.os.Handler
+import android.os.StrictMode
 import android.text.Html
 import android.text.TextUtils
 import android.util.Log
@@ -18,20 +21,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import id.magau.whizz.R
-import kotlinx.android.synthetic.main.activity_event_detail.*
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.Exception
 import java.net.URL
 import java.text.NumberFormat
 import java.util.*
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.contract
-
 
 
 infix fun View.active (status:Boolean){
@@ -161,7 +160,11 @@ infix fun TextView.promo(data : Int){
 
 infix fun ImageView.load(res : String?){
     res?.let{
-        Picasso.get().load(res).into(this)
+        Picasso.get()
+            .load(res)
+            .error(R.color.colorPrimary)
+//            .placeholder(R.color.colorPrimary)
+            .into(this)
     }
 }
 
@@ -242,10 +245,30 @@ infix fun View.clicked(func: () -> Unit){
 infix fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
 infix fun String.saveTo(path: String) {
+    val policy: StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+    StrictMode.setThreadPolicy(policy)
+    val nameFile = Uri.parse(this).lastPathSegment
     URL(this).openStream().use { input ->
-        FileOutputStream(File(path)).use { output ->
+        FileOutputStream(File(path+nameFile)).use { output ->
             input.copyTo(output)
         }
     }
+}
+
+infix fun Context.download(url : String){
+    val downloadManager: DownloadManager =
+        getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+    val uri = Uri.parse(url)
+    val path = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString()+"/"
+    val file = "file://"
+    val nameFile = Uri.parse(url).lastPathSegment
+    val request: DownloadManager.Request = DownloadManager.Request(uri)
+    request.setTitle(nameFile)
+    request.setDescription("Downloading")
+    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+    request.setVisibleInDownloadsUi(false)
+    request.setDestinationUri(Uri.parse(file+path+nameFile))
+
+    downloadManager.enqueue(request)
 }
 

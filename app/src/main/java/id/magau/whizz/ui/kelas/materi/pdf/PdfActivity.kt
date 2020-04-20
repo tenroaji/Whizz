@@ -24,7 +24,7 @@ class PdfActivity : BaseActivity(layout= R.layout.activity_pdf){
     }
 
     private val mTitle by lazy{
-        intent.getStringExtra(KEY_TITLE)
+        intent.getStringExtra(KEY_TITLE)?:""
     }
 
     private val mType by lazy{

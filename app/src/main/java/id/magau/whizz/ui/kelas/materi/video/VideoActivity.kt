@@ -51,50 +51,30 @@ class VideoActivity : BaseActivity(layout= R.layout.activity_video){
         super.onCreate(savedInstanceState)
 //        tvTitleToolbar.text = mTitle
 
-        var mUrl = Aes256.decrypt(keyVideo, passPhrase("cc07e936baf2ff346911af4bb44c2867"))
-        Log.e("lapar aes",mUrl)
-        val uri = Uri.parse(mUrl)
-        val server = uri.authority
-        val path = uri.path
-        val protocol = uri.scheme
-        val args = uri.queryParameterNames
-        val params = uri.getQueryParameter("driveid")
-        Log.d("lapar", "server : $server")
-        Log.d("lapar", "path : $path")
-        Log.d("lapar", "protocol : $protocol")
-        Log.d("lapar", "args : $args")
-        Log.d("lapar", "params : $params")
-//        mUrl = "https://www.youtube.com/watch?v=2UzucB6YMkw"
+        val mUrl = Aes256.decrypt(keyVideo, passPhrase("cc07e936baf2ff346911af4bb44c2867"))
+//        Log.e("lapar aes",mUrl)
+//        val uri = Uri.parse(mUrl)
+//        val server = uri.authority
+//        val path = uri.path
+//        val protocol = uri.scheme
+//        val args = uri.queryParameterNames
+//        val params = uri.getQueryParameter("driveid")
+//        Log.d("lapar", "server : $server")
+//        Log.d("lapar", "path : $path")
+//        Log.d("lapar", "protocol : $protocol")
+//        Log.d("lapar", "args : $args")
+//        Log.d("lapar", "params : $params")
 
-
-        val drive = "https://drive.google.com/file/d/$params/preview"
         exoPlayer = SimpleExoPlayer.Builder(this).build()
         userAgent = Util.getUserAgent(this, BuildConfig.APPLICATION_ID)
-//        val mUrl = Uri.parse("https://html5demos.com/assets/dizzy.mp4")
          dataSourceFactory = DefaultDataSourceFactory(this,
              userAgent)
-//        val videoSource = ProgressiveMediaSource.Factory(dataSourceFactory)
-//            .createMediaSource(mUrl)
+
         val videoSource = buildMediaSource(Uri.parse(mUrl))
         exoPlayer.playWhenReady = true
         exoPlayer.prepare(videoSource)
         mPlayerView.player = exoPlayer
-//        val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
-//        val videoTrackSelectionFactory: TrackSelection.Factory =
-//            AdaptiveTrackSelection.Factory(bandwidthMeter)
-//        val trackSelector: TrackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
-//        val exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector)
-//        val audioSource: MediaSource = ExtractorMediaSource(
-//            Uri.parse(mUrl),
-//            CacheDataSourceFactory(
-//                this,
-//                100 * 1024 * 1024,
-//                5 * 1024 * 1024
-//            ), DefaultExtractorsFactory(), null, null
-//        )
-//        exoPlayer.playWhenReady = true
-//        exoPlayer.prepare(audioSource)
-//        mPlayerView.player = exoPlayer
+
     }
 
     private fun buildMediaSource(uri: Uri): MediaSource {
