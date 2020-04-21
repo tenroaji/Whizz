@@ -159,6 +159,9 @@ infix fun TextView.promo(data : Int){
 }
 
 infix fun ImageView.load(res : String?){
+    if(res.isNullOrEmpty()){
+        return
+    }
     res?.let{
         Picasso.get()
             .load(res)

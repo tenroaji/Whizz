@@ -24,15 +24,13 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0" + getDateAndMonth()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         resValue("string", "app_name", "Whizz")
         resValue("string","base_url",(rootProject.findProperty("BASE_URL") ?: ""))
+        resValue("string", "youtube_key", (project.findProperty("YOUTUBE_KEY") ?: ""))
         multiDexEnabled true
-    }
-    androidExtensions {
-        experimental = true
     }
 
     compileOptions{
@@ -43,6 +41,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
 
     buildTypes {
 
@@ -71,6 +70,10 @@ android {
             versionNameSuffix '-beta'
         }
     }
+}
+
+static def getDateAndMonth() {
+    return new Date().format(".d.M")
 }
 
 dependencies {
@@ -121,6 +124,8 @@ dependencies {
     //aes
     implementation 'com.github.mervick:aes-everywhere-java:1.2.7'
 
+    // youtubeAPI
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

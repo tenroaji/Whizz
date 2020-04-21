@@ -1,6 +1,7 @@
 package id.magau.whizz.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /**
  * Created by Andi Tenroaji Ahmad on 11/18/2019.
@@ -89,8 +90,21 @@ data class ModelEvents(
     @SerializedName("rate")
     var rate : Double? = 0.0,
     @SerializedName("image")
-    var image : String? = ""
+    var image : String? = "",
+    @SerializedName("pemateri")
+    var pemateri : List<ModelPemateri>
 )
+
+data class ModelPemateri(
+    @SerializedName("nama")
+    var nama : String? = "",
+    @SerializedName("job_title")
+    var job_title : String? = "",
+    @SerializedName("gambar")
+    var gambar : String? = "",
+    @SerializedName("desc")
+    var desc : String? = ""
+):Serializable
 
 data class ModelTeacher(
     @SerializedName("name")

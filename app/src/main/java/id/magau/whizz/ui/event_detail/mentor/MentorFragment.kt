@@ -7,23 +7,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelMentor
+import id.magau.whizz.data.model.ModelPemateri
 import id.magau.whizz.utils.toast
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.fragment_mentor.view.*
 import kotlinx.android.synthetic.main.item_loading.*
+import java.io.Serializable
 
 //
 //
 class MentorFragment : Fragment(R.layout.fragment_mentor),MentorFragmentContracts.View {
 
     companion object {
-//        const val KEY_ID_PRODUK = "id"
-//        const val KEY_TITLE = "TITLE"
-//
+        const val KEY_PEMATERI = "pemateri"
+
         @JvmStatic
-        fun newInstance(): MentorFragment {
+        fun newInstance(pemateri : List<ModelPemateri>): MentorFragment {
             val args = Bundle()
-//            args.putString(KEY_ID_PRODUK, id)
+            args.putSerializable(KEY_PEMATERI, pemateri as Serializable)
 //            args.putString(KEY_TITLE, title)
             val fragment = MentorFragment()
             fragment.arguments = args
@@ -33,6 +34,9 @@ class MentorFragment : Fragment(R.layout.fragment_mentor),MentorFragmentContract
 
     private val mAdapter = AdapterMentor()
     private lateinit var mPresenter : MentorFragmentContracts.Presenter
+    private val mPemateri by lazy{
+        arguments?.getSerializable(KEY_PEMATERI) as List<ModelPemateri>
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,21 +45,21 @@ class MentorFragment : Fragment(R.layout.fragment_mentor),MentorFragmentContract
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mAdapter
         }
-        val data = arrayListOf<ModelMentor?>(
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
-            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar")
-        )
-        showMentor(data)
+//        val data = arrayListOf<ModelMentor?>(
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar"),
+//            ModelMentor("Andi Tenroaji Ahmad","Hafiz",0,"Menjadi lebih baik, menjadi penghafal alquran, mengajak berbuat amar maruf nahi mungkar")
+//        )
+        showMentor(mPemateri)
     }
 
-    override fun showMentor(data: ArrayList<ModelMentor?>) {
+    override fun showMentor(data: List<ModelPemateri?>) {
         mAdapter.updateAdapter(data)
     }
 

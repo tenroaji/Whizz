@@ -1,9 +1,6 @@
 package id.magau.whizz.ui.event_detail.mentor
 
-import id.magau.whizz.data.model.ModelEvent
-import id.magau.whizz.data.model.ModelMentor
-import id.magau.whizz.data.model.ModelPromo
-import id.magau.whizz.data.model.ModelSkills
+import id.magau.whizz.data.model.*
 import id.magau.whizz.utils.BasePresenter
 import id.magau.whizz.utils.BaseView
 
@@ -20,7 +17,7 @@ interface MentorFragmentContracts {
 
     interface View : BaseView<Presenter> {
 
-        fun showMentor(data : ArrayList<ModelMentor?>)
+        fun showMentor(data : List<ModelPemateri?>)
 
         fun showLoading(show : Boolean)
 

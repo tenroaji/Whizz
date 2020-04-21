@@ -64,7 +64,7 @@ class EventDetailActivity :BaseActivity(null,R.layout.activity_event_detail),Eve
         mKota = data.kota!!
 
         val mAdapter = AdapterTab(
-            supportFragmentManager,idEvent,mTanggal,mWaktu,mAlamat, mKota
+            supportFragmentManager,idEvent,mTanggal,mWaktu,mAlamat, mKota,data.pemateri
         )
         mViewPager.adapter = mAdapter
         mTabLayout.setupWithViewPager(mViewPager)
