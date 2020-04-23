@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.skill
+package id.magau.whizz.ui.skill_search
 
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelProducts
@@ -11,7 +11,7 @@ import id.magau.whizz.utils.BaseView
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-interface SkillContracts {
+interface SkillSearchContracts {
 
     interface Presenter : BasePresenter {
         fun loadData()

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_kata_sandi.view.*
  * Created by Andi Tenroaji Ahmad on 3/12/2020.
  */
 
-class TotalFragment : Fragment(R.layout.fragment_kata_sandi){
+class TotalFragment : Fragment(R.layout.fragment_total_penghasilan){
 
     companion object {
         //const val KEY_ID_PRODUK = "id"

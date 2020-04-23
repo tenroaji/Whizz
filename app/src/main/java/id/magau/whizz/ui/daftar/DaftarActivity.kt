@@ -3,12 +3,7 @@ package id.magau.whizz.ui.daftar
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import id.magau.whizz.R
 import id.magau.whizz.ui.login.LoginActivity
 import id.magau.whizz.ui.main_menu.MainMenuActivity
@@ -20,7 +15,7 @@ import kotlinx.android.synthetic.main.item_loading.*
  * Created by Andi Tenroaji Ahmad on 2/29/2020.
  */
 
-class DaftarActivity : BaseActivity(R.color.colorWhite,R.layout.activity_daftar),DaftarContracts.View {
+class DaftarActivity : BaseActivity(R.color.colorWhite,R.layout.activity_daftar), DaftarContracts.View {
     private lateinit var mPresenter : DaftarContracts.Presenter
     private var isDropdownShowing = false
     override fun onCreate(savedInstanceState: Bundle?) {

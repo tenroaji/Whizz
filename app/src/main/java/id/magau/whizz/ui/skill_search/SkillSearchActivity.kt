@@ -1,16 +1,13 @@
-package id.magau.whizz.ui.skill
+package id.magau.whizz.ui.skill_search
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelProducts
 import id.magau.whizz.ui.main_menu.AdapterSkills
-import id.magau.whizz.ui.skill_search.SkillSearchActivity
-import id.magau.whizz.ui.skill_search.SkillSearchContracts
 import id.magau.whizz.utils.*
-import kotlinx.android.synthetic.main.activity_skill.*
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_skill.imgFilter
 import kotlinx.android.synthetic.main.activity_skill.tvLabelSkill
 import kotlinx.android.synthetic.main.activity_skill.tvTitleToolbar
@@ -20,7 +17,7 @@ import kotlinx.android.synthetic.main.item_loading.*
  * Created by Andi Tenroaji Ahmad on 3/8/2020.
  */
 
-class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),SkillContracts.View {
+class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_search),SkillSearchContracts.View {
     companion object {
         const val KEY_SKILL_SAYA = "SKILL_SAYA"
     }
@@ -28,28 +25,26 @@ class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),S
     private val mySkill by lazy {
         intent.getBooleanExtra(KEY_SKILL_SAYA,false)
     }
-    private lateinit var mPresenter : SkillContracts.Presenter
+    private lateinit var mPresenter : SkillSearchContracts.Presenter
     private val mAdapterSkills = AdapterSkills()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SkillPresenter(this,this)
-        imgFilter visibility false
-//        imgSearch visibility false
+        SkillSearchPresenter(this,this)
 
-        imgSearch.ripple().setOnClickListener {
-            startActivity(Intent(this,SkillSearchActivity::class.java).apply {
-                putExtra(SkillSearchActivity.KEY_SKILL_SAYA,mySkill)
-            })
+        btnBatal.setOnClickListener {
+            finish()
         }
 
-
-        if (mySkill){
-            mPresenter.loadMySkill()
-            tvTitleToolbar.text = "Skills Saya"
-            tvLabelSkill.text = "Semua Skill Saya"
-        }else{
-            mPresenter.start()
+        btnTelusuri.setOnClickListener {
+            mPresenter.searchSkill(editSearch.text.toString())
         }
+
+//
+//        if (mySkill){
+//            mPresenter.loadMySkill()
+//        }else{
+//            mPresenter.start()
+//        }
         val mLayoutManager = LinearLayoutManager(this)
         mRecyclerSkill.layoutManager = mLayoutManager
         mRecyclerSkill.adapter = mAdapterSkills
@@ -57,10 +52,6 @@ class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),S
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val visibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
-//                Log.e(
-//                    "onscroll",
-//                    "item = ${mLayoutManager.itemCount} visible = ${visibleItemPosition} total =${mLayoutManager.itemCount - visibleItemPosition}, next = ${mPresenter.isCanNextPage()}"
-//                )
                 if ((mLayoutManager.itemCount - visibleItemPosition) <= 1 && mPresenter.isCanNextPage()) {
                     if (mySkill){
                         mPresenter.loadMySkill()
@@ -93,7 +84,7 @@ class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),S
 
     }
 
-    override fun setPresenter(presenter: SkillContracts.Presenter) {
+    override fun setPresenter(presenter: SkillSearchContracts.Presenter) {
         mPresenter = presenter
     }
 }

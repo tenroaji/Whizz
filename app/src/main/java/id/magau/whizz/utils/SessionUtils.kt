@@ -16,6 +16,7 @@ class SessionUtils(context: Context) {
         const val PREF_KEY_PASSWORD = "PASSWORD"
         const val PREF_KEY_TOKEN = "TOKEN"
         const val PREF_KEY_LOGIN = "LOGIN"
+        const val PREF_KEY_PEMATERI = "PEMATERI"
 
         @Volatile
         private var INSTANCE: SessionUtils? = null

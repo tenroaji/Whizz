@@ -12,4 +12,5 @@
     <dimen name="size34dp">34dp</dimen>
     <dimen name="margin_28dp">28dp</dimen>
     <dimen name="margin_56dp">56dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
 </resources>

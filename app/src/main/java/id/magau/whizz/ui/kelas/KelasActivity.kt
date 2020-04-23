@@ -3,6 +3,7 @@ package id.magau.whizz.ui.kelas
 import android.content.Intent
 import android.os.Bundle
 import id.magau.whizz.R
+import id.magau.whizz.ui.analisis_penghasilan.AnalisisPenghasilanActivity
 import id.magau.whizz.ui.pembayaran.PembayaranActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_kelas.*
@@ -44,6 +45,8 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
 
         if (kelasSaya){
             btnBeliKelas visibility false
+            val mSession = SessionUtils(this)
+            btnAnalisis visibility mSession.getData(KEY_PEMATERI, false)
         }else{
             groupUser visibility false
         }
@@ -70,6 +73,12 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas) {
         )
         mViewPager.adapter = mAdapter
         mTabLayout.setupWithViewPager(mViewPager)
+
+        btnAnalisis.setOnClickListener {
+            startActivity(Intent(this, AnalisisPenghasilanActivity::class.java).apply {
+                putExtra(PembayaranActivity.KEY_ID_PRODUCT,idProduct)
+            })
+        }
 
         btnBeliKelas.setOnClickListener{
             startActivity(Intent(this, PembayaranActivity::class.java).apply {

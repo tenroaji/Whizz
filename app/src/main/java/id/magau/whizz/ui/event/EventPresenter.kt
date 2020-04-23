@@ -58,6 +58,7 @@ class EventPresenter(val context: Context, val mView: EventContracts.View) :
                     }
 
                     mView.showError(0, "Internal Server Error")
+                    isLoading = false
                 }
 
                 override fun onResponse(

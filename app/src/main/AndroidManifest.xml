@@ -70,6 +70,8 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"/>
         <activity android:name=".ui.soal.SoalActivity" />
 
+        <activity android:name=".ui.skill_search.SkillSearchActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"

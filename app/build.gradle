@@ -30,6 +30,7 @@ android {
         resValue("string", "app_name", "Whizz")
         resValue("string","base_url",(rootProject.findProperty("BASE_URL") ?: ""))
         resValue("string", "youtube_key", (project.findProperty("YOUTUBE_KEY") ?: ""))
+        resValue("string", "pass_phrase_key", (project.findProperty("PASS_PHRASE_KEY") ?: ""))
         multiDexEnabled true
     }
 

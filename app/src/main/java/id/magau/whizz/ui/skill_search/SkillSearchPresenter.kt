@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.skill
+package id.magau.whizz.ui.skill_search
 
 import android.content.Context
 import com.google.gson.Gson
@@ -20,8 +20,8 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class SkillPresenter(val context: Context, val mView: SkillContracts.View) :
-    SkillContracts.Presenter {
+class SkillSearchPresenter(val context: Context, val mView: SkillSearchContracts.View) :
+    SkillSearchContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
         SkillsApiRoute::class.java,
@@ -55,6 +55,7 @@ class SkillPresenter(val context: Context, val mView: SkillContracts.View) :
                         mView.showNextLoading(false)
                     }
                     mView.showError(0, "Internal Server Error")
+                    isLoading = false
                 }
 
                 override fun onResponse(
@@ -162,6 +163,7 @@ class SkillPresenter(val context: Context, val mView: SkillContracts.View) :
                         mView.showNextLoading(false)
                     }
                     mView.showError(0, "Internal Server Error $t")
+                    isLoading = false
                 }
 
                 override fun onResponse(
@@ -188,7 +190,8 @@ class SkillPresenter(val context: Context, val mView: SkillContracts.View) :
                                 if (!mData.isNullOrEmpty()) mView.showSkill(mData)
                                 else mView.showNoData()
                             }
-                        }else {
+                        }
+                        else {
                             data?.let {
                                 mView.showSkill(it)
                             }

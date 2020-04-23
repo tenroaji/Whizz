@@ -51,7 +51,7 @@ class VideoActivity : BaseActivity(layout= R.layout.activity_video){
         super.onCreate(savedInstanceState)
 //        tvTitleToolbar.text = mTitle
 
-        val mUrl = Aes256.decrypt(keyVideo, passPhrase("cc07e936baf2ff346911af4bb44c2867"))
+        val mUrl = Aes256.decrypt(keyVideo, passPhrase(resources.getString(R.string.pass_phrase_key)))
 //        Log.e("lapar aes",mUrl)
 //        val uri = Uri.parse(mUrl)
 //        val server = uri.authority

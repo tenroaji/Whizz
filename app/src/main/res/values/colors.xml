@@ -16,4 +16,5 @@
     <color name="colorEmpety">#E8E9E9</color>
     <color name="colorDisabled">#FFBE85</color>
     <color name="colorChoice">#D3DFF1</color>
+    <color name="color_line">#F0F0F0</color>
 </resources>

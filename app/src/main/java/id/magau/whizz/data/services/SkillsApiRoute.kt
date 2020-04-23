@@ -18,24 +18,33 @@ interface SkillsApiRoute {
     @GET("student/product")
     fun allSkill(@Header("authorization") token: String?): Call<ModelResponseSkills>
 
+    @GET("student/search/course")
+    fun searchSkill(
+        @Header("authorization") token: String?,
+        @Query("course") course: String?
+    ): Call<ModelResponseSkills>
+
     @GET("student/product/mycourse")
     fun mySkill(@Header("authorization") token: String?): Call<ModelResponseMySkills>
 
     @GET("student/product/detail")
     fun detailSkill(
         @Header("authorization") token: String?,
-        @Query("uuid_course") idProduct : String?): Call<ModelResponseSkillsDetail>
+        @Query("uuid_course") idProduct: String?
+    ): Call<ModelResponseSkillsDetail>
 
 
     @GET("student/product/faq")
     fun dataFAQ(
         @Header("authorization") token: String?,
-        @Query("uuid_produk") idProduct : String?): Call<ModelResponseFAQ>
+        @Query("uuid_produk") idProduct: String?
+    ): Call<ModelResponseFAQ>
 
     @GET("student/product/section")
     fun dataKurikulum(
         @Header("authorization") token: String?,
-        @Query("uuidcourse") idProduct : String?): Call<ModelResponseKurikulum>
+        @Query("uuidcourse") idProduct: String?
+    ): Call<ModelResponseKurikulum>
 
     @GET("student/comment")
     fun dataComment(
@@ -55,36 +64,35 @@ interface SkillsApiRoute {
     @POST("student/rating")
     fun sendRating(
         @Header("authorization") authorization: String?,
-        @Field("idcourse")  idcourse : String,
-        @Field("rating")  rating : Int
+        @Field("idcourse") idcourse: String,
+        @Field("rating") rating: Int
     ): Call<ModelResponseDiagnostic>
 
     @FormUrlEncoded
     @POST("student/reply/insert")
     fun sendReplys(
         @Header("authorization") authorization: String?,
-        @Field("idcomment")  idComment : String,
-        @Field("reply")  reply : String
+        @Field("idcomment") idComment: String,
+        @Field("reply") reply: String
     ): Call<ModelResponseDiagnostic>
 
     @GET("student/reply")
     fun getReplys(
         @Header("authorization") authorization: String?,
-        @Header("id")  idComment : String
+        @Header("id") idComment: String
     ): Call<ModelResponseReplys>
 
     @GET("student/product/section")
     fun getMateri(
         @Header("authorization") authorization: String?,
-        @Query("uuidcourse")  idCourse : String
+        @Query("uuidcourse") idCourse: String
     ): Call<ResponseModel>
 
     @GET("student/detail-additional-file")
     fun getFile(
         @Header("authorization") authorization: String?,
-        @Query("uuid_course")  idCourse : String
+        @Query("uuid_course") idCourse: String
     ): Call<ModelResponseFile>
-
 
 
 }

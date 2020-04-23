@@ -93,5 +93,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvLabelSkill"
         tools:listitem="@layout/item_list_skill_populer" />
 
+
     <include layout="@layout/item_loading" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
