@@ -45,7 +45,6 @@
         <activity android:name=".ui.pengaturan.PengaturanActivity" />
         <activity android:name=".ui.pengaturan.kata_sandi.KataSandiActivity" />
         <activity android:name=".ui.mentor.MentorActivity" />
-        <activity android:name=".ui.skill_saya.SkillSayaActivity" />
         <activity android:name=".ui.event_saya.EventSayaActivity" />
         <activity android:name=".ui.faq.FaqActivity" />
         <activity android:name=".ui.skill_detail.SkillDetailActivity"

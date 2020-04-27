@@ -16,6 +16,8 @@ interface SkillDetailContracts {
     interface Presenter : BasePresenter {
         fun loadData(idProduct:String)
 
+        fun loadMySkill(idProduct: String)
+
     }
 
     interface View : BaseView<Presenter> {

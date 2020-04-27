@@ -24,6 +24,7 @@ import java.io.File
 
 class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
     private var mData = mutableListOf<ModelFile?>()
+    private var clickListener: OnDownloadClickListener? = null
 
     fun updateAdapter(data : ArrayList<ModelFile?>){
         mData.clear()
@@ -47,6 +48,7 @@ class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
             tvDownload.ripple().setOnClickListener {
 //                val path = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
 //                data?.path?.saveTo(path.toString())
+                clickListener?.onClick(data?.title,data?.path)
                 context.download(data?.path!!)
             }
             if (Uri.parse(data?.path).lastPathSegment?.contains("pdf")!!) {
@@ -65,4 +67,19 @@ class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    fun setOnDownloadClickListener(listener: (title: String?, uri: String?) -> Unit) {
+        clickListener = object : OnDownloadClickListener {
+            override fun onClick(title: String?, uri: String?) {
+                listener.invoke(title, uri)
+            }
+        }
+    }
+
+
+    interface OnDownloadClickListener {
+        fun onClick(title: String?, uri: String?)
+    }
+
+
 }

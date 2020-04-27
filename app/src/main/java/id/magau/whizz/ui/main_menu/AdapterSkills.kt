@@ -126,6 +126,7 @@ class AdapterSkills : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                                 putExtra(KelasActivity.KEY_ID_PRODUCT, mData[position]?.uuid_course)
                                 putExtra(KelasActivity.KEY_KELAS_SAYA, true)
                                 putExtra(KelasActivity.KEY_PEMATERI, data.teacher?.name)
+                                putExtra(KelasActivity.KEY_URL_IMG, data.image)
                             })
                         } else {
                             context.startActivity(

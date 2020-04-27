@@ -117,6 +117,12 @@
                     android:layout_marginEnd="@dimen/margin_16dp"
                     app:layout_constraintTop_toBottomOf="@id/tvComment" />
 
+                <androidx.constraintlayout.widget.Group
+                    android:layout_width="wrap_content"
+                    android:id="@+id/groupLocation"
+                    app:constraint_referenced_ids="imgLocation,tvLokasi"
+                    android:layout_height="wrap_content" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgPemateri"
                     android:layout_width="@dimen/margin_40dp"
@@ -260,4 +266,6 @@
             android:text="Beli Kelas"
             app:cornerRadius="4dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/item_loading" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

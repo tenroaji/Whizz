@@ -1,4 +1,4 @@
-package id.magau.whizz.ui.skill_saya
+package id.magau.whizz.ui.kelas
 
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelProducts
@@ -11,16 +11,18 @@ import id.magau.whizz.utils.BaseView
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-interface SkillSayaContracts {
+interface KelasContracts {
 
     interface Presenter : BasePresenter {
-        fun loadData()
+        fun loadData(idProduct:String)
+
+        fun loadMySkill(idProduct: String)
 
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showData(data : ArrayList<ModelProducts?>)
+        fun showSkill(data : ModelProducts?)
 
         fun showLoading(show : Boolean)
 

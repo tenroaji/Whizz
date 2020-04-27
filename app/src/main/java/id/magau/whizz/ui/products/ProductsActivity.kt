@@ -2,23 +2,15 @@ package id.magau.whizz.ui.products
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEventSaya
 import id.magau.whizz.data.model.ModelProducts
-import id.magau.whizz.data.model.ModelSkills
 import id.magau.whizz.ui.event_saya.EventSayaActivity
-import id.magau.whizz.ui.event_saya.EventSayaContracts
-import id.magau.whizz.ui.main_menu.AdapterEvent
 import id.magau.whizz.ui.main_menu.AdapterSkills
 import id.magau.whizz.ui.skill.SkillActivity
-import id.magau.whizz.ui.skill.SkillActivity.Companion.KEY_SKILL_SAYA
-import id.magau.whizz.ui.skill_saya.AdapterSkillSaya
-import id.magau.whizz.ui.skill_saya.SkillSayaActivity
-import id.magau.whizz.ui.skill_saya.SkillSayaActivity.Companion.KEY_SKILL
 import id.magau.whizz.utils.*
+import id.magau.whizz.utils.SessionUtils.Companion.PREF_KEY_PEMATERI
 import kotlinx.android.synthetic.main.activty_product.*
 import kotlinx.android.synthetic.main.item_loading.*
 
@@ -36,9 +28,13 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         super.onCreate(savedInstanceState)
         ProductsPresenter(this,this)
         mPresenter.start()
-
+        val mSession = SessionUtils(this)
+        if (mSession.getData(PREF_KEY_PEMATERI, false)) {
+            mPresenter.loadKelasSaya()
+        } else {
+            groupKelas visibility false
+        }
         groupEvent visibility false
-        groupKelas visibility false
 //        groupSkill visibility false
         mRecyclerEventSaya.layoutManager = LinearLayoutManager(this)
         mRecyclerEventSaya.adapter = mAdapterEvent
@@ -72,14 +68,26 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
     }
 
     override fun showSkillSaya(data: ArrayList<ModelProducts?>) {
+        if (data.isEmpty()){
+            groupSkill visibility false
+            return
+        }
         mAdapterSkills.updateAdapter(data)
     }
 
     override fun showKelasSaya(data: ArrayList<ModelProducts?>) {
+        if (data.isEmpty()){
+            groupKelas visibility false
+            return
+        }
         mAdapterKelas.updateAdapter(data)
     }
 
     override fun showEvent(data: ArrayList<ModelEventSaya>) {
+        if (data.isEmpty()){
+            groupEvent visibility false
+            return
+        }
         mAdapterEvent.updateAdapter(data)
     }
 

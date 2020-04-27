@@ -25,6 +25,8 @@ class EventActivity : BaseActivity(R.color.colorWhite, R.layout.activity_events)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        imgSearch visibility false
         EventPresenter(this,this)
         mPresenter.start()
         mToolbar.setNavigationOnClickListener {

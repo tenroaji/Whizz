@@ -84,6 +84,12 @@
         app:layout_constraintTop_toTopOf="@id/tvLabelSkill"
         tools:text="Terbaru" />
 
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:id="@+id/groupFilter"
+        app:constraint_referenced_ids="tvRecent,imgDropDown"
+        android:layout_height="wrap_content" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerSkill"
         android:layout_width="match_parent"

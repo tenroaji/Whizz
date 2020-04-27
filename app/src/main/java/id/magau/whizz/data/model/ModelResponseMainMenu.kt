@@ -1,6 +1,8 @@
 package id.magau.whizz.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 /**
@@ -48,8 +50,24 @@ data class ModelProducts(
     @SerializedName("is_mine")
     var is_mine : Boolean? = false,
     @SerializedName("promo")
-    var promo : ModelPromoProduct? = null
+    var promo : ModelPromoProduct? = null,
+    @SerializedName("streaming")
+    var streaming : ArrayList<ModelStreaming?>? = null
 )
+
+@Parcelize
+data class ModelStreaming(
+    @SerializedName("title")
+    var title : String? = "",
+    @SerializedName("link")
+    var link : String? = "",
+    @SerializedName("waktu")
+    var waktu : String? = "",
+    @SerializedName("tanggalWeb")
+    var tanggalWeb : String? = "",
+    @SerializedName("waktuWeb")
+    var waktuWeb : String? = ""
+):Parcelable
 
 data class ModelPromoProduct(
     @SerializedName("is_approve")
@@ -96,9 +114,9 @@ data class ModelEvents(
 )
 
 data class ModelPemateri(
-    @SerializedName("nama")
+    @SerializedName("nama_pemateri")
     var nama : String? = "",
-    @SerializedName("job_title")
+    @SerializedName("job_pemateri")
     var job_title : String? = "",
     @SerializedName("gambar")
     var gambar : String? = "",

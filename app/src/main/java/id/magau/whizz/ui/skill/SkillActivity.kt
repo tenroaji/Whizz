@@ -34,6 +34,7 @@ class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),S
         super.onCreate(savedInstanceState)
         SkillPresenter(this,this)
         imgFilter visibility false
+        groupFilter visibility false
 //        imgSearch visibility false
 
         imgSearch.ripple().setOnClickListener {
@@ -47,6 +48,7 @@ class SkillActivity : BaseActivity(R.color.colorWhite,R.layout.activity_skill),S
             mPresenter.loadMySkill()
             tvTitleToolbar.text = "Skills Saya"
             tvLabelSkill.text = "Semua Skill Saya"
+            imgSearch visibility false
         }else{
             mPresenter.start()
         }

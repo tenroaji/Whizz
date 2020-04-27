@@ -29,6 +29,8 @@ class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_se
     private val mAdapterSkills = AdapterSkills()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        imgFilter visibility false
         SkillSearchPresenter(this,this)
 
         btnBatal.setOnClickListener {

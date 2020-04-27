@@ -1,10 +1,9 @@
-package id.magau.whizz.ui.products
+package id.magau.whizz.ui.kelas
 
 import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelResponseDiagnostic
-import id.magau.whizz.data.model.ModelResponseMySkills
+import id.magau.whizz.data.model.*
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -18,8 +17,8 @@ import retrofit2.Response
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-class ProductsPresenter(val context: Context, val mView: ProductsContracts.View) :
-    ProductsContracts.Presenter {
+class KelasPresenter(val context: Context, val mView: KelasContracts.View) :
+    KelasContracts.Presenter {
     private val mService: SkillsApiRoute = RetrofitUtils.createService(
         context.resources.getString(R.string.base_url),
         SkillsApiRoute::class.java,
@@ -32,30 +31,30 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
         mToken = session.getData(PREF_KEY_TOKEN, "")
     }
 
-    override fun loadSkillSaya() {
+    override fun loadData(idProduct: String) {
         mView.showLoading(true)
-        mService.mySkill(mToken).apply {
-            enqueue(object : Callback<ModelResponseMySkills> {
-                override fun onFailure(call: Call<ModelResponseMySkills>, t: Throwable) {
+        mService.detailSkill(mToken,idProduct).apply {
+            enqueue(object : Callback<ModelResponseSkillsDetail> {
+                override fun onFailure(call: Call<ModelResponseSkillsDetail>, t: Throwable) {
                     mView.showLoading(false)
-                    mView.showError(0, "Internal Server Error")
+                    mView.showError(0, "Internal Server Error $t")
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseMySkills>,
-                    response: Response<ModelResponseMySkills>
+                    call: Call<ModelResponseSkillsDetail>,
+                    response: Response<ModelResponseSkillsDetail>
                 ) {
                     mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            mView.showSkillSaya(it)
+                            mView.showSkill(it)
                         }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.string().run {
+                        response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,
                                 ModelResponseDiagnostic::class.java
@@ -71,30 +70,30 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
         }
     }
 
-    override fun loadKelasSaya() {
+    override fun loadMySkill(idProduct: String) {
         mView.showLoading(true)
-        mService.myClass(mToken).apply {
-            enqueue(object : Callback<ModelResponseMySkills> {
-                override fun onFailure(call: Call<ModelResponseMySkills>, t: Throwable) {
+        mService.detailMySkill(mToken,idProduct).apply {
+            enqueue(object : Callback<ModelResponseSkillsDetail> {
+                override fun onFailure(call: Call<ModelResponseSkillsDetail>, t: Throwable) {
                     mView.showLoading(false)
-                    mView.showError(0, "Internal Server Error")
+                    mView.showError(0, "Internal Server Error $t")
                 }
 
                 override fun onResponse(
-                    call: Call<ModelResponseMySkills>,
-                    response: Response<ModelResponseMySkills>
+                    call: Call<ModelResponseSkillsDetail>,
+                    response: Response<ModelResponseSkillsDetail>
                 ) {
                     mView.showLoading(false)
                     if (response.code() == 200) {
                         val data = response.body()?.response
                         data?.let{
-                            mView.showKelasSaya(it)
+                            mView.showSkill(it)
                         }
                     } else if (response.code() == 500) {
                         mView.showError(500, "Internal Server Error")
                     } else {
                         //http code selain 200
-                        response.errorBody()?.string().run {
+                        response.errorBody()?.string()?.run {
                             val model = Gson().fromJson(
                                 this,
                                 ModelResponseDiagnostic::class.java
@@ -108,13 +107,9 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
                 }
             })
         }
-    }
-
-    override fun loadEventSaya() {
     }
 
     override fun start() {
-        loadSkillSaya()
     }
 
 }

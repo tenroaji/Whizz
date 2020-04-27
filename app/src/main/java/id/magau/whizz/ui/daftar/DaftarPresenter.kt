@@ -83,7 +83,7 @@ class DaftarPresenter(val context: Context, val mView: DaftarContracts.View) :
                                     ModelDiagnostic::class.java
                                 )
                                 mView.showError(
-                                    diagnostic.code!!,
+                                    diagnostic.code,
                                     diagnostic.status
                                 )
                             }

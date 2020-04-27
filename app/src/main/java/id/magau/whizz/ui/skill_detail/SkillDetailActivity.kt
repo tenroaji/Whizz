@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_event_detail.tvPromo
 import kotlinx.android.synthetic.main.activity_event_detail.viewButton
 import kotlinx.android.synthetic.main.activity_event_detail.viewPrice
 import kotlinx.android.synthetic.main.activity_skill_detail.*
+import kotlinx.android.synthetic.main.item_loading.*
 
 
 /**
@@ -42,8 +43,13 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
     private lateinit var mPresenter : SkillDetailContracts.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        groupLocation visibility false
         SkillDetailPresenter(this,this)
-        mPresenter.loadData(idProduct)
+        if (kelasSaya){
+            mPresenter.loadMySkill(idProduct)
+        }else {
+            mPresenter.loadData(idProduct)
+        }
         tvJabatan visibility false
         val product = intent.getBooleanExtra(KEY_PROMO,false)
         if (product){
@@ -154,7 +160,7 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
     }
 
     override fun showLoading(show: Boolean) {
-//        mProgresBar visibility show
+        mProgresBar visibility show
     }
 
     override fun showError(code: Int?, message: String?) {
