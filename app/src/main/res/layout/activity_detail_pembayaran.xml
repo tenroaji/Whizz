@@ -113,7 +113,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tvComment"
+                android:id="@+id/tvDesc"
                 style="@style/TextDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

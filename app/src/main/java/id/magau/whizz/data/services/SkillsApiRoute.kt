@@ -18,6 +18,9 @@ interface SkillsApiRoute {
     @GET("student/product")
     fun allSkill(@Header("authorization") token: String?): Call<ModelResponseSkills>
 
+    @GET("student/myevent")
+    fun myEvent(@Header("authorization") token: String?): Call<ModelResponseEvent>
+
     @GET("student/search/course")
     fun searchSkill(
         @Header("authorization") token: String?,

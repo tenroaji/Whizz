@@ -1,9 +1,6 @@
-package id.magau.whizz.ui.event
+package id.magau.whizz.ui.event_search
 
-import id.magau.whizz.data.model.ModelEvent
-import id.magau.whizz.data.model.ModelEvents
-import id.magau.whizz.data.model.ModelPromo
-import id.magau.whizz.data.model.ModelSkills
+import id.magau.whizz.data.model.*
 import id.magau.whizz.utils.BasePresenter
 import id.magau.whizz.utils.BaseView
 
@@ -11,25 +8,25 @@ import id.magau.whizz.utils.BaseView
  * Created by Andi Tenroaji Ahmad on 12/18/2019.
  */
 
-interface EventContracts {
+interface EventSearchContracts {
 
     interface Presenter : BasePresenter {
-        fun loadEvent()
 
-        fun loadMyEvent()
+        fun searchEvent(event : String?)
 
         fun isCanNextPage() : Boolean
 
         fun forceUpdate()
+
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showEvent(data : ArrayList<ModelEvents?>)
-
-        fun showLoading(show : Boolean)
+        fun showData(data : ArrayList<ModelEvents?>)
 
         fun showNextLoading(show : Boolean)
+
+        fun showLoading(show : Boolean)
 
         fun showError(code : Int?, message : String?)
 

@@ -43,7 +43,7 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas),K
     val urlKelas by lazy {
         intent.getStringExtra(KEY_URL_IMG)
     }
-
+    private var mPrice = ""
     private lateinit var mPresenter : KelasContracts.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +76,8 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas),K
         btnBeliKelas.setOnClickListener{
             startActivity(Intent(this, PembayaranActivity::class.java).apply {
                 putExtra(PembayaranActivity.KEY_ID_PRODUCT,idProduct)
+                putExtra(PembayaranActivity.KEY_TYPE,"0")
+                putExtra(PembayaranActivity.KEY_PRICE,mPrice)
             })
         }
     }
@@ -91,7 +93,7 @@ class KelasActivity : BaseActivity(R.color.colorWhite,R.layout.activity_kelas),K
 
         imgKelas load data?.image
         tvTitle.text = data?.title
-
+        mPrice = rupiah(data?.price)
 
         val mAdapter = AdapterTabKelas(
             idProduct,supportFragmentManager,kelasSaya,data?.streaming

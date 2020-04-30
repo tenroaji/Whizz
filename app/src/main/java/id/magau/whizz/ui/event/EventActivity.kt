@@ -1,5 +1,6 @@
 package id.magau.whizz.ui.event
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEvents
+import id.magau.whizz.ui.event_search.EventSearchActivity
 import id.magau.whizz.utils.BaseActivity
+import id.magau.whizz.utils.ripple
 import id.magau.whizz.utils.toast
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.activity_events.*
@@ -20,15 +23,30 @@ import kotlinx.android.synthetic.main.item_loading.*
 
 class EventActivity : BaseActivity(R.color.colorWhite, R.layout.activity_events),
     EventContracts.View {
+    companion object {
+        const val KEY_SKILL_SAYA = "SKILL_SAYA"
+    }
+
+    private val myEvents by lazy {
+        intent.getBooleanExtra(KEY_SKILL_SAYA,false)
+    }
+
+
     private lateinit var mPresenter: EventContracts.Presenter
     private val mAdapter = AdapterEvents()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        imgSearch visibility false
         EventPresenter(this,this)
-        mPresenter.start()
+        if(myEvents){
+            mAdapter.updateClass(true)
+            mPresenter.loadMyEvent()
+        }else{
+            mPresenter.start()
+        }
+
+
+
         mToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -49,6 +67,11 @@ class EventActivity : BaseActivity(R.color.colorWhite, R.layout.activity_events)
                 }
             }
         })
+
+
+        imgSearch.ripple().setOnClickListener {
+            startActivity(Intent(this,EventSearchActivity::class.java))
+        }
 
     }
 

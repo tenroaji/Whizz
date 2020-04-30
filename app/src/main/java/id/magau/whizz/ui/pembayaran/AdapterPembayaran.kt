@@ -23,14 +23,18 @@ class AdapterPembayaran : RecyclerView.Adapter<AdapterPembayaran.ViewHolder> (){
 
     var mData = mutableListOf<ModelPembayaran?>()
     var idProduct = ""
+    var mType = ""
+    var mPrice = ""
     fun updateAdapter(data : ArrayList<ModelPembayaran?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
     }
 
-    fun updateIdProduct(idProduct : String){
+    fun updateData(idProduct : String,type : String,price : String){
         this.idProduct=idProduct
+        this.mType = type
+        this.mPrice = price
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_pembayaran,parent,false)
@@ -52,6 +56,8 @@ class AdapterPembayaran : RecyclerView.Adapter<AdapterPembayaran.ViewHolder> (){
                     putExtra(KEY_KODE_BANK,data?.kode)
                     putExtra(KEY_TITLE_BANK,data?.nama)
                     putExtra(KEY_IMAGE_BANK,data?.img)
+                    putExtra(PembayaranDetail.KEY_TYPE,mType)
+                    putExtra(PembayaranDetail.KEY_PRICE,mPrice)
                 })
             }
         }

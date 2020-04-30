@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelResponseDiagnostic
+import id.magau.whizz.data.model.ModelResponseEvent
 import id.magau.whizz.data.model.ModelResponseMySkills
 import id.magau.whizz.data.services.SkillsApiRoute
 import id.magau.whizz.utils.RetrofitUtils
@@ -111,10 +112,47 @@ class ProductsPresenter(val context: Context, val mView: ProductsContracts.View)
     }
 
     override fun loadEventSaya() {
+        mView.showLoading(true)
+        mService.myEvent(mToken).apply {
+            enqueue(object : Callback<ModelResponseEvent> {
+                override fun onFailure(call: Call<ModelResponseEvent>, t: Throwable) {
+                    mView.showLoading(false)
+                    mView.showError(0, "Internal Server Error")
+                }
+
+                override fun onResponse(
+                    call: Call<ModelResponseEvent>,
+                    response: Response<ModelResponseEvent>
+                ) {
+                    mView.showLoading(false)
+                    if (response.code() == 200) {
+                        val data = response.body()?.response
+                        data?.let{
+                            mView.showEvent(it)
+                        }
+                    } else if (response.code() == 500) {
+                        mView.showError(500, "Internal Server Error")
+                    } else {
+                        //http code selain 200
+                        response.errorBody()?.string().run {
+                            val model = Gson().fromJson(
+                                this,
+                                ModelResponseDiagnostic::class.java
+                            )
+                            mView.showError(
+                                model.diagnostic.code,
+                                model.diagnostic.status
+                            )
+                        }
+                    }
+                }
+            })
+        }
     }
 
     override fun start() {
         loadSkillSaya()
+        loadEventSaya()
     }
 
 }

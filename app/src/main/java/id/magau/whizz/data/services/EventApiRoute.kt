@@ -13,7 +13,7 @@ import retrofit2.http.Query
  * Created by Andi Tenroaji Ahmad on 9/26/2019.
  */
 
-interface EventApiRoute{
+interface EventApiRoute {
     @GET("student/event")
     fun getEvents(
         @Header("authorization") token: String?,
@@ -26,4 +26,16 @@ interface EventApiRoute{
         @Header("authorization") token: String?,
         @Query("uuid_event") id: String?
     ): Call<ModelResponseEventDetail>
+
+    @GET("student/search/event")
+    fun searchEvent(
+        @Header("authorization") token: String?,
+        @Query("event") event: String?
+    ): Call<ModelResponseEvent>
+
+    @GET("student/myevent")
+    fun myEvent(
+        @Header("authorization") token: String?,
+        @Query("page") page: String?
+    ): Call<ModelResponseEvent>
 }

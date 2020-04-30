@@ -49,7 +49,7 @@ class AdapterFile : RecyclerView.Adapter<AdapterFile.ViewHolder>() {
 //                val path = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
 //                data?.path?.saveTo(path.toString())
                 clickListener?.onClick(data?.title,data?.path)
-                context.download(data?.path!!)
+//                context.download(data?.path!!)
             }
             if (Uri.parse(data?.path).lastPathSegment?.contains("pdf")!!) {
                 tvLihat.ripple().setOnClickListener {

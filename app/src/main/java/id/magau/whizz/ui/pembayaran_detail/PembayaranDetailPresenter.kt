@@ -35,14 +35,14 @@ class PembayaranDetailPresenter(val context: Context, val mView: PembayaranDetai
     }
 
 
-    override fun loadData(idProduct: String, kodeBank: String) {
+    override fun loadData(idProduct: String, kodeBank: String, type: String) {
 //        val requestBody : RequestBody = MultipartBody.Builder()
 //            .setType(MultipartBody.FORM)
 //            .addFormDataPart("idcourse", idProduct)
 //            .addFormDataPart("bank", kodeBank)
 //            .build()
         mView.showLoading(true)
-        mService.createCheckout(mToken, idProduct, kodeBank).apply {
+        mService.createCheckout(mToken, idProduct, kodeBank,type).apply {
             enqueue(object : Callback<ModelResponsePembayaranDetail> {
                 override fun onFailure(call: Call<ModelResponsePembayaranDetail>, t: Throwable) {
                     mView.showLoading(false)

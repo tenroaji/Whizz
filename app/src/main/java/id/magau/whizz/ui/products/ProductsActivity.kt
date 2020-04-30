@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelEventSaya
+import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.data.model.ModelProducts
+import id.magau.whizz.ui.event.AdapterEvents
 import id.magau.whizz.ui.event_saya.EventSayaActivity
 import id.magau.whizz.ui.main_menu.AdapterSkills
 import id.magau.whizz.ui.skill.SkillActivity
@@ -21,11 +23,12 @@ import kotlinx.android.synthetic.main.item_loading.*
 class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_product),
     ProductsContracts.View {
     private lateinit var mPresenter : ProductsContracts.Presenter
-    private val mAdapterEvent = AdapterEventSaya()
+    private val mAdapterEvent = AdapterEvents()
     private val mAdapterSkills = AdapterSkills()
     private val mAdapterKelas = AdapterSkills()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mAdapterEvent.updateClass(true)
         ProductsPresenter(this,this)
         mPresenter.start()
         val mSession = SessionUtils(this)
@@ -34,8 +37,6 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
         } else {
             groupKelas visibility false
         }
-        groupEvent visibility false
-//        groupSkill visibility false
         mRecyclerEventSaya.layoutManager = LinearLayoutManager(this)
         mRecyclerEventSaya.adapter = mAdapterEvent
 
@@ -63,6 +64,9 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
 
         mSwipeRefresh.setOnRefreshListener {
             mPresenter.start()
+            if (mSession.getData(PREF_KEY_PEMATERI, false)) {
+                mPresenter.loadKelasSaya()
+            }
         }
 
     }
@@ -72,7 +76,14 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
             groupSkill visibility false
             return
         }
-        mAdapterSkills.updateAdapter(data)
+        if (data.size > 3) {
+            val mData = arrayListOf<ModelProducts?>()
+            mData.addAll(data.slice(0..2))
+            mAdapterSkills.updateAdapter(mData)
+        }else {
+            mAdapterSkills.updateAdapter(data)
+        }
+
     }
 
     override fun showKelasSaya(data: ArrayList<ModelProducts?>) {
@@ -80,15 +91,31 @@ class ProductsActivity : BaseActivity(R.color.colorWhite, R.layout.activty_produ
             groupKelas visibility false
             return
         }
-        mAdapterKelas.updateAdapter(data)
+
+        if (data.size > 3) {
+            val mData = arrayListOf<ModelProducts?>()
+            mData.addAll(data.slice(0..2))
+            mAdapterKelas.updateAdapter(mData)
+        }else {
+            mAdapterKelas.updateAdapter(data)
+        }
+
     }
 
-    override fun showEvent(data: ArrayList<ModelEventSaya>) {
+    override fun showEvent(data: ArrayList<ModelEvents?>) {
+
         if (data.isEmpty()){
             groupEvent visibility false
             return
         }
-        mAdapterEvent.updateAdapter(data)
+
+        if (data.size > 3) {
+            val mData = arrayListOf<ModelEvents?>()
+            mData.addAll(data.slice(0..2))
+            mAdapterEvent.updateAdapter(mData)
+        }else {
+            mAdapterEvent.updateAdapter(data)
+        }
     }
 
     override fun showLoading(show: Boolean) {

@@ -2,10 +2,13 @@ package id.magau.whizz.ui.pembayaran_detail
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelPembayaranDetail
+import id.magau.whizz.ui.pembayaran.PembayaranActivity
 import id.magau.whizz.ui.products.ProductsActivity
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_detail_pembayaran.*
@@ -22,10 +25,17 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
         const val KEY_KODE_BANK = "KODE_BANK"
         const val KEY_TITLE_BANK = "TITLE_BANK"
         const val KEY_IMAGE_BANK = "IMAGE_BANK"
+        const val KEY_TYPE = "TYPE"
+        const val KEY_PRICE = "PRICE"
+
     }
 
     private val idProduct by lazy {
         intent.getStringExtra(KEY_ID_PRODUCT)
+    }
+
+    private val mPrice by lazy {
+        intent.getStringExtra(KEY_PRICE)
     }
 
     private val kodeBank by lazy {
@@ -40,14 +50,23 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
         intent.getStringExtra(KEY_IMAGE_BANK)
     }
 
+    private val mType by lazy {
+        intent.getStringExtra(KEY_TYPE)
+    }
+
     private lateinit var mPresenter : PembayaranDetailContracts.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PembayaranDetailPresenter(this,this)
 
-        mPresenter.loadData(idProduct, kodeBank)
+        mPresenter.loadData(idProduct, kodeBank,mType)
 
         tvNamaBank.text = titleBank
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tvDesc.text = Html.fromHtml("Silahkan transfer sebesar <b>$mPrice</b> ke nomor Rekening  Akun Virtual diatas", Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            tvDesc.text = Html.fromHtml("Silahkan transfer sebesar <b>$mPrice</b> ke nomor Rekening  Akun Virtual diatas")
+        }
 //        imgLogo load imgBank
         val myClipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager?
         imgCopy.ripple().setOnClickListener {
@@ -57,7 +76,7 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
         }
 
         mSwipeRefresh.setOnRefreshListener {
-            mPresenter.loadData(idProduct, kodeBank)
+            mPresenter.loadData(idProduct, kodeBank,mType)
         }
 
         btnCheckPembayaran.setOnClickListener {
@@ -65,7 +84,7 @@ class PembayaranDetail : BaseActivity(layout = R.layout.activity_detail_pembayar
         }
 
         viewCobaLagi.setOnClickListener {
-            mPresenter.loadData(idProduct, kodeBank)
+            mPresenter.loadData(idProduct, kodeBank,mType)
             showCobaLagi(false,null)
         }
     }

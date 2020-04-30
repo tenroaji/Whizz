@@ -33,35 +33,35 @@ import java.text.NumberFormat
 import java.util.*
 
 
-infix fun View.active (status:Boolean){
-    if (status){
+infix fun View.active(status: Boolean) {
+    if (status) {
         setBackgroundResource(R.drawable.background_active_soal)
-    }else{
+    } else {
         setBackgroundResource(R.drawable.background_view)
     }
 }
 
-infix fun TextView.itemChoice (status: Int) {
-    if (status == 2){
+infix fun TextView.itemChoice(status: Int) {
+    if (status == 2) {
         setTextColor(resources.getColor(R.color.colorPrimary))
         setBackgroundResource(R.drawable.button_choice)
-    }else if (status == 1){
+    } else if (status == 1) {
         setTextColor(resources.getColor(R.color.colorWhite))
         setBackgroundResource(R.drawable.button_choice_active)
-    }else{
+    } else {
         setTextColor(resources.getColor(R.color.colorPrimary))
         setBackgroundResource(0)
     }
 }
 
-infix fun TextView.itemChoicePembahasan (status: Int) {
-    if (status == 2){
+infix fun TextView.itemChoicePembahasan(status: Int) {
+    if (status == 2) {
         setTextColor(resources.getColor(R.color.colorFalseActive))
         setBackgroundResource(R.drawable.button_false)
-    }else if (status == 1){
+    } else if (status == 1) {
         setTextColor(resources.getColor(R.color.colorTrueActive))
         setBackgroundResource(R.drawable.button_true)
-    }else{
+    } else {
         setTextColor(resources.getColor(R.color.colorEmpetyActive))
         setBackgroundResource(R.drawable.button_empety)
     }
@@ -78,15 +78,15 @@ infix fun TextView.itemChoicePembahasanActive(status: Int) {
     setTextColor(resources.getColor(R.color.colorWhite))
 }
 
-fun ImageView?.loadImageUrl(data : String?,context: Context){
-    data?.let{
-        Picasso.get().load(it).into(object :Target{
+fun ImageView?.loadImageUrl(data: String?, context: Context) {
+    data?.let {
+        Picasso.get().load(it).into(object : Target {
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
 
             override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
 
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                val drawable = BitmapDrawable(context.resources,bitmap)
+                val drawable = BitmapDrawable(context.resources, bitmap)
                 this@loadImageUrl?.apply {
                     background = drawable
                     setImageResource(R.drawable.gradient_image)
@@ -140,17 +140,19 @@ fun View.ripple(): View {
     return this
 }
 
-fun ImageView.circleRes(res : String){
-    Picasso.get().load(res).transform(PicassoCircleTransform()).into(this)
-}
-
-infix fun ImageView.radius(res : String?){
-    res?.let{
-        Picasso.get().load(res).transform(RoundedCornersTransformation(4,0)).into(this)
+infix fun ImageView.circleRes(res: String?) {
+    res?.let {
+        Picasso.get().load(res).transform(PicassoCircleTransform()).into(this)
     }
 }
 
-infix fun TextView.promo(data : Int){
+infix fun ImageView.radius(res: String?) {
+    res?.let {
+        Picasso.get().load(res).transform(RoundedCornersTransformation(4, 0)).into(this)
+    }
+}
+
+infix fun TextView.promo(data: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         this.text = Html.fromHtml("<strike>${rupiah(data)}</strike>", Html.FROM_HTML_MODE_COMPACT);
     } else {
@@ -158,11 +160,11 @@ infix fun TextView.promo(data : Int){
     }
 }
 
-infix fun ImageView.load(res : String?){
-    if(res.isNullOrEmpty()){
+infix fun ImageView.load(res: String?) {
+    if (res.isNullOrEmpty()) {
         return
     }
-    res?.let{
+    res?.let {
         Picasso.get()
             .load(res)
             .error(R.color.colorPrimary)
@@ -171,36 +173,37 @@ infix fun ImageView.load(res : String?){
     }
 }
 
-fun Activity.toast(message : String?){
-    Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
+fun Activity.toast(message: String?) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.toast(message: String?){
-    Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+fun Fragment.toast(message: String?) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 
-fun Activity.startOnTop(activity : Class<*>){
+fun Activity.startOnTop(activity: Class<*>) {
     startActivity(Intent(this, activity).run {
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)})
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    })
     overridePendingTransition(R.anim.enter, R.anim.exit)
 }
 
-fun Activity.start(activity : Class<*>){
+fun Activity.start(activity: Class<*>) {
     startActivity(Intent(this, activity))
     overridePendingTransition(R.anim.enter, R.anim.exit)
 
 }
 
-fun Context.start(activity: Class<*>){
+fun Context.start(activity: Class<*>) {
     startActivity(Intent(this, activity))
     (this as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
 }
 
-fun Fragment.start(activity : Class<*>){
+fun Fragment.start(activity: Class<*>) {
     startActivity(Intent(requireContext(), activity))
-        (requireContext() as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
+    (requireContext() as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
 }
 
 operator fun Context.contains(text: Any): Boolean {
@@ -222,10 +225,10 @@ infix fun (() -> Any).after(delay: Long) {
     }, delay)
 }
 
- fun rupiah(number: Int?): String{
-    val localeID =  Locale("in", "ID")
+fun rupiah(number: Int?): String {
+    val localeID = Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-    return numberFormat.format(number?.toDouble()).toString().replace("Rp","Rp ")
+    return numberFormat.format(number?.toDouble()).toString().replace("Rp", "Rp ")
 }
 
 infix fun (() -> Any).every(delay: Long) {
@@ -236,10 +239,10 @@ infix fun (() -> Any).every(delay: Long) {
             handler.postDelayed(this, delay)
         }
     }
-    handler.postDelayed(runnable,delay)
+    handler.postDelayed(runnable, delay)
 }
 
-infix fun View.clicked(func: () -> Unit){
+infix fun View.clicked(func: () -> Unit) {
     this.setOnClickListener {
         func()
     }
@@ -252,17 +255,17 @@ infix fun String.saveTo(path: String) {
     StrictMode.setThreadPolicy(policy)
     val nameFile = Uri.parse(this).lastPathSegment
     URL(this).openStream().use { input ->
-        FileOutputStream(File(path+nameFile)).use { output ->
+        FileOutputStream(File(path + nameFile)).use { output ->
             input.copyTo(output)
         }
     }
 }
 
-infix fun Context.download(url : String){
+infix fun Context.download(url: String) {
     val downloadManager: DownloadManager =
         getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
     val uri = Uri.parse(url)
-    val path = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString()+"/"
+    val path = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString() + "/"
     val file = "file://"
     val nameFile = Uri.parse(url).lastPathSegment
     val request: DownloadManager.Request = DownloadManager.Request(uri)
@@ -270,7 +273,7 @@ infix fun Context.download(url : String){
     request.setDescription("Downloading")
     request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
     request.setVisibleInDownloadsUi(false)
-    request.setDestinationUri(Uri.parse(file+path+nameFile))
+    request.setDestinationUri(Uri.parse(file + path + nameFile))
 
     downloadManager.enqueue(request)
 }

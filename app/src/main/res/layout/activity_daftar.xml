@@ -83,7 +83,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +131,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +178,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,7 +219,7 @@
                     android:background="@null"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp" />
+                    android:paddingBottom="9dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -266,7 +266,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -315,7 +315,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -364,7 +364,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -412,7 +412,7 @@
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_16dp"
                     android:paddingEnd="@dimen/margin_16dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="9dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

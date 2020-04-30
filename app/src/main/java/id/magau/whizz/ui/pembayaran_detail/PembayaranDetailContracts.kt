@@ -13,7 +13,7 @@ import id.magau.whizz.utils.BaseView
 interface PembayaranDetailContracts {
 
     interface Presenter : BasePresenter {
-        fun loadData(idProduct:String, kodeBank : String)
+        fun loadData(idProduct:String, kodeBank : String,type:String)
 
         fun sendCheckPayment(idProduct: String)
 

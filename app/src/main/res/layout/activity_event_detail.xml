@@ -91,6 +91,12 @@
                     app:layout_constraintBottom_toBottomOf="@id/imgPemateri"
                     tools:text="CEO PT Impian" />
 
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupPemateri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="tvPemateri,tvPemateri,imgPemateri"/>
+
                 <View
                     android:id="@+id/viewPrice"
                     android:layout_width="match_parent"

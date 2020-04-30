@@ -70,6 +70,9 @@
         <activity android:name=".ui.soal.SoalActivity" />
 
         <activity android:name=".ui.skill_search.SkillSearchActivity" />
+        <activity android:name=".ui.kelas.materi.youtube.YoutubeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".ui.event_search.EventSearchActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

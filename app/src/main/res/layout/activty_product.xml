@@ -105,7 +105,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/mRecyclerSkillSaya"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constrainedWidth="true"
                     app:layout_constraintTop_toBottomOf="@id/viewLine"
                     tools:itemCount="1"
                     tools:listitem="@layout/item_list_skill_populer" />
@@ -147,7 +148,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/mRecyclerKelasSaya"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constrainedWidth="true"
                     app:layout_constraintTop_toBottomOf="@id/viewLine2"
                     tools:itemCount="2"
                     tools:listitem="@layout/item_list_skill_populer" />
@@ -190,7 +192,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/mRecyclerEventSaya"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constrainedWidth="true"
                     app:layout_constraintTop_toBottomOf="@id/viewLine3"
                     tools:itemCount="1"
                     tools:listitem="@layout/item_list_events" />

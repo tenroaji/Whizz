@@ -40,148 +40,149 @@
         android:visibility="visible"
         app:constraint_referenced_ids="viewBeriRating,tvLabelRating,imgRating" />
 
-<!--    <View-->
-<!--        android:id="@+id/viewStreaming"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginStart="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_16dp"-->
-<!--        android:background="@drawable/background_streaming"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/tvTime"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewBeriRating" />-->
+    <!--    <View-->
+    <!--        android:id="@+id/viewStreaming"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginStart="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:layout_marginEnd="@dimen/margin_16dp"-->
+    <!--        android:background="@drawable/background_streaming"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/tvTime"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewBeriRating" />-->
 
-<!--    <androidx.appcompat.widget.AppCompatImageView-->
-<!--        android:id="@+id/imgStreaming"-->
-<!--        android:layout_width="@dimen/margin_24dp"-->
-<!--        android:layout_height="@dimen/margin_24dp"-->
-<!--        android:layout_marginStart="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
-<!--        app:layout_constraintTop_toTopOf="@id/viewStreaming"-->
-<!--        app:srcCompat="@drawable/ic_streaming_red" />-->
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/imgStreaming"-->
+    <!--        android:layout_width="@dimen/margin_24dp"-->
+    <!--        android:layout_height="@dimen/margin_24dp"-->
+    <!--        android:layout_marginStart="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_20dp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/viewStreaming"-->
+    <!--        app:srcCompat="@drawable/ic_streaming_red" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvLabelJadwalStreamin"-->
-<!--        style="@style/TextLabelTitle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/margin_8dp"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:text="Jadwal Live Streaming"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        app:layout_constraintStart_toEndOf="@id/imgStreaming"-->
-<!--        app:layout_constraintTop_toTopOf="@id/viewStreaming" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvLabelJadwalStreamin"-->
+    <!--        style="@style/TextLabelTitle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/margin_8dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:text="Jadwal Live Streaming"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/imgStreaming"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/viewStreaming" />-->
 
-<!--    <View-->
-<!--        android:id="@+id/viewLine1"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:layout_marginStart="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_16dp"-->
-<!--        android:background="#B8B9B9"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
-<!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvLabelJadwalStreamin" />-->
+    <!--    <View-->
+    <!--        android:id="@+id/viewLine1"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:layout_marginStart="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:layout_marginEnd="@dimen/margin_16dp"-->
+    <!--        android:background="#B8B9B9"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/tvLabelJadwalStreamin" />-->
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgTanggal"-->
-<!--        android:layout_width="@dimen/margin_16dp"-->
-<!--        android:layout_height="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/imgStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewLine1"-->
-<!--        app:srcCompat="@drawable/ic_time_white" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imgTanggal"-->
+    <!--        android:layout_width="@dimen/margin_16dp"-->
+    <!--        android:layout_height="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_20dp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/imgStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewLine1"-->
+    <!--        app:srcCompat="@drawable/ic_time_white" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvLabelTanggal"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/margin_8dp"-->
-<!--        android:layout_marginTop="@dimen/margin_20dp"-->
-<!--        android:fontFamily="@font/muli_semibold_family"-->
-<!--        android:text="TANGGAL"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        android:textSize="13sp"-->
-<!--        app:layout_constraintStart_toEndOf="@id/imgTanggal"-->
-<!--        app:layout_constraintTop_toTopOf="@id/viewLine1" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvLabelTanggal"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/margin_8dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_20dp"-->
+    <!--        android:fontFamily="@font/muli_semibold_family"-->
+    <!--        android:text="TANGGAL"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        android:textSize="13sp"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/imgTanggal"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/viewLine1" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvTanggal"-->
-<!--        style="@style/TextDesc"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_16dp"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewLine1"-->
-<!--        tools:text="28 November 2019" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvTanggal"-->
+    <!--        style="@style/TextDesc"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:layout_marginEnd="@dimen/margin_16dp"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewLine1"-->
+    <!--        tools:text="28 November 2019" />-->
 
-<!--    <View-->
-<!--        android:id="@+id/viewLine2"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:layout_marginStart="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_16dp"-->
-<!--        android:background="#B8B9B9"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
-<!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvTanggal" />-->
+    <!--    <View-->
+    <!--        android:id="@+id/viewLine2"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:layout_marginStart="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:layout_marginEnd="@dimen/margin_16dp"-->
+    <!--        android:background="#B8B9B9"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/tvTanggal" />-->
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgTime"-->
-<!--        android:layout_width="@dimen/margin_16dp"-->
-<!--        android:layout_height="@dimen/margin_16dp"-->
-<!--        android:layout_marginTop="@dimen/margin_20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/imgStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewLine2"-->
-<!--        app:srcCompat="@drawable/ic_time_white" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imgTime"-->
+    <!--        android:layout_width="@dimen/margin_16dp"-->
+    <!--        android:layout_height="@dimen/margin_16dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_20dp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/imgStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewLine2"-->
+    <!--        app:srcCompat="@drawable/ic_time_white" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvLabelTime"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/margin_8dp"-->
-<!--        android:layout_marginTop="@dimen/margin_20dp"-->
-<!--        android:fontFamily="@font/muli_semibold_family"-->
-<!--        android:text="TIME"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        android:textSize="13sp"-->
-<!--        app:layout_constraintStart_toEndOf="@id/imgTime"-->
-<!--        app:layout_constraintTop_toTopOf="@id/viewLine2" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvLabelTime"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/margin_8dp"-->
+    <!--        android:layout_marginTop="@dimen/margin_20dp"-->
+    <!--        android:fontFamily="@font/muli_semibold_family"-->
+    <!--        android:text="TIME"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        android:textSize="13sp"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/imgTime"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/viewLine2" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvTime"-->
-<!--        style="@style/TextDesc"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/margin_16dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_16dp"-->
-<!--        android:paddingBottom="@dimen/margin_16dp"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewLine2"-->
-<!--        tools:text="20 : 20 WITA" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvTime"-->
+    <!--        style="@style/TextDesc"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/margin_16dp"-->
+    <!--        android:layout_marginEnd="@dimen/margin_16dp"-->
+    <!--        android:paddingBottom="@dimen/margin_16dp"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/viewStreaming"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewLine2"-->
+    <!--        tools:text="20 : 20 WITA" />-->
 
-<!--    <androidx.constraintlayout.widget.Group-->
-<!--        android:id="@+id/groupStreaming"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:visibility="visible"-->
-<!--        app:constraint_referenced_ids="tvTanggal,tvLabelTime,tvLabelJadwalStreamin,imgTanggal,tvLabelTanggal,imgTime,viewLine2,viewLine1,viewStreaming,imgStreaming,tvTime" />-->
+    <!--    <androidx.constraintlayout.widget.Group-->
+    <!--        android:id="@+id/groupStreaming"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:visibility="visible"-->
+    <!--        app:constraint_referenced_ids="tvTanggal,tvLabelTime,tvLabelJadwalStreamin,imgTanggal,tvLabelTanggal,imgTime,viewLine2,viewLine1,viewStreaming,imgStreaming,tvTime" />-->
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerStreaming"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/mRecyclerMateri"
         app:layout_constraintTop_toBottomOf="@id/viewBeriRating"
         tools:itemCount="1"
-        android:layout_marginTop="@dimen/margin_16dp"
-        tools:listitem="@layout/item_list_streaming"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        tools:listitem="@layout/item_list_streaming" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerMateri"
         android:layout_width="match_parent"

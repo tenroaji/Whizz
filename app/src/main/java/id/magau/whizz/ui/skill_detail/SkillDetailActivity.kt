@@ -71,6 +71,8 @@ class SkillDetailActivity :BaseActivity(null,R.layout.activity_skill_detail),Ski
         btnBeliKelas.setOnClickListener {
             startActivity(Intent(this@SkillDetailActivity, PembayaranActivity::class.java).apply {
                 putExtra(PembayaranActivity.KEY_ID_PRODUCT,idProduct)
+                putExtra(PembayaranActivity.KEY_TYPE,"0")
+                putExtra(PembayaranActivity.KEY_PRICE,tvHarga.text.toString())
             })
         }
 

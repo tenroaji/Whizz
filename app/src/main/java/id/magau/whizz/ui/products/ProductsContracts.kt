@@ -21,7 +21,7 @@ interface ProductsContracts {
 
         fun showSkillSaya(data : ArrayList<ModelProducts?>)
         fun showKelasSaya(data : ArrayList<ModelProducts?>)
-        fun showEvent(data : ArrayList<ModelEventSaya>)
+        fun showEvent(data : ArrayList<ModelEvents?>)
 
         fun showLoading(show : Boolean)
 

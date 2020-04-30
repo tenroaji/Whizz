@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelEventSaya
+import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.ui.event_detail.EventDetailActivity
+import id.magau.whizz.utils.load
 
 import kotlinx.android.synthetic.main.item_list_event.view.tvTitleSkill
 import kotlinx.android.synthetic.main.item_list_events_saya.view.*
@@ -20,10 +21,10 @@ import kotlinx.android.synthetic.main.item_list_events_saya.view.*
 
 class AdapterEventSaya : RecyclerView.Adapter<AdapterEventSaya.ViewHolder>() {
 
-    private var mData : MutableList<ModelEventSaya?> = mutableListOf()
+    private var mData : MutableList<ModelEvents?> = mutableListOf()
 
 
-    fun updateAdapter(data : ArrayList<ModelEventSaya>){
+    fun updateAdapter(data : ArrayList<ModelEvents?>){
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
@@ -45,11 +46,14 @@ class AdapterEventSaya : RecyclerView.Adapter<AdapterEventSaya.ViewHolder>() {
 //            mData[position]?.gambar?.let {
 //                Picasso.get().load(it).into(imgEvent)
 //            }
-            tvTitleSkill.text = mData[position]?.title
-            tvTanggal.text = mData[position]?.tanggal
+            val data =  mData[position]
+            tvTitleSkill.text = data?.event
+            tvTanggal.text = data?.tanggalWeb?.replace("-"," ")
+            imgEvent load data?.image
             setOnClickListener {
                 context.startActivity(Intent(context, EventDetailActivity::class.java).apply {
-//                    putExtra(KEY_PRODUCT,true)
+                    putExtra(EventDetailActivity.KEY_ID_EVENT,data?.uuid_events)
+                    putExtra(EventDetailActivity.KEY_MY_PRODUCT,true)
                 })
                 (context as AppCompatActivity).overridePendingTransition(R.anim.enter, R.anim.exit)
             }

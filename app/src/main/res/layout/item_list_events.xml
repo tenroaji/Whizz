@@ -36,6 +36,42 @@
         app:layout_constraintTop_toTopOf="@id/imgEvent"
         tools:text="Tried Gordon Ramsay's Guide to Cook the Perfect Steak" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupTanggal"
+        android:layout_width="wrap_content"
+        app:constraint_referenced_ids="imgKalender,tvTanggal"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imgKalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:contentDescription="@string/content_desc"
+        app:layout_constraintBottom_toBottomOf="@id/imgEvent"
+        app:layout_constraintStart_toStartOf="@id/tvTitleSkill"
+        app:srcCompat="@drawable/ic_kalender" />
+    <TextView
+        android:id="@+id/tvTanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:fontFamily="@font/muli_regular_family"
+        android:textColor="@color/colorFontLabel1"
+        android:textSize="16sp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgEvent"
+        app:layout_constraintStart_toEndOf="@id/imgKalender"
+        tools:text="28 November 2019" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupPrice"
+        app:constraint_referenced_ids="tvLokasi,tvHarga,imgLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tvHarga"
         android:layout_width="wrap_content"
@@ -63,6 +99,7 @@
         tools:text="Makassar" />
 
     <ImageView
+        android:id="@+id/imgLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_8dp"

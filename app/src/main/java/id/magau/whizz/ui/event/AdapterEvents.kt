@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelEvent
 import id.magau.whizz.data.model.ModelEvents
 import id.magau.whizz.ui.event_detail.EventDetailActivity
 import id.magau.whizz.utils.load
 import id.magau.whizz.utils.rupiah
-import id.magau.whizz.utils.start
-import kotlinx.android.synthetic.main.fragment_soal.view.*
-import kotlinx.android.synthetic.main.item_list_event.view.*
+import id.magau.whizz.utils.visibility
+import kotlinx.android.synthetic.main.item_list_event.view.imgEvent
+import kotlinx.android.synthetic.main.item_list_event.view.tvHarga
+import kotlinx.android.synthetic.main.item_list_event.view.tvLokasi
+import kotlinx.android.synthetic.main.item_list_event.view.tvTitleSkill
+import kotlinx.android.synthetic.main.item_list_events.view.*
 
 
 /**
@@ -25,12 +26,16 @@ class AdapterEvents : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mData: MutableList<ModelEvents?> = mutableListOf()
     private var isLoading = false
-
+    private var myClass = false
 
     fun updateAdapter(data: ArrayList<ModelEvents?>) {
         mData.clear()
         mData.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun updateClass(myClass : Boolean){
+        this.myClass = myClass
     }
 
     fun clearList() {
@@ -103,8 +108,16 @@ class AdapterEvents : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     imgEvent load data?.image
 //            tvJenisSkill.text = data?.jenis
                     tvTitleSkill.text = data?.event
-                    tvHarga.text = rupiah(data?.harga!!)
-                    tvLokasi.text = data.kota?.toUpperCase()
+
+
+                    if (myClass){
+                        groupTanggal visibility true
+                        groupPrice visibility false
+                        tvTanggal.text = data?.tanggalWeb?.replace("-"," ")
+                    }else{
+                        tvLokasi.text = data?.kota?.toUpperCase()
+                        tvHarga.text = rupiah(data?.harga!!)
+                    }
                     setOnClickListener {
 //                        context.start(EventDetailActivity::class.java)
                         context.startActivity(
@@ -112,7 +125,8 @@ class AdapterEvents : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                                 context,
                                 EventDetailActivity::class.java
                             ).apply {
-                                putExtra(EventDetailActivity.KEY_ID_EVENT, data.uuid_events)
+                                putExtra(EventDetailActivity.KEY_ID_EVENT, data?.uuid_events)
+                                putExtra(EventDetailActivity.KEY_MY_PRODUCT, myClass)
                             })
                     }
                 }

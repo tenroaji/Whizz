@@ -17,12 +17,21 @@ import kotlinx.android.synthetic.main.item_loading.*
 class PembayaranActivity : BaseActivity(layout = R.layout.activity_pembayaran),PembayaranContracts.View {
     companion object{
         const val KEY_ID_PRODUCT = "ID_PRODUCT"
+        const val KEY_TYPE = "TYPE"
+        const val KEY_PRICE = "PRICE"
     }
 
     private val idProduct by lazy {
         intent.getStringExtra(KEY_ID_PRODUCT)
     }
 
+    private val mType by lazy {
+        intent.getStringExtra(KEY_TYPE)
+    }
+
+    private val mPrice by lazy {
+        intent.getStringExtra(KEY_PRICE)
+    }
 
     private lateinit var mPresenter : PembayaranContracts.Presenter
     private val mAdapter = AdapterPembayaran()
@@ -34,7 +43,7 @@ class PembayaranActivity : BaseActivity(layout = R.layout.activity_pembayaran),P
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
         }
-        mAdapter.updateIdProduct(idProduct)
+        mAdapter.updateData(idProduct,mType,mPrice)
     }
 
     override fun showData(data: ArrayList<ModelPembayaran?>) {

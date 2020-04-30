@@ -1,23 +1,21 @@
-package id.magau.whizz.ui.skill_search
+package id.magau.whizz.ui.event_search
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelProducts
-import id.magau.whizz.ui.main_menu.AdapterSkills
+import id.magau.whizz.data.model.ModelEvents
+import id.magau.whizz.ui.event.AdapterEvents
 import id.magau.whizz.utils.*
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_skill.imgFilter
-import kotlinx.android.synthetic.main.activity_skill.tvLabelSkill
-import kotlinx.android.synthetic.main.activity_skill.tvTitleToolbar
 import kotlinx.android.synthetic.main.item_loading.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 3/8/2020.
  */
 
-class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_search),SkillSearchContracts.View {
+class EventSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_search),EventSearchContracts.View {
     companion object {
         const val KEY_SKILL_SAYA = "SKILL_SAYA"
     }
@@ -25,20 +23,20 @@ class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_se
     private val mySkill by lazy {
         intent.getBooleanExtra(KEY_SKILL_SAYA,false)
     }
-    private lateinit var mPresenter : SkillSearchContracts.Presenter
-    private val mAdapterSkills = AdapterSkills()
+    private lateinit var mPresenter : EventSearchContracts.Presenter
+    private val mAdapterSkills = AdapterEvents()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         imgFilter visibility false
-        SkillSearchPresenter(this,this)
+        EventSearchPresenter(this,this)
 
         btnBatal.setOnClickListener {
             finish()
         }
 
         btnTelusuri.setOnClickListener {
-            mPresenter.searchSkill(editSearch.text.toString())
+            mPresenter.searchEvent(editSearch.text.toString())
         }
 
 
@@ -50,18 +48,14 @@ class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_se
                 super.onScrolled(recyclerView, dx, dy)
                 val visibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
                 if ((mLayoutManager.itemCount - visibleItemPosition) <= 1 && mPresenter.isCanNextPage()) {
-                    if (mySkill){
-                        mPresenter.loadMySkill()
-                    }else{
-                        mPresenter.start()
-                    }
+                    mPresenter.searchEvent(editSearch.text.toString())
                 }
             }
         })
 
     }
 
-    override fun showSkill(data: ArrayList<ModelProducts?>) {
+    override fun showData(data: ArrayList<ModelEvents?>) {
         mAdapterSkills.updateAdapter(data)
     }
 
@@ -81,7 +75,7 @@ class SkillSearchActivity : BaseActivity(R.color.colorWhite,R.layout.activity_se
 
     }
 
-    override fun setPresenter(presenter: SkillSearchContracts.Presenter) {
+    override fun setPresenter(presenter: EventSearchContracts.Presenter) {
         mPresenter = presenter
     }
 }

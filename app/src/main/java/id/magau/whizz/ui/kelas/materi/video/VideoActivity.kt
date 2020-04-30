@@ -95,12 +95,6 @@ class VideoActivity : BaseActivity(layout= R.layout.activity_video){
             val manifestDataSourceFactory = DefaultHttpDataSourceFactory(userAgent)
             return DashMediaSource.Factory(dashChunkSourceFactory, manifestDataSourceFactory).createMediaSource(uri)
         }
-//        else {
-//            val dashChunkSourceFactory = DefaultDashChunkSource.Factory(
-//                DefaultHttpDataSourceFactory("ua", BANDWIDTH_METER))
-//            val manifestDataSourceFactory = DefaultHttpDataSourceFactory(userAgent)
-//            return DashMediaSource.Factory(dashChunkSourceFactory, manifestDataSourceFactory).createMediaSource(uri)
-//        }
     }
 
     override fun onDestroy() {

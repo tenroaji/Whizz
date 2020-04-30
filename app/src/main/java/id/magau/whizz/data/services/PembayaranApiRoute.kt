@@ -24,14 +24,15 @@ interface PembayaranApiRoute {
 //    @Headers("Content-Type: application/x-www-form-urlencoded")
     fun createCheckout(
         @Header("authorization") authorization: String?,
-        @Field("idcourse")  idcourse : String,
-        @Field("bank")  bank : String
+        @Field("idproduct")  idproduct : String,
+        @Field("bank")  bank : String,
+        @Field("type")  type : String
     ): Call<ModelResponsePembayaranDetail>
 
     @GET("student/myorder")
     fun checkPayment(
         @Header("authorization") authorization: String?,
-        @Query("course")  idcourse : String
+        @Query("id_product")  idcourse : String
     ): Call<ModelResponseDiagnostic>
 
     @GET("student/checkout")

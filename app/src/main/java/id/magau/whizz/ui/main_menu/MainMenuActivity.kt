@@ -1,7 +1,9 @@
 package id.magau.whizz.ui.main_menu
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,7 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
     private var mWidth = 0
     private var mHeight = 0
     private var snapHelper = LinearSnapHelper()
+    private var doubleBackToExitPressedOnce = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val session = SessionUtils(this)
@@ -71,7 +74,9 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
             start(SkillActivity::class.java)
         }
         viewEvent.setOnClickListener {
-            start(EventActivity::class.java)
+            startActivity(Intent(this,EventActivity::class.java).apply {
+                putExtra(EventActivity.KEY_SKILL_SAYA,false)
+            })
         }
         viewKelasSaya.setOnClickListener {
             start(ProductsActivity::class.java)
@@ -96,22 +101,7 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
         mSwipeRefresh.setOnRefreshListener {
             mPresenter.start()
         }
-//        snapHelper.attachToRecyclerView(mRecyclerPromo)
-//        val mData1 = arrayListOf(
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"),
-//            ModelSkills("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,4.4F,"Rp 207.900"))
-//        showSkillPopular(mData1)
-//        val mData2 = arrayListOf(
-//            ModelEvent("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"),
-//        ModelEvent("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"),
-//        ModelEvent("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"))
-//        showEvents(mData2)
-//        val mData3 = arrayListOf(
-//            ModelPromo("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"),
-//            ModelPromo("SOFT SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"),
-//            ModelPromo("HARD SKILL","The Complete App Design Course - UX, UI and Design Thinking",0,"MAKASSAR","Rp 207.900"))
-//        showPromo(mData3)
+
     }
 
     private fun calculateMenuSize() {
@@ -157,5 +147,14 @@ class MainMenuActivity : BaseActivity(R.color.colorWhite,R.layout.activity_main_
         mPresenter = presenter
     }
 
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        toast("Tekan dua kali untuk keluar dari aplikasi")
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
 }
