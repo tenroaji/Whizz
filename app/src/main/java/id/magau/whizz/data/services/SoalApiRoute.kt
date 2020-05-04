@@ -1,8 +1,7 @@
 package id.magau.whizz.data.services
 
 
-import id.magau.whizz.data.model.ModelResponseJawabSoal
-import id.magau.whizz.data.model.ModelResponseSoal
+import id.magau.whizz.data.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -26,7 +25,7 @@ interface SoalApiRoute{
     ): Call<ModelResponseSoal>
 
 
-    @GET("pembahasan")
+    @GET("student/exam/hasil-sub-section")
     fun getPembahasan(
         @Header("authorization") token: String?,
         @Query("uuidhistory")uuid : String?
@@ -57,7 +56,12 @@ interface SoalApiRoute{
     @POST("student/exam/sub-section-answer")
     fun sendExam(
         @Header("authorization") token: String?,
-        @Field("uuid_soal") id_soal : String,
-        @Field("answer") pilihan : String
-    ): Call<ModelResponseJawabSoal>
+        @Body data : ModelSendExam
+    ): Call<ModelDiagnostic>
+
+    @GET("student/exam/hasil-sub-section")
+    fun getHasil(
+        @Header("authorization") token: String?,
+        @Query("uuid_sub_section")uuid : String?
+    ): Call<ModelResponseHasilAnalisis>
 }

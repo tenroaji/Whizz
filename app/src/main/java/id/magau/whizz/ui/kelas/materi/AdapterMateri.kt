@@ -50,7 +50,7 @@ class AdapterMateri : RecyclerView.Adapter<AdapterMateri.ViewHolder>() {
             }
             if (!data?.subSections.isNullOrEmpty()) {
                 mAdapter.updateClass(myClass)
-                mAdapter.updateAdapter(data?.subSections!!)
+                data?.subSections?.let { mAdapter.updateAdapter(it) }
                 setOnClickListener {
                     if (isCollapse) {
                         imgCollapse.rotation = 0F

@@ -324,4 +324,6 @@
         app:layout_constraintStart_toEndOf="@id/btnKeluar"
         android:text="Pembahasan"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <include layout="@layout/item_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

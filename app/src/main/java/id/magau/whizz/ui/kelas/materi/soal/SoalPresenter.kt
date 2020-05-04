@@ -2,8 +2,9 @@ package id.magau.whizz.ui.kelas.materi.soal
 
 import android.content.Context
 import id.magau.whizz.R
-import id.magau.whizz.data.model.ModelResponseJawabSoal
+import id.magau.whizz.data.model.ModelDiagnostic
 import id.magau.whizz.data.model.ModelResponseSoal
+import id.magau.whizz.data.model.ModelSendExam
 import id.magau.whizz.data.services.SoalApiRoute
 import id.magau.whizz.utils.RetrofitUtils
 import id.magau.whizz.utils.SessionUtils
@@ -149,15 +150,15 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
 
     override fun sendJawaban(uuid: String, pilihan: String) {
         view.showLoading(true)
-        mService.sendExam(mToken,uuid,pilihan).enqueue(object : Callback<ModelResponseJawabSoal> {
-            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {
+        mService.sendExam(mToken, ModelSendExam( uuid,pilihan)).enqueue(object : Callback<ModelDiagnostic> {
+            override fun onFailure(call: Call<ModelDiagnostic>, t: Throwable) {
                 view.showLoading(false)
                 view.showError(0, "Server Internal Error $t")
             }
 
             override fun onResponse(
-                call: Call<ModelResponseJawabSoal>,
-                response: Response<ModelResponseJawabSoal>
+                call: Call<ModelDiagnostic>,
+                response: Response<ModelDiagnostic>
             ) {
                 view.showLoading(false)
                 if (response.code() == 200) {
@@ -173,15 +174,15 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
 
     //    override fun sendTWK(idSoal: String, pilihan: String, idHistory: String) {
 //        view.showLoading(true)
-//        mService.sendTWK(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelResponseJawabSoal> {
-//            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {
+//        mService.sendTWK(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelDiag> {
+//            override fun onFailure(call: Call<ModelDiag>, t: Throwable) {
 //                view.showLoading(false)
 //                view.showError(0, "Server Internal Error $t")
 //            }
 //
 //            override fun onResponse(
-//                call: Call<ModelResponseJawabSoal>,
-//                response: Response<ModelResponseJawabSoal>
+//                call: Call<ModelDiag>,
+//                response: Response<ModelDiag>
 //            ) {
 //                view.showLoading(false)
 //                if (response.code() == 200) {
@@ -197,15 +198,15 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
 //
 //    override fun sendTIU(idSoal: String, pilihan: String, idHistory: String) {
 //        view.showLoading(true)
-//        mService.sendTIU(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelResponseJawabSoal> {
-//            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {
+//        mService.sendTIU(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelDiag> {
+//            override fun onFailure(call: Call<ModelDiag>, t: Throwable) {
 //                view.showLoading(false)
 //                view.showError(0, "Server Internal Error $t")
 //            }
 //
 //            override fun onResponse(
-//                call: Call<ModelResponseJawabSoal>,
-//                response: Response<ModelResponseJawabSoal>
+//                call: Call<ModelDiag>,
+//                response: Response<ModelDiag>
 //            ) {
 //                view.showLoading(false)
 //                if (response.code() == 200) {
@@ -221,15 +222,15 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
 //
 //    override fun sendTKP(idSoal: String, pilihan: String, idHistory: String) {
 //        view.showLoading(true)
-//        mService.sendTKP(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelResponseJawabSoal> {
-//            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {
+//        mService.sendTKP(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelDiag> {
+//            override fun onFailure(call: Call<ModelDiag>, t: Throwable) {
 //                view.showLoading(false)
 //                view.showError(0, "Server Internal Error $t")
 //            }
 //
 //            override fun onResponse(
-//                call: Call<ModelResponseJawabSoal>,
-//                response: Response<ModelResponseJawabSoal>
+//                call: Call<ModelDiag>,
+//                response: Response<ModelDiag>
 //            ) {
 //                view.showLoading(false)
 //                if (response.code() == 200) {

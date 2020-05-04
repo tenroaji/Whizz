@@ -13,4 +13,11 @@ data class ModelResponseJawabSoal (
     var response : Boolean?= false
 )
 
+data class ModelSendExam(
+    @SerializedName("uuid_soal")
+    var uuid_soal : String? = "",
+    @SerializedName("answer")
+    var answer : String?= ""
+)
+
 

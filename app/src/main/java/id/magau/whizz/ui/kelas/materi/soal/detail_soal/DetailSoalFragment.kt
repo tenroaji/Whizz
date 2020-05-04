@@ -10,8 +10,8 @@ import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelHistoriJawaban
 import id.magau.whizz.ui.kelas.materi.soal.AdapterNomorSoal
 import id.magau.whizz.ui.kelas.materi.soal.SoalActivity.Companion.KEY_JENIS
-import id.magau.whizz.ui.soal.detail_soal.DetailSoalFragment
 import id.magau.whizz.utils.active
+import id.magau.whizz.utils.toast
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.fragment_soal.*
 import kotlinx.android.synthetic.main.fragment_soal.view.*
@@ -58,7 +58,7 @@ class DetailSoalFragment : Fragment() {
         mPosition = arguments?.getString(KEY_ID)!!.toInt()
         mSoal = arguments?.getBoolean(KEY_JENIS) ?: true
         data = arguments?.getSerializable(KEY_DATA) as ModelHistoriJawaban
-        idSoal = data.id_soal.toString()
+        idSoal = data.uuid.toString()
         idHistory = data.id.toString()
         mType = data.jenis.toString()
         view.tvSoal.text = data.soal
@@ -72,9 +72,9 @@ class DetailSoalFragment : Fragment() {
             view.tvChoiceC.text = data.c
             view.tvChoiceD.text = data.d
             view.tvChoiceE.text = data.e
-            data.pilihan?.let {
-                choicer(view, it)
-            }
+//            data.pilihan?.let {
+//                choicer(view, it)
+//            }
             if (!data.gambar_a.isNullOrEmpty()) {
                 groupChoiceImage visibility true
                 Picasso.get().load(data.gambar_a).into(imgA)
@@ -167,6 +167,7 @@ class DetailSoalFragment : Fragment() {
         for ((pos, choice) in choicer.withIndex()) {
             if (choice.contains(pilihan, true)) {
                 viewChoicer[pos].setBackgroundResource(R.drawable.background_active_soal)
+
                 mChoiceSoalListener?.onChoice(mPosition, choice, idSoal, idHistory, mType, true)
             }
         }
@@ -187,6 +188,8 @@ class DetailSoalFragment : Fragment() {
                 button active false
             }
         }
+
+
     }
 
 

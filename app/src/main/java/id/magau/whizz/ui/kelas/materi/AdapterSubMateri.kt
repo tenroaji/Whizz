@@ -49,8 +49,10 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                 is CourseVideoModel -> {
                     val materi = data.course
                     imgFile.setBackgroundResource(R.drawable.ic_streaming2)
-                    tvDesc.text = materi.description
+                    tvDesc visibility false
                     if (myClass) {
+                        tvDesc visibility true
+                        tvDesc.text = materi.description
                         setOnClickListener {
                             context.startActivity(Intent(context, VideoActivity::class.java).apply {
                                 putExtra(VideoActivity.KEY_VIDEO, materi.videos[0].link)
@@ -58,14 +60,16 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                             })
                         }
                     }
-                    tvTitle.text = materi.title
+                    tvTitle.text = data.title
                 }
                 is CoursePdfModel  -> {
                     val materi = data.course
                     imgFile.setBackgroundResource(R.drawable.ic_file_pdf)
-                    tvDesc.text = materi.description
+                    tvDesc visibility false
                     if (myClass) {
-                    setOnClickListener {
+                        tvDesc visibility true
+                        tvDesc.text = materi.description
+                        setOnClickListener {
                         context.startActivity(Intent(context, PdfActivity::class.java).apply {
                             putExtra(PdfActivity.KEY_URL_PDF, materi.fileUrl)
                             putExtra(PdfActivity.KEY_TYPE_PDF, true)
@@ -73,7 +77,7 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                         })
                     }
                     }
-                    tvTitle.text = materi.title
+                    tvTitle.text = data.title
                 }
                 is CourseHtmlModel -> {
                     val materi = data.course
@@ -86,7 +90,7 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                             putExtra(PdfActivity.KEY_TITLE, materi.title)
                         })
                     }
-                    tvTitle.text = materi.title
+                    tvTitle.text = data.title
                 }
                 is CourseExamModel -> {
                     imgFile.setBackgroundResource(R.drawable.ic_file_ujian)

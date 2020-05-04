@@ -1,8 +1,8 @@
 package id.magau.whizz.ui.kelas.materi.soal
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -11,12 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.magau.whizz.R
 import id.magau.whizz.data.model.ModelHistoriJawaban
-import id.magau.whizz.data.model.ModelSubMateri
-import id.magau.whizz.data.model.ModelSubSectionMateri
 import id.magau.whizz.ui.kelas.materi.soal.detail_soal.DetailSoalFragment
+import id.magau.whizz.ui.kelas.materi.soal.hasil.HasilAnalisisActivity
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.enable
-import id.magau.whizz.utils.start
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.activity_soal.*
 import kotlinx.android.synthetic.main.item_custom_dialog_done.*
@@ -193,7 +191,7 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
                     type: String,
                     soal: Boolean
                 ) {
-                    mPresenter.sendJawaban(uuidSoal,choice)
+                    mPresenter.sendJawaban(idSoal,choice)
 //                    if (type.contains("twk")){
 //                        mPresenter.sendTWK(idSoal,choice,idHistory)
 //                    }else if (type.contains("tiu")){
@@ -201,10 +199,10 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 //                    }else if (type.contains("tkp")){
 //                        mPresenter.sendTKP(idSoal,choice,idHistory)
 //                    }
+
                     mAdapterSoal.answerPosition(position)
                     val dataUpdate = dataSoal[position]?.copy(pilihan = choice)
                     dataSoal[position] = dataUpdate
-                    Log.d("lapar pilihan", "${dataSoal[position]?.pilihan}")
                 }
             })
         }
@@ -251,7 +249,6 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
         var no = 0
         for (data in dataSoal) {
             no++
-
             if (data?.pilihan.isNullOrEmpty()) {
                 empetyChoice.add(no)
             }
@@ -266,9 +263,7 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
             }
         }
 
-        Log.d("lapar", "${dataSoal.size} = ${empetyChoice.size}")
-
-        if (empetyChoice.size < dataSoal.size) {
+        if (empetyChoice.size < dataSoal.size && empetyChoice.size != 0) {
             mAlertDialog.viewAlert visibility true
             mAlertDialog.tvAlert.text = "Anda belum mengerjakan nomor $alert"
         } else if (empetyChoice.size == dataSoal.size) {
@@ -283,7 +278,11 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 
         mDialogView.btnKumpulkan.setOnClickListener {
             mAlertDialog.dismiss()
-            start(JawabanSoalActivity::class.java)
+            startActivity(Intent(this,
+                HasilAnalisisActivity::class.java).apply {
+                putExtra(HasilAnalisisActivity.KEY_UUID,uuidSoal)
+            })
+            finish()
 //            mPresenter.kumpulSoal()
 
         }
