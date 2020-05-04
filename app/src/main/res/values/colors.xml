@@ -18,4 +18,6 @@
     <color name="colorChoice">#D3DFF1</color>
     <color name="color_line">#F0F0F0</color>
     <color name="colorButtonDefault">#d1d3d4</color>
+    <color name="colorPie">#FFE4CC</color>
+
 </resources>

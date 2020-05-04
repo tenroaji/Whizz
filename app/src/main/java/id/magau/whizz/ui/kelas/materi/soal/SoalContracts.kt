@@ -17,6 +17,8 @@ interface SoalContracts {
 
         fun sendFinishSoal()
 
+        fun sendJawaban(uuid:String,pilihan : String)
+
         fun forceUpdate()
 
         fun kumpulSoal()
@@ -24,7 +26,6 @@ interface SoalContracts {
     }
 
     interface View : BaseView<Presenter> {
-        fun setUUID(UUID : String)
 
         fun showPembahasan()
 

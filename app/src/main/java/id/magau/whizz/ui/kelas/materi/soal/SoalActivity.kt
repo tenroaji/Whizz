@@ -16,6 +16,7 @@ import id.magau.whizz.data.model.ModelSubSectionMateri
 import id.magau.whizz.ui.kelas.materi.soal.detail_soal.DetailSoalFragment
 import id.magau.whizz.utils.BaseActivity
 import id.magau.whizz.utils.enable
+import id.magau.whizz.utils.start
 import id.magau.whizz.utils.visibility
 import kotlinx.android.synthetic.main.activity_soal.*
 import kotlinx.android.synthetic.main.item_custom_dialog_done.*
@@ -40,7 +41,9 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
     var mCachePosition = -1
     var mCurrentPosition = 0
     var usedTime = 0L
-    private var mUuid = ""
+    private val uuidSoal by lazy{
+        intent.getStringExtra(KEY_UUID) ?: ""
+    }
     private val mDataSoal by lazy {
         intent.getSerializableExtra(KEY_DATA_SOAL) as ArrayList<ModelHistoriJawaban?>
     }
@@ -49,7 +52,6 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
         super.onCreate(savedInstanceState)
         SoalPresenter(this, this)
 
-        mUuid = intent.getStringExtra(KEY_UUID) ?: ""
         mSoal = intent.getBooleanExtra(KEY_JENIS, true)
 //
 //        if(mSoal){
@@ -60,6 +62,10 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 //        }
 //        dataSoal.clear()
 //        dataSoal.addAll(mDataSoal)
+        if(mDataSoal.size <= 1){
+            btnNext.text = getString(R.string.label_kumpulkan)
+        }
+
         showSoal(mDataSoal)
 
 
@@ -187,6 +193,7 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
                     type: String,
                     soal: Boolean
                 ) {
+                    mPresenter.sendJawaban(uuidSoal,choice)
 //                    if (type.contains("twk")){
 //                        mPresenter.sendTWK(idSoal,choice,idHistory)
 //                    }else if (type.contains("tiu")){
@@ -197,6 +204,7 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
                     mAdapterSoal.answerPosition(position)
                     val dataUpdate = dataSoal[position]?.copy(pilihan = choice)
                     dataSoal[position] = dataUpdate
+                    Log.d("lapar pilihan", "${dataSoal[position]?.pilihan}")
                 }
             })
         }
@@ -243,6 +251,7 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
         var no = 0
         for (data in dataSoal) {
             no++
+
             if (data?.pilihan.isNullOrEmpty()) {
                 empetyChoice.add(no)
             }
@@ -257,10 +266,12 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
             }
         }
 
-        if (empetyChoice.size < 100) {
+        Log.d("lapar", "${dataSoal.size} = ${empetyChoice.size}")
+
+        if (empetyChoice.size < dataSoal.size) {
             mAlertDialog.viewAlert visibility true
             mAlertDialog.tvAlert.text = "Anda belum mengerjakan nomor $alert"
-        } else if (empetyChoice.size == 100) {
+        } else if (empetyChoice.size == dataSoal.size) {
             mAlertDialog.viewAlert visibility true
             mAlertDialog.tvAlert.text = "Anda belum mengerjakan soal apapun"
         }
@@ -272,7 +283,8 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 
         mDialogView.btnKumpulkan.setOnClickListener {
             mAlertDialog.dismiss()
-            mPresenter.kumpulSoal()
+            start(JawabanSoalActivity::class.java)
+//            mPresenter.kumpulSoal()
 
         }
         mDialogView.btnBatal.setOnClickListener {
@@ -291,7 +303,6 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 
     override fun showSoal(data: MutableList<ModelHistoriJawaban?>) {
         dataSoal.addAll(data)
-        Log.d("lapar", "$dataSoal")
         mAdapterSoal.updateAdapter(data)
         if (mSoal) {
             tvAkhiriLatihan visibility true
@@ -310,9 +321,6 @@ class SoalActivity : BaseActivity(layout = R.layout.activity_soal), SoalContract
 //        })
     }
 
-    override fun setUUID(UUID: String) {
-        mUuid = UUID
-    }
 
     override fun showPembahasan() {
 

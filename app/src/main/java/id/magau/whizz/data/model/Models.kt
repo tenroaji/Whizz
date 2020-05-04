@@ -36,6 +36,7 @@ data class CourseVideoModel(
 
 data class CourseExamModel(
     val id: String,
+    val uuid_sub_section: String,
     val title: String,
     @SerializedName("materi") val course: ArrayList<ModelHistoriJawaban?>?
 ) : CourseTypeModel()
@@ -64,6 +65,7 @@ data class CourseExamItemModel(
     val id: Int,
     @SerializedName("soal") val question: String,
     @SerializedName("jawaban") val answer: String,
+    @SerializedName("uuid") val uuid: String,
     val A: String,
     val B: String,
     val C: String,

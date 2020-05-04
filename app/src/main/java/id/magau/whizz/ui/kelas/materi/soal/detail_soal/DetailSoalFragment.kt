@@ -156,7 +156,7 @@ class DetailSoalFragment : Fragment() {
     }
 
     private fun choicer(root: View, pilihan: String) {
-        val choicer = mutableListOf("a", "b", "c", "d", "e")
+        val choicer = mutableListOf("A", "B", "C", "D", "E")
         val viewChoicer = mutableListOf(
             root.choiceA,
             root.choiceB,

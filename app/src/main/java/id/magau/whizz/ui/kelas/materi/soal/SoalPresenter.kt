@@ -49,10 +49,6 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
             ) {
 
                 if (response.code() == 200) {
-                    val history = response.body()?.response?.history
-                    if (history != null){
-                        view.setUUID(history.uuid?:"")
-                    }
                     val mData = response.body()?.response?.historiJawaban
                     if (mData != null) {
                         view.showLoading(false)
@@ -151,7 +147,31 @@ class SoalPresenter(val context: Context, val view: SoalContracts.View) :
         })
     }
 
-//    override fun sendTWK(idSoal: String, pilihan: String, idHistory: String) {
+    override fun sendJawaban(uuid: String, pilihan: String) {
+        view.showLoading(true)
+        mService.sendExam(mToken,uuid,pilihan).enqueue(object : Callback<ModelResponseJawabSoal> {
+            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {
+                view.showLoading(false)
+                view.showError(0, "Server Internal Error $t")
+            }
+
+            override fun onResponse(
+                call: Call<ModelResponseJawabSoal>,
+                response: Response<ModelResponseJawabSoal>
+            ) {
+                view.showLoading(false)
+                if (response.code() == 200) {
+
+                }else if (response.code() == 500){
+                    view.showError(500,"Server Internal error")
+                }else {
+                    view.showError(0,"Server Internal error")
+                }
+            }
+        })
+    }
+
+    //    override fun sendTWK(idSoal: String, pilihan: String, idHistory: String) {
 //        view.showLoading(true)
 //        mService.sendTWK(mToken,idSoal,pilihan,idHistory).enqueue(object : Callback<ModelResponseJawabSoal> {
 //            override fun onFailure(call: Call<ModelResponseJawabSoal>, t: Throwable) {

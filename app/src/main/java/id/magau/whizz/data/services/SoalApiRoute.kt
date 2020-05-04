@@ -4,10 +4,7 @@ package id.magau.whizz.data.services
 import id.magau.whizz.data.model.ModelResponseJawabSoal
 import id.magau.whizz.data.model.ModelResponseSoal
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * Created by Andi Tenroaji Ahmad on 9/26/2019.
@@ -57,11 +54,10 @@ interface SoalApiRoute{
         @Query("id_history") id_history : String
     ): Call<ModelResponseJawabSoal>
 
-    @POST("jawabTKP")
-    fun sendTKP(
+    @POST("student/exam/sub-section-answer")
+    fun sendExam(
         @Header("authorization") token: String?,
-        @Query("id_soal") id_soal : String,
-        @Query("pilihan") pilihan : String,
-        @Query("id_history") id_history : String
+        @Field("uuid_soal") id_soal : String,
+        @Field("answer") pilihan : String
     ): Call<ModelResponseJawabSoal>
 }

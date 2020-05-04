@@ -96,6 +96,7 @@ class AdapterSubMateri : RecyclerView.Adapter<AdapterSubMateri.ViewHolder>() {
                             context.startActivity(Intent(context, SoalActivity::class.java).apply {
                             materi?.let{
                                 putExtra(SoalActivity.KEY_DATA_SOAL, it)
+                                putExtra(SoalActivity.KEY_UUID, data.uuid_sub_section)
                             }
 //                            putExtra(PdfActivity.KEY_TYPE_PDF, false)
 //                            putExtra(PdfActivity.KEY_TITLE, data.materi?.title)

@@ -73,6 +73,7 @@
         <activity android:name=".ui.kelas.materi.youtube.YoutubeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name=".ui.event_search.EventSearchActivity" />
+        <activity android:name=".ui.kelas.materi.soal.JawabanSoalActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -30,8 +30,10 @@ data class ModelSoal(
 data class ModelHistoriJawaban (
     @SerializedName("id")
     var id: Int?= 0,
-    @SerializedName("pilihan")
-    var pilihan: String?= "",
+    @SerializedName("uuid")
+    var uuid: String?= "",
+     @SerializedName("pilihan")
+    var pilihan: String?= "",   
     @SerializedName("id_soal")
     var id_soal: Int?= 0,
     @SerializedName("gambar_soal")
